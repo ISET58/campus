@@ -590,7 +590,7 @@ function __construct($Options=null,$VarPrefix='',$FctPrefix='') {
 	} 
 
 	// Set options
-	$this->VarRef =& $GLOBALS;
+	$this->VarRef = $GLOBALS;
 	if (is_array($Options)) $this->SetOption($Options);
 
 	// Links to global variables (cannot be converted to static yet because of compatibility)
@@ -685,7 +685,7 @@ function GetOption($o) {
 
 public function ResetVarRef($ToGlobal) {
 	if ($ToGlobal) {
-		$this->VarRef = &$GLOBALS;
+		$this->VarRef = $GLOBALS;
 	} else {
 		$x = array();
 		$this->VarRef = &$x;
@@ -3149,7 +3149,7 @@ static function f_Misc_UpdateArray(&$array, $numerical, $v, $d) {
 
 static function f_Misc_FormatSave(&$FrmStr,$Alias='') {
 
-	$FormatLst = &$GLOBALS['_TBS_FormatLst'];
+	$FormatLst = $GLOBALS['_TBS_FormatLst'];
 
 	if (isset($FormatLst[$FrmStr])) {
 		if ($Alias!='') $FormatLst[$Alias] = &$FormatLst[$FrmStr];
@@ -3720,7 +3720,7 @@ This is because of the calling function.
 static function f_Loc_EnlargeToTag(&$Txt,&$Loc,$TagStr,$RetInnerSrc) {
 //Modify $Loc, return false if tags not found, returns the inner source of tag if $RetInnerSrc=true
 
-	$AliasLst = &$GLOBALS['_TBS_BlockAlias'];
+	$AliasLst = $GLOBALS['_TBS_BlockAlias'];
 
 	// Analyze string
 	$Ref = 0;

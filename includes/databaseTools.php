@@ -1,15 +1,21 @@
 <?php
 
-
-$database="../data/campus.db";
-
 /////////////////////////////////////////////////////////////////////////
 // primero que nada se abre la base de datos para obtener un manejador
 // global del objeto de base de datos
 /////////////////////////////////////////////////////////////////////////
-$db = new SQLite3($database) or die('no se puede abrir la base de datos'. $database);
 
+//
 
+$host = 'localhost';
+$database = 'iset';
+$username = 'root';
+$password = '';
+
+$db = new mysqli($host, $username, $password, $database);
+if ($db->connect_error) {
+    die('Error de conexión: ' . $db->connect_error);
+}
 
 /////////////////////////////////////////////////////////////////////////////////
 // FUNCION LISTAR
@@ -30,6 +36,9 @@ $db = new SQLite3($database) or die('no se puede abrir la base de datos'. $datab
 //   $cantidad  ->  La cantidad de campos a listar
 //   $offset    ->  el offset desde el cual se empieza a listas(para paginar)
 ///////////////////////////////////////////////////////////////////////////////
+
+error_reporting(E_ALL & ~E_DEPRECATED);
+
 function listar($tabla, $campos, $condicion=null,$plantilla, $cantidad=null, $offset=null){
 
     // el manejador global de la DB abierta    
@@ -88,7 +97,7 @@ function listar($tabla, $campos, $condicion=null,$plantilla, $cantidad=null, $of
 
     // se transforma el resultado de la consulta en una array
     $datos= array();
-    while($row = $results->fetchArray(SQLITE3_ASSOC)){
+    while($row = $results->fetch_assoc()){
        $datos[]=$row;
     }
 
@@ -119,7 +128,7 @@ function listarMensajes($tabla, $campos, $condicion=null,$plantilla, $cantidad=n
 
      
     $database="../data/mensajes.db";
-    $db = new SQLite3($database) or die('no se puede abrir la base de datos'. $database);
+    
 
     // se arma la string de campos para el sql
     $StringCampos =implode(", ",  $campos);
@@ -174,7 +183,7 @@ function listarMensajes($tabla, $campos, $condicion=null,$plantilla, $cantidad=n
 
     // se transforma el resultado de la consulta en una array
     $datos= array();
-    while($row = $results->fetchArray(SQLITE3_ASSOC)){
+    while($row = $results->fetch_assoc()){
        $datos[]=$row;
     }
 
@@ -264,7 +273,7 @@ function buscar($tabla, $campos, $busqueda=null, $plantilla, $condicion=""){
 
         $sqlquery= "SELECT ".$StringCampos." FROM ".$tabla." WHERE ".$value." LIKE  "."'%".$busqueda."%' ".$condicion;
         $results = $db->query($sqlquery);
-        while($row = $results->fetchArray(SQLITE3_ASSOC)){
+        while($row = $results->fetch_assoc()){
            // ya seencontro una fila con este ID?
            // si es asi no se suma porque ya esta!! 
            if (!in_array($row["ID"], $idEncontrado)) {
@@ -378,7 +387,7 @@ function estaEnlaBDD ($tabla, $campo, $valor){
 
 	$sqlquery= "SELECT 1 FROM ".$tabla." WHERE ".$campo."='".$valor."' AND estado='activo'";
     $results = $db->query($sqlquery);
-    $row = $results->fetchArray(SQLITE3_ASSOC);
+    $row = $results->fetch_assoc();
 
     
     if($row>0) return true;
@@ -388,13 +397,14 @@ function estaEnlaBDD ($tabla, $campo, $valor){
 
 ///////////////////////////////////////////////
 function login ($email, $password){
-
+    $password = 'test'; #hardcodeado
     global $db;
 
     $sqlquery= "SELECT * FROM usuarios WHERE email='".$email."' AND password='".$password."' AND estado='activo'";
     $results = $db->query($sqlquery);
-    $row = $results->fetchArray(SQLITE3_ASSOC);
+    $row = $results->fetch_assoc();
 
+    echo $sqlquery;
     if($row>0) return $row["ID"];
      return false;
 }
@@ -409,7 +419,7 @@ function getUserProfile ($id){
     
     // se transforma el resultado de la consulta en una array
     $datos= array();
-    while($row = $results->fetchArray(SQLITE3_ASSOC)){
+    while($row = $results->fetch_assoc()){
        $datos[]=$row;
     }
 
@@ -429,7 +439,7 @@ function materiasPorCarrera($carreraID, $userID, $year){
     $results = $db->query($sqlquery);
     $carreras= array();
     $cursado= array();
-    while($row = $results->fetchArray(SQLITE3_ASSOC)){
+    while($row = $results->fetch_assoc()){
         $carreras[]=$row["materiaID"];
         $cursado[]=$row["cursado"];
     }
@@ -448,7 +458,7 @@ function materiasPorCarrera($carreraID, $userID, $year){
     $datos= array();
     $i=1;
     $ano=0;
-    while($row = $results->fetchArray(SQLITE3_ASSOC)){
+    while($row = $results->fetch_assoc()){
        $row["numero"]=$i;
 
        $row["status"]="";
@@ -489,7 +499,7 @@ function examenesPorCarrera($carreraID, $userID, $year){
     $cursado= array();
 
    
-    while($row = $results->fetchArray(SQLITE3_ASSOC)){
+    while($row = $results->fetch_assoc()){
         $examenes[]=$row["materiaID"];
         $cursado[]=$row["cursado"];
         $FechaRegular[]=$row["FechaRegular"];
@@ -510,7 +520,7 @@ function examenesPorCarrera($carreraID, $userID, $year){
     $datos= array();
     $i=1;
     $ano=0;
-    while($row = $results->fetchArray(SQLITE3_ASSOC)){
+    while($row = $results->fetch_assoc()){
        $row["numero"]=$i;
 
        $row["statusCursado"]="checked";
@@ -565,7 +575,7 @@ function verificarsesion($sesionID){
 
     $sqlquery= "SELECT * FROM sesiones WHERE guid='".$sesionID."'";
     $results = $db->query($sqlquery);
-    $row = $results->fetchArray(SQLITE3_ASSOC);
+    $row = $results->fetch_assoc();
 
     if($row>0){
         $ahora=time();
@@ -759,7 +769,7 @@ function getCarreras(){
     $results = $db->query($sqlquery);
      // se transforma el resultado de la consulta en una array
     $datos= array();
-    while($row = $results->fetchArray(SQLITE3_ASSOC)){
+    while($row = $results->fetch_assoc()){
        $datos[]=$row;
     }
 
@@ -773,11 +783,11 @@ function getCarreras(){
 // solo a efectos de debug 
 // para ver la version de sqlite
 /////////////////////////////////////////////
-function versionSQLITE(){
+/* function versionSQLITE(){
 	$ver = SQLite3::version();
     echo "La version de sqlite es: ".$ver['versionString'] . "<br>";
 
-}
+} */
 
 
 
@@ -789,7 +799,7 @@ function usuarioPorID ($id){
 
     $sqlquery= "SELECT * FROM usuarios WHERE ID='".$id."'";
     $results = $db->query($sqlquery);
-    $row = $results->fetchArray(SQLITE3_ASSOC);
+    $row = $results->fetch_assoc();
     return $row;
 }
 
@@ -800,7 +810,7 @@ function usuarioPorEMAIL($email){
 
     $sqlquery= "SELECT * FROM usuarios WHERE email='".$email."'";
     $results = $db->query($sqlquery);
-    $row = $results->fetchArray(SQLITE3_ASSOC);
+    $row = $results->fetch_assoc();
     return $row;
 }
 
@@ -813,7 +823,7 @@ function usuarioPorUID ($uid){
 
     $sqlquery= "SELECT * FROM usuarios WHERE verificado='".$uid."'";
     $results = $db->query($sqlquery);
-    $row = $results->fetchArray(SQLITE3_ASSOC);
+    $row = $results->fetch_assoc();
     return $row;
 }
 
@@ -879,7 +889,7 @@ function mensaje  ($user_id, $tipo=null, $texto=null, $imagen=null, $url=null, $
     //se buscan los datos del usuario receptor
     $sqlquery= "SELECT * FROM usuarios WHERE ID='".$user_id."'";
     $results = $db->query($sqlquery);
-    $row = $results->fetchArray(SQLITE3_ASSOC);
+    $row = $results->fetch_assoc();
 
     $nombre="";
     $apellido="";
@@ -893,7 +903,7 @@ function mensaje  ($user_id, $tipo=null, $texto=null, $imagen=null, $url=null, $
     //se buscan los datos del usuario emisor
     $sqlquery= "SELECT 1 FROM usuarios WHERE ID='".$emisor_id."'";
     $results = $db->query($sqlquery);
-    $row = $results->fetchArray(SQLITE3_ASSOC);
+    $row = $results->fetch_assoc();
 
     $emisor=$nombre." ".$apellido;
     
@@ -930,7 +940,7 @@ function cargarMensajes($userID){
     $results = $dbmensajes->query($sqlquery);
      // se transforma el resultado de la consulta en una array
     $datos= array();
-    while($row = $results->fetchArray(SQLITE3_ASSOC)){
+    while($row = $results->fetch_assoc()){
         
         // se busca el avatar del emisor
         $emisor_id=$row["emisor_id"];
@@ -941,7 +951,7 @@ function cargarMensajes($userID){
         } else {
            $sqlquery= "SELECT * FROM usuarios WHERE ID='".$emisor_id."'";
            $r = $db->query($sqlquery); 
-           $m = $r->fetchArray(SQLITE3_ASSOC);
+           $m = $r->fetch_assoc();
            $row["avatar_Emisor"]=$m["foto"];
            if($row["avatar_Emisor"]=="")$row["avatar_Emisor"]="avatares/propios/general.png";
             $row["redondear"]="border-radius: 100%;";
@@ -974,7 +984,7 @@ function cargarReInscripciones($userID){
     $sqlquery= "SELECT DISTINCT carreraID FROM inscriptos WHERE userID='".$userID."'";
     $results = $db->query($sqlquery);
     $carreras= array();
-    while($row = $results->fetchArray(SQLITE3_ASSOC)){
+    while($row = $results->fetch_assoc()){
         $carreras[]=$row["carreraID"];
     }
 
@@ -984,7 +994,7 @@ function cargarReInscripciones($userID){
     $results = $db->query($sqlquery);
      // se transforma el resultado de la consulta en una array
     $datos= array();
-    while($row = $results->fetchArray(SQLITE3_ASSOC)){
+    while($row = $results->fetch_assoc()){
         
        $row["color"]="#088DCD";
        $row["status"]="no inscripto";
@@ -1014,7 +1024,7 @@ function cargarExamenes($userID){
     $sqlquery= "SELECT DISTINCT carreraID FROM inscriptosExamenes WHERE userID='".$userID."'";
     $results = $db->query($sqlquery);
     $carreras= array();
-    while($row = $results->fetchArray(SQLITE3_ASSOC)){
+    while($row = $results->fetch_assoc()){
         $carreras[]=$row["carreraID"];
     }
 
@@ -1024,7 +1034,7 @@ function cargarExamenes($userID){
     $results = $db->query($sqlquery);
      // se transforma el resultado de la consulta en una array
     $datos= array();
-    while($row = $results->fetchArray(SQLITE3_ASSOC)){
+    while($row = $results->fetch_assoc()){
         
        $row["color"]="#E44526";
        $row["status"]="no inscripto";
@@ -1056,7 +1066,7 @@ function cargarInscripciones($userID){
     $sqlquery= "SELECT DISTINCT carreraID FROM inscriptos WHERE userID='".$userID."'";
     $results = $db->query($sqlquery);
     $carreras= array();
-    while($row = $results->fetchArray(SQLITE3_ASSOC)){
+    while($row = $results->fetch_assoc()){
         $carreras[]=$row["carreraID"];
     }
 
@@ -1066,7 +1076,7 @@ function cargarInscripciones($userID){
     $results = $db->query($sqlquery);
      // se transforma el resultado de la consulta en una array
     $datos= array();
-    while($row = $results->fetchArray(SQLITE3_ASSOC)){
+    while($row = $results->fetch_assoc()){
         
        $row["color"]="#088DCD";
        $row["status"]="no inscripto";
@@ -1101,7 +1111,7 @@ function imagenUsuario($user_id){
      //se buscan los datos del usuario receptor
     $sqlquery= "SELECT * FROM usuarios WHERE ID='".$user_id."'";
     $results = $db->query($sqlquery);
-    $row = $results->fetchArray(SQLITE3_ASSOC);
+    $row = $results->fetch_assoc();
     $foto=$row["foto"];
     if($row["foto"]==null)$foto="images/interface/perfil.png";
     return $foto;
@@ -1116,7 +1126,7 @@ function getNombreMateria($idMteria){
     //se buscan los datos del usuario receptor
     $sqlquery= "SELECT nombre FROM materias WHERE ID='".$idMteria."' AND habilitado='si' AND estado='activo'";
     $results = $db->query($sqlquery);
-    $row = $results->fetchArray(SQLITE3_ASSOC);
+    $row = $results->fetch_assoc();
     return $row["nombre"];
 
 }
@@ -1129,7 +1139,7 @@ function getYearMateria($idMteria){
     //se buscan los datos del usuario receptor
     $sqlquery= "SELECT year FROM materias WHERE ID='".$idMteria."' AND habilitado='si' AND estado='activo'";
     $results = $db->query($sqlquery);
-    $row = $results->fetchArray(SQLITE3_ASSOC);
+    $row = $results->fetch_assoc();
     return $row["year"];
 
 }
@@ -1142,7 +1152,7 @@ function getNombreCarrera($id){
     
     $sqlquery= "SELECT nombre FROM carreras WHERE ID='".$id."' AND habilitado='si' AND estado='activo'";
     $results = $db->query($sqlquery);
-    $row = $results->fetchArray(SQLITE3_ASSOC);
+    $row = $results->fetch_assoc();
     return $row["nombre"];
 
 }
@@ -1179,7 +1189,7 @@ function borrarIncripcionesExamenes($userID,$carreraID){
 function borrarMensaje($mensajeID){
 
     $database="../data/mensajes.db";
-    $db = new SQLite3($database) or die('no se puede abrir la base de datos'. $database);
+    
 
     $sqlquery= "DELETE FROM mensajes WHERE ID='".$mensajeID."'";
   
@@ -1201,7 +1211,7 @@ function getMateriaExamenes($examenID){
     
     // se transforma el resultado de la consulta en una array
     $datos= array();
-    while($row = $results->fetchArray(SQLITE3_ASSOC)){
+    while($row = $results->fetch_assoc()){
        $datos[]=$row;
     }
 
@@ -1219,7 +1229,7 @@ function getCarreraExamen($examenID){
     $sqlquery= "SELECT * FROM examenes WHERE ID='".$examenID."' AND estado='activo'";
     $results = $db->query($sqlquery);
     
-    $row = $results->fetchArray(SQLITE3_ASSOC);
+    $row = $results->fetch_assoc();
    
 
     return $row["carreraID"];
@@ -1239,7 +1249,7 @@ function listarMateriasPorCarrera($carreraID){
     
     // se transforma el resultado de la consulta en una array
     $datos= array();
-    while($row = $results->fetchArray(SQLITE3_ASSOC)){
+    while($row = $results->fetch_assoc()){
        $datos[]=$row;
        
     }
@@ -1274,7 +1284,7 @@ function listarMateriasExamen($examenID){
     
     // se transforma el resultado de la consulta en una array
     $datos= array();
-    while($row = $results->fetchArray(SQLITE3_ASSOC)){
+    while($row = $results->fetch_assoc()){
        $datos[]=$row;
        
     }
@@ -1293,7 +1303,7 @@ function getFechaExamen($IDmateria){
     $sqlquery= "SELECT * FROM materiasExamenes WHERE materiaID='".$IDmateria."' AND estado='activo'";
     $results = $db->query($sqlquery);
     
-    $row = $results->fetchArray(SQLITE3_ASSOC);
+    $row = $results->fetch_assoc();
 
 
     $date=date_create($row["fecha"]);
