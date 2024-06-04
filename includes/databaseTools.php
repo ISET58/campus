@@ -430,7 +430,7 @@ function login($email, $password)
 {
 
     global $db;
-    $password = "test";
+
     $sqlquery = "SELECT * FROM usuarios WHERE email='" . $email . "' AND password='" . $password . "' AND estado='activo'";
     $results = $db->query($sqlquery);
     $row = $results->fetch_assoc();
