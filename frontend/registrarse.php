@@ -88,7 +88,7 @@ mensaje($user_id, $tipo, $texto, $imagen, $url, $group_id, $emisor_id,$formato);
 	<h2>Para confirmar tu dirección de email</h2><br>
     <h2>Volvé para atras y logeate (arriba a la derecha)</h2>
     <h2>con tu email y el password que elegiste</h2>
-    <div class="renglon"><a href="http://iset58rosario.com.ar/campus">Volver al campus</a></div>
+    <div class="renglon"><a href="campus">Volver al campus</a></div>
 
 
 

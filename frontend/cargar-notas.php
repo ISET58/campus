@@ -38,13 +38,12 @@ $fecha=date("Y-m-d H:i:s");
 $epoch=time();
 
 // se completan los datos del archivo en la bdd
-$database="../data/notas.db";
 
 /////////////////////////////////////////////////////////////////////////
 // primero que nada se abre la base de datos para obtener un manejador
 // global del objeto de base de datos
 /////////////////////////////////////////////////////////////////////////
-$db = new SQLite3($database) or die('no se puede abrir la base de datos'. $database);
+
 
 
 $sqlquery="INSERT INTO notas (
@@ -77,7 +76,7 @@ $sqlquery="INSERT INTO notas (
 
 $results = $db->query($sqlquery);
 
-$lastID=$db->lastInsertRowID();
+/* $lastID = $db->lastInsertId(); */
 
 
 // se mueve el archivo a la biblioteca

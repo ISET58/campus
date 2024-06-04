@@ -10,7 +10,7 @@ if($accion=="publicar") $estado="si";
 
 // se abre la base de datos de novedades
 $database="../data/novedades.db";
-$db = new SQLite3($database) or die('no se puede abrir la base de datos'. $database);
+
 
 
 
@@ -31,7 +31,7 @@ $results = $db->query($sqlquery);
 
 // se transforma el resultado de la consulta en una array
 $datos= array();
-while($row = $results->fetchArray(SQLITE3_ASSOC)){
+while($row = $results->fetch_assoc()){
        $datos[]=$row;
  }
 

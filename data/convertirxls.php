@@ -21,7 +21,7 @@ $salidaXLS["G1"]="TELEFONO";
 
 $f=2;
 
-while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
+while ($row = $results->fetch_assoc()) {
     
     $userID=$row["ID"];
     $nombre=$row["nombre"];
@@ -36,11 +36,11 @@ while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
     // se buscan las materias en las que se inscribio el usuario
     $r=$db->query("SELECT * FROM inscriptos WHERE userID='".$userID."' AND activo='si'");
     // itera por todas la materias en las que se inscribio el alumno
-    while($m=$r->fetchArray(SQLITE3_ASSOC)){
+    while($m=$r->fetch_assoc()){
       
        $materiaID=$m["materiaID"];
        $res=$db->query("SELECT * FROM materias WHERE ID='".$materiaID."'");
-       $mat=$res->fetchArray(SQLITE3_ASSOC);
+       $mat=$res->fetch_assoc();
       
        $salidaXLS["A".$f]=$mat["carrera"];
        $salidaXLS["B".$f]=$mat["nombre"];

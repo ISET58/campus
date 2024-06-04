@@ -21,7 +21,7 @@ $salidaXLS["F1"]="EMAIL";
 $salidaXLS["G1"]="TELEFONO";
 
 $f=2;
-while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
+while ($row = $results->fetch_assoc()) {
 
 
 	$userID=$row["userID"];
@@ -31,12 +31,12 @@ while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
    
     // se busca el nombre y apellido de usuario 
     $r=$db->query("SELECT * FROM usuarios WHERE  id=".$userID);
-    $usuario=$r->fetchArray(SQLITE3_ASSOC);
+    $usuario=$r->fetch_assoc();
 
 
     // se busca el nombre de la materia y la carrea
     $r=$db->query("SELECT * FROM materias WHERE  id=".$materiaID);
-    $mat=$r->fetchArray(SQLITE3_ASSOC);
+    $mat=$r->fetch_assoc();
 
     $salidaXLS["A".$f]=$mat["carrera"];
     $salidaXLS["B".$f]=$mat["nombre"];

@@ -10,7 +10,7 @@ $database="../data/horarios.db";
 // primero que nada se abre la base de datos para obtener un manejador
 // global del objeto de base de datos
 /////////////////////////////////////////////////////////////////////////
-$db = new SQLite3($database) or die('no se puede abrir la base de datos'. $database);
+
 
 
 $sqlquery="DELETE FROM horarios WHERE id=".$id;

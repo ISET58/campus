@@ -25,7 +25,7 @@ $database="../data/horarios.db";
 // primero que nada se abre la base de datos para obtener un manejador
 // global del objeto de base de datos
 /////////////////////////////////////////////////////////////////////////
-$db = new SQLite3($database) or die('no se puede abrir la base de datos'. $database);
+
 
  $sqlquery= "SELECT * FROM horarios WHERE carrera='".$carrera."' AND yearDeLaCarrera='".$year."'";
 
@@ -34,7 +34,7 @@ $db = new SQLite3($database) or die('no se puede abrir la base de datos'. $datab
 
     // se transforma el resultado de la consulta en una array
     $datos= array();
-    while($row = $results->fetchArray(SQLITE3_ASSOC)){
+    while($row = $results->fetch_assoc()){
        $datos[]=$row;
     }
 
