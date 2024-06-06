@@ -45,7 +45,7 @@ echo '<div class="fila">';
       echo '<div class="cajah">TITULO</div>';
    echo '</div>';
 
-while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
+while ($row = $results->fetch_assoc()) {
 
      
    echo '<div class="fila">';

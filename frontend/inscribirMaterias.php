@@ -72,7 +72,7 @@ $mensaje = '<html><head>'.
 	$materiasEnviar.
 	'<hr>'.
 	'Imprimí este Email y presentalo en la Secretaria del Iset58'.
-	'Que tengas un buen día. <a href="http://iset58rosario.com.ar/campus">iset58rosario.com.ar/campus</a>'.
+	'Que tengas un buen día. <a href="campus">iset58rosario.com.ar/campus</a>'.
 	'</body></html>';
 
 

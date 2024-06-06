@@ -59,7 +59,7 @@ echo '<div class="fila">';
       echo '<div class="cajah">SE ANOTO EN</div>';
    echo '</div>';
 
-while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
+while ($row = $results->fetch_assoc()) {
 
    $userID=$row["userID"];
    $perfil=getUserProfile($userID);

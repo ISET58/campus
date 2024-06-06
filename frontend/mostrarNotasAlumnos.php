@@ -1,6 +1,7 @@
 <?php
 
 include_once 'acceso.php'; 
+require_once('../conexion.php');
 
 
 ////////////////////////////////////////////////////////
@@ -15,14 +16,6 @@ $perfil=getUserProfile($userID);
 
 $nombreProfesor=$perfil["nombre"]." ".$perfil["apellido"];
 
-// se completan los datos del archivo en la bdd
-$database="../data/notas.db";
-
-/////////////////////////////////////////////////////////////////////////
-// primero que nada se abre la base de datos para obtener un manejador
-// global del objeto de base de datos
-/////////////////////////////////////////////////////////////////////////
-$db = new SQLite3($database) or die('no se puede abrir la base de datos'. $database);
 
  $sqlquery= "SELECT * FROM notas";
 
@@ -31,7 +24,7 @@ $db = new SQLite3($database) or die('no se puede abrir la base de datos'. $datab
 
     // se transforma el resultado de la consulta en una array
     $datos= array();
-    while($row = $results->fetchArray(SQLITE3_ASSOC)){
+    while($row = $results->fetch_assoc()){
        $datos[]=$row;
     }
 

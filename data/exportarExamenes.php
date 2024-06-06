@@ -28,7 +28,7 @@ $f=2;
 
 /////////////////////////////////////////////////////////////////////////////
 
-while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
+while ($row = $results->fetch_assoc()) {
 
    $userID=$row["userID"];
    $perfil=getUserProfile($userID);

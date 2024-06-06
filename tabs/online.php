@@ -14,7 +14,7 @@ $fechaAct=date("H:i d/m/Y",$hora);
 
 echo "<h3> Estan conectados: </h3>";
 
-while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
+while ($row = $results->fetch_assoc()) {
    $userID=$row["userID"];
    $epoch=$row["epoch"];
 
@@ -22,7 +22,7 @@ while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
 
 
    $r= $db->query("SELECT * FROM usuarios WHERE ID = '".$userID."'");
-   $fila = $r->fetchArray(SQLITE3_ASSOC);
+   $fila = $r->fetch_assoc();
 
    $foto=$fila["foto"];
 

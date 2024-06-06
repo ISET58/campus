@@ -32,7 +32,7 @@ $perfil=getUserProfile($userID);
 // global del objeto de base de datos
 /////////////////////////////////////////////////////////////////////////
 $database="../data/biblioteca.db";
-$db = new SQLite3($database) or die('no se puede abrir la base de datos'. $database);
+
 
 
  $sqlquery= "SELECT * FROM materiales WHERE carrera='".$carrera."' AND yearDeLaCarrera='".$year."'";
@@ -46,7 +46,7 @@ $db = new SQLite3($database) or die('no se puede abrir la base de datos'. $datab
 
     // se transforma el resultado de la consulta en una array
     $datos= array();
-    while($row = $results->fetchArray(SQLITE3_ASSOC)){
+    while($row = $results->fetch_assoc()){
        $datos[]=$row;
     }
 

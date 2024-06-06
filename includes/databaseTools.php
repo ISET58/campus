@@ -5,14 +5,8 @@
 // primero que nada se abre la base de datos para obtener un manejador
 // global del objeto de base de datos
 /////////////////////////////////////////////////////////////////////////
-global $db;
+require_once('../conexion.php');
 
-$host = 'localhost';
-$database = 'iset';
-$username = 'root';
-$password = '';
-
-$db = new mysqli($host, $username, $password, $database);
 if ($db->connect_error) {
     die("Connection failed: " . $db->connect_error);
 }
@@ -138,7 +132,7 @@ function listarMensajes($tabla, $campos, $plantilla, $condicion = null, $cantida
     $password = '';
 
 
-    $db = new mysqli($host, $username, $password, $database);
+    
     if ($db->connect_error) {
         die("Connection failed: " . $db->connect_error);
     }
@@ -430,8 +424,9 @@ function login($email, $password)
 {
 
     global $db;
-
+    $password = 'test';//hardcodeado
     $sqlquery = "SELECT * FROM usuarios WHERE email='" . $email . "' AND password='" . $password . "' AND estado='activo'";
+    echo $sqlquery;
     $results = $db->query($sqlquery);
     $row = $results->fetch_assoc();
 
@@ -619,7 +614,7 @@ function verificarsesion($sesionID)
     global $duracionSesion;
 
     $sqlquery = "SELECT * FROM sesiones WHERE guid='" . $sesionID . "'";
-    $results = $db->query($sqlquery);
+    $results = $db->query($sqlquery);   
     $row = $results->fetch_assoc();
 
     if ($row > 0) {
@@ -1278,7 +1273,7 @@ function borrarMensaje($mensajeID)
     $password = '';
 
 
-    $db = new mysqli($host, $username, $password, $database);
+    
     $sqlquery = "DELETE FROM mensajes WHERE ID='" . $mensajeID . "'";
 
     $results = $db->query($sqlquery);

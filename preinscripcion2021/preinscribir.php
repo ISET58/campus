@@ -7,7 +7,7 @@
 // global del objeto de base de datos
 /////////////////////////////////////////////////////////////////////////
 $database="./preinscripciones.db";
-$db = new SQLite3($database) or die('no se puede abrir la base de datos'. $database);
+
 
 ///////////////////////////////////////////////////////////////////////
 // Se verifica que no se halla inscripto una persona con el mismo dni
@@ -157,7 +157,7 @@ if($carrera=="bancaria" && $errorInscribir==false){
 		'<h3>Usted se encuentra preinscripto en lista de espera '.
 		'para la carrera '. $carrera.'</h3>'.
 		'<hr>'.
-		'Que tengas un buen día. <a href="http://iset58rosario.com.ar/campus">iset58rosario.com.ar/campus</a>'.
+		'Que tengas un buen día. <a href="campus">iset58rosario.com.ar/campus</a>'.
 		'</body></html>';
 
 	$cabeceras = 'MIME-Version: 1.0' . "\r\n";

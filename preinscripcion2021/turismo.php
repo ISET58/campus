@@ -22,7 +22,7 @@ $tope=3000;
 // global del objeto de base de datos
 /////////////////////////////////////////////////////////////////////////
 $database="./preinscripciones.db";
-$db = new SQLite3($database) or die('no se puede abrir la base de datos'. $database);
+
 
 ///////////////////////////////////////////////////////////////////////
 // Se verifica que no se halla llegado al tope
