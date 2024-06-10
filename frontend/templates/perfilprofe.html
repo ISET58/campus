@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+	<title>Campus Iset58</title>
+    <link rel="icon" href="images/fav.png" type="image/png" sizes="16x16"> 
+    
+    <link rel="stylesheet" href="css/main.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/color.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <style type="text/css">
+    	
+    	#editarPerfil{
+    		display: none;
+    		overflow: hidden;
+    	}
+
+        .btnInscripcion{
+        	background-color: #088DCD;
+		    padding: 10px;
+		    text-align: center;
+		    font-size: 14px;
+		    height: 20px;
+		    line-height: 20px;
+		    box-sizing: content-box;
+		    color: white;
+		    font-weight: 700;
+		    margin-bottom: 20px;
+		    cursor: pointer;
+        }
+
+        .renglon{
+        	width:100%;
+        	display:flex;
+        	border-bottom: 0.5px solid rgba(0,0,0,0.5);
+			padding-left: 10px;
+			flex-direction: column;
+        }
+
+        .materia{
+        	width:100%;
+        	
+        }
+
+        .cursado{
+        	width:30%;
+        	min-height: 12px;
+        	padding-top: 12px;
+        }
+
+		/*--- toogle switch button ---*/
+
+		.setting-row input {
+		    display: none;
+		}
+
+		.setting-row {
+		    border-bottom: 0px solid transparent; 
+		    display: flex;
+		    margin-bottom: 0px;
+		    padding-bottom: 0px;
+		    text-align: center;
+		    width: 100%;
+		}
+
+		.setting-row input + label {
+		    background-color: #da1212;;
+		    background-image: none;
+		    cursor: pointer;
+		    display: inline-block;
+		    font-family: inherit;
+		    font-size: 1em;
+		    height: 20px;
+		    line-height: 1;
+		    padding: 0.16667rem;
+		    position: relative;
+		    text-align: center;
+		    transition: all 0.1s ease-in-out 0s;
+		    width: 85px;
+		}
+
+		.setting-row input + label::before {
+		    color: #b7b7b7;
+		    content: attr(data-off-label);
+		    display: block;
+		    font-family: inherit;
+		    font-size: 0.7rem;
+		    font-weight: 500;
+		    line-height: 14px;
+		    margin: 0.21667rem;
+		    min-width: 20px;
+		    overflow: hidden;
+		    position: absolute;
+		    right: 0.21667rem;
+		    text-align: center;
+		    text-transform: uppercase;
+		    top: 0;
+		    transition: all 0.1s ease-in-out 0s;
+		}
+
+		.setting-row input + label::after {
+		    background-color: #f7f7f7;
+		    border-radius: 0px;
+		    box-shadow: none;
+		    content: "";
+		    height: 14px;
+		    left: 0.267rem;
+		    top: 3px;
+		    position: absolute;
+		    transition: all 0.1s ease-in-out 0s;
+		    width: 14px;
+		}
+
+
+		/*input[switch]:checked + label {
+		    background-color: #33b7a0;
+		}*/
+
+		.setting-row input:checked + label::before {
+		    color: #fff;
+		    content: attr(data-on-label);
+		    left: 0.21667rem;
+		    right: auto;
+		}
+
+		.setting-row input:checked + label::after {
+		    background-color: #f7f7f7;
+		    box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.3);
+		    left: 66px;
+		}
+
+
+		/*input[switch="bool"] + label {
+		    background-color: #ed6b75;
+		}*/
+
+		.setting-row input + label::before {
+		    color: #fff;
+
+		}
+
+
+		/*input[switch="bool"]:checked + label {
+		    background-color: #bce954;
+		}*/
+
+
+       .closeBTN{
+	       	position: absolute;
+		    color: black; 
+		    right: 20px;
+		    top: 10px;
+		    font-family: sans-serif;
+		    cursor: pointer;
+       }
+
+       .closeBTN:hover{
+       	 color: red;
+       }
+
+        .borrarBTN{
+	       	position: absolute;
+		    color: white; 
+		    right: 10px;
+		    bottom: 10px;
+		    font-family: sans-serif;
+		    cursor: pointer;
+		    border-radius: 5px;
+		    border: 1px solid gray;
+		    padding: 0px 5px 0px 5px;
+		    font-size: 12px;
+		    background-color: rgba(255,0,0,0.8);
+       }
+
+       .borrarBTN:hover{
+       	 background-color: rgba(0,255,0,0.2);
+       	 color: black; 
+       }
+
+    /********************************/
+    /* el dialogo modal             */
+    /********************************/
+
+      .panelModal {
+          background-color: rgba(0,0,0,0.5);
+          position: fixed;
+          left: 0px;
+          top:0px;
+          right: 0px;
+          bottom: 0px;
+          z-index: 9999;
+          display: none;
+          
+    }
+
+      .Modal{
+        position:absolute;
+        width:400px;
+        height:200px;
+        background-color: white;
+        box-shadow: 5px 10px 18px #888888;
+        -webkit-user-select: none;  
+        -moz-user-select: none;    
+        -ms-user-select: none;      
+        user-select: none;
+        left:50%;
+        top:50%;
+        transform: translate(-50%, -50%);
+        padding: 0px 30px 0px 30px;
+        border-radius: 10px;
+        color: black;
+        overflow: hidden;
+
+      }
+
+      
+      .tituloModal{
+        width:100%;
+        text-align: center;
+        font-size: 20px;
+        margin-top:40px;
+        
+      }
+
+      .noModal{
+        width:50%;
+        height: 50px;
+        
+        
+        
+        position:absolute;
+        left:0px;
+        bottom:0px;
+        text-align: center;
+        line-height: 50px;
+        cursor: pointer;
+        margin:1px;
+        border-bottom-left-radius: 10px;
+      }
+
+      .noModal:hover{
+        background-color: rgba(255,20,20,0.9);
+
+      } 
+
+      .noModal:active{
+        background-color: rgba(255,255,255,0.9);
+        color:black;
+
+      }
+
+      .siModal{
+        width:50%;
+        height: 50px;
+        
+            
+        position:absolute;
+        right:0px;
+        bottom:0px;
+        text-align: center;
+        line-height: 50px;
+        cursor: pointer;
+         margin:1px;
+        border-bottom-right-radius: 10px;
+      }
+
+      .siModal:hover{
+        background-color: rgba(20,180,20,0.9);
+
+      } 
+
+      .siModal:active{
+        background-color: rgba(255,255,255,0.9);
+        color:black;
+
+      }
+
+    /********************************/
+    /* Fin del dialogo modal        */
+    /********************************/
+
+   	#fotoPerfil{
+		width: 90px;
+	    height: 90px;
+	    background-size: cover;
+	    border-radius: 50%;
+	    margin: 10px auto;
+	    cursor: pointer;
+	    background-repeat: no-repeat;
+	}
+
+	.top-area .user-img{
+		width:40px;
+		height:40px;
+		background-size: cover;
+		background-repeat: no-repeat;
+		border-radius: 50%;
+		margin-top:10px;
+	}
+
+	#overlay{
+		position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 99999;
+    display:  none;
+
+	}
+
+	.gray-bg {
+    float: left;
+    width: 100%;
+    background: #000000;
+	}
+
+	.container-fluid {
+    width: 95%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    min-height: 80vh;
+}
+
+
+    </style>
+
+
+	<script src="js/main.min.js"></script>
+	<script src="js/script.js"></script>
+	<script src="js/map-init.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8c55_YHLvDHGACkQscgbGLtLRdxBDCfI"></script>
+
+</head>
+<body>
+<!--<div class="se-pre-con"></div>-->
+<div class="theme-layout">
+	
+<!-- Cabezal -------------------------------------------------------------------------------------------------------->
+	<div class="responsive-header">
+		<div class="mh-head first Sticky">
+			<span class="mh-btns-left">
+				<a class="" href="#menu"><i class="fa fa-align-justify"></i></a>
+			</span>
+			<span class="mh-text">
+				<a href="newsfeed.html" title=""><img src="images/logo2.png" alt=""></a>
+			</span>
+			<span class="mh-btns-right">
+				<a class="fa fa-sliders" href="#shoppingbag"></a>
+			</span>
+		</div>
+		<div class="mh-head second">
+			<form class="mh-form">
+				<input placeholder="search" />
+				<a href="#/" class="fa fa-search"></a>
+			</form>
+		</div>
+		
+		
+	</div>
+
+	
+	<div class="topbar stick">
+		<div class="logo">
+			<a title="" href="newsfeed.html"><img src="images/logo.png" alt=""></a>
+		</div>
+		
+		<div class="top-area">
+			<div class="user-img" style="background-image:url([onshow.perfil.foto])">
+				<div class="user-setting">
+					<a href="javascript:void(0);" onclick="togglePerfil()" ><i class="ti-pencil-alt"></i>editar perfil</a>
+					<a href="javascript:void(0);" onclick="salirDeaca()"  =""><i class="ti-power-off"></i>Salir</a>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+<!-- FIN Cabezal -------------------------------------------------------------------------------------------------------->
+	
+	
+		
+		
+	<section>
+		<div class="gap2 gray-bg">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="row merged20" id="page-contents">
+							<div class="col-lg-3">
+								<aside class="sidebar static left">
+									
+<!--menu general-------------------------------------------------------------------------------------------------------->
+									<div class="widget">
+										<h4 class="widget-title">Menu General</h4>
+										<ul class="naves">
+											<li>
+												<i class="ti-mouse-alt"></i>
+												<a href="subirMateriales.php" >Subir a biblioteca</a>
+											</li>
+																						
+											<li>
+												<i class="ti-files"></i>
+												<a href="mostrarNotas.php" >Notas</a>
+											</li>
+
+											<li>
+												<i class="ti-mouse-alt"></i>
+												<a href="javascript:void(0);" onclick='cargarBiblioteca()'>Biblioteca</a>
+											</li>
+											
+											
+											
+											<li>
+												<i class="ti-files"></i>
+												<a href="mostrarHorariosEsteProfe.php">Horarios</a>
+											</li>
+											
+											<li>
+												<i class="ti-power-off"></i>
+												<a href="http://iset58rosario.com.ar" title="">Salir</a>
+											</li>
+										</ul>
+									</div>
+									<!-- FIN menu general-->
+									
+									
+
+<!-- FIN menu general-------------------------------------------------------------------------------------------------------->
+
+					
+								</aside>
+							</div><!-- sidebar -->
+							
+							<!-- Columna central -->
+							
+							<div class="col-lg-6">
+								
+								<div class="loadMore">
+
+<!-- Inscribirse Materias ------------------------------------------------------------------------------------------------------->
+								    <div class="central-meta" id="listaMaterias" style="display:none">
+
+											
+                                              
+											
+												
+
+											
+												 
+
+										
+									</div>	
+<!-- FIN Inscribirse Materias ------------------------------------------------------------------------------------------------------->
+
+
+<!-- No habilitado inscribirse ------------------------------------------------------------------------------------------------------->
+								    <div class="central-meta" id="inscripcionNo" style="display:none">
+										<div class="editing-info">
+											<h5 class="f-title">INSCRIPCIONES</h5>
+
+											<div class="post-meta">
+													<img src="images/nohabilitado.jpg" alt="">
+												    <div class="description">
+														<p>Si hace rato que esperas y no recibiste la habilitación comunicate con la secretaría</p>
+													</div>
+										    </div>
+
+										</div>
+									</div>	
+<!-- No habilitado inscribirse ---------------------------------------------------------------------------------------------------->
+
+<!-- Inscripciones (ingresantes) ---------------------------------------------------------------------------------------------->
+								    <div class="central-meta" id="inscripcionSi" style="display:none">
+								    	
+									</div>	
+<!-- FIN Inscripciones (ingresantes) ---------------------------------------------------------------------------------------------->
+
+<!-- RE-Inscripciones ------------------------------------------------------------------------------------------------------------>
+								    <div class="central-meta" id="reinscripcionSi" style="display:none">
+										
+									</div>	
+<!-- FIN RE-Inscripciones -------------------------------------------------------------------------------------------------------->
+
+
+<!-- Examenes ------------------------------------------------------------------------------------------------------------>
+								    <div class="central-meta" id="examenesSi" style="display:none">
+										
+									</div>	
+<!-- FIN examenes -------------------------------------------------------------------------------------------------------->
+
+
+
+<!-- EDITAR PERFIL ------------------------------------------------------------------------------------------------------->
+								    <div class="central-meta" id="editarPerfil">
+								    	<div class="closeBTN" onclick="cerrarTarjeta($(this).parent())">X</div>
+										<div class="editing-info">
+											<h5 class="f-title"><i class="ti-info-alt"></i> Editar mi perfil</h5>
+
+											<form method="post" action="completarPerfil.php" name="completarPerfil">
+												<div class="form-group half">	
+												  <input type="text" name="nombre" required="required" value="[onshow.perfil.nombre]"/>
+												  <label class="control-label" for="input">Nombre</label><i class="mtrl-select"></i>
+												</div>
+												<div class="form-group half">	
+												  <input type="text" name="apellido" required="required" value="[onshow.perfil.apellido]"/>
+												  <label class="control-label" for="input">apellido</label><i class="mtrl-select"></i>
+												</div>
+												
+												<div class="form-group">	
+												  <input type="text" name="email" required="required" value="[onshow.perfil.email]"/>
+												  <label class="control-label" for="input">email</label><i class="mtrl-select"></i>
+												</div>
+												
+												<div class="form-group half">	
+												  <input type="text" name="telefono" required="required" value="[onshow.perfil.telefono]"/>
+												  <label class="control-label" for="input">Teléfono fijo</label><i class="mtrl-select"></i>
+												</div>
+
+												<div class="form-group half">	
+												  <input type="text" name="celular" required="required" value="[onshow.perfil.celular]"/>
+												  <label class="control-label" for="input">Celular</label><i class="mtrl-select"></i>
+												</div>
+
+												<div class="form-group half">	
+												  <input type="text" name="dni" required="required" value="[onshow.perfil.dni]"/>
+												  <label class="control-label" for="input">DNI</label><i class="mtrl-select"></i>
+												</div>
+												
+												<div class="form-group half">	
+												  <input type="text" name="fecha_nacimiento" required="required" value="[onshow.perfil.fecha_nacimiento]"/>
+												  <label class="control-label" for="input">Fecha Nacimiento</label><i class="mtrl-select"></i>
+												</div>	
+
+																							
+											    <div class="form-group half">	
+												  <input type="text"  name="lugar_nacimiento"  required="required" value="[onshow.perfil.lugar_nacimiento]"/>
+												  <label class="control-label" for="input">Lugar Nacimiento</label><i class="mtrl-select"></i>
+												</div>
+
+												<div class="form-group half">	
+												  <input type="text" name="nacionalidad" required="required" value="[onshow.perfil.nacionalidad]"/>
+												  <label class="control-label" for="input">Nacionalidad</label><i class="mtrl-select"></i>
+												</div>
+
+												<div class="form-group half">	
+												  <input type="text" name="estado_civil" required="required" value="[onshow.perfil.estado_civil]"/>
+												  <label class="control-label" for="input">Estado Civil</label><i class="mtrl-select"></i>
+												</div>
+
+												<div class="form-group">	
+												  <input type="text" name="domicilio_real" required="required" value="[onshow.perfil.domicilio_real]"/>
+												  <label class="control-label" for="input">Domicilio real</label><i class="mtrl-select"></i>
+												</div>
+
+												<div class="form-group">	
+												  <input type="text" name="localidad" required="required" value="[onshow.perfil.localidad]"/>
+												  <label class="control-label" for="input">Localidad</label><i class="mtrl-select"></i>
+												</div>
+												
+												<div class="form-group">	
+												  <input type="text" name="domicilio_temporal" required="required" value="[onshow.perfil.domicilio_temporal]"/>
+												  <label class="control-label" for="input">Domicilio Temporal</label><i class="mtrl-select"></i>
+												</div>
+
+												<div class="form-group">	
+												  <input type="text" name="localidad_temporal" required="required" value="[onshow.perfil.localidad_temporal]"/>
+												  <label class="control-label" for="input">Localidad Temporal</label><i class="mtrl-select"></i>
+												</div>
+												
+												<h5 class="f-title" style="margin-top:20px">Nivel de estudios</h5><br>
+												
+												<div class="form-group half">	
+												  <input type="text" name="nivel_estudios" required="required" value="[onshow.perfil.nivel_estudios]"/>
+												  <label class="control-label" for="input">Secundario / terciario / universitario</label><i class="mtrl-select"></i>
+												</div>
+
+												
+												<div class="form-group half">	
+												  <input type="text" name="estado_estudios" required="required" value="[onshow.perfil.estado_estudios]"/>
+												  <label class="control-label" for="input">ninguno / completo / incompleto</label><i class="mtrl-select"></i>
+												</div>
+												
+												<div class="form-group">	
+												  <input type="text" name="titulo_estudios" required="required" value="[onshow.perfil.titulo_estudios]"/>
+												  <label class="control-label" for="input">Titulo obtenido</label><i class="mtrl-select"></i>
+												</div>
+
+												<h5 class="f-title" style="margin-top:20px">En caso de emergencia</h5><br>
+
+												<div class="form-group">	
+												  <input type="text" name="emergencia_llamar" required="required" value="[onshow.perfil.emergencia_llamar]"/>
+												  <label class="control-label" for="input">Llamar a</label><i class="mtrl-select"></i>
+												</div>
+
+												<div class="form-group">	
+												  <input type="text" name="emergencia_telefono" required="required" value="[onshow.perfil.emergencia_telefono]"/>
+												  <label class="control-label" for="input">Teléfono</label><i class="mtrl-select"></i>
+												</div>
+
+
+												<div class="form-group">	
+												  <input type="text" name="emergencia_telefono2" required="required" value="[onshow.perfil.emergencia_telefono2]"/>
+												  <label class="control-label" for="input">Teléfono alternativo</label><i class="mtrl-select"></i>
+												</div>
+
+												<div class="form-group">	
+												  <input type="text" name="empresa_medicina" required="required" value="[onshow.perfil.empresa_medicina]"/>
+												  <label class="control-label" for="input">Empresa de emergencia médica</label><i class="mtrl-select"></i>
+												</div>
+
+												<div class="form-group">	
+												  <input type="text"  name="telefono_emp_medicina" required="required" value="[onshow.perfil.telefono_emp_medicina]"/>
+												  <label class="control-label" for="input">Teléfono</label><i class="mtrl-select"></i>
+												</div>
+								
+												
+												<div class="form-group">	
+												  <textarea rows="4" name="comentario" required="required" value="[onshow.perfil.comentario]"/></textarea>
+												  <label class="control-label" for="textarea">Notas adicionales</label><i class="mtrl-select"></i>
+												</div>
+												
+												<div class="submit-btns">
+													<button type="button" class="mtr-btn" onclick="togglePerfil()"><span>Cancelar</span></button>
+													<button type="button" class="mtr-btn" onclick="guardarPerfil()"><span>Guardar</span></button>
+												</div>
+											
+											</form>
+										</div>
+									</div>	
+<!-- FIN EDITAR PERFIL ------------------------------------------------------------------------------------------------------->
+
+
+<!-- Biblioteca ------------------------------------------------------------>
+<div class="central-meta" id="tarjetaBiblioteca" style="display:none">
+	
+	<style>
+		.botonBiblioteca{
+			height: 50px;
+	    text-align: center;
+	    /* background-color: green; */
+	    color: #0e0e0e;
+	    line-height: 50px;
+	    border-radius: 5px;
+	    cursor: pointer;
+	    margin-bottom: 10px;
+	    padding: 0px 20px;
+	    border: 1px solid black;
+		}
+
+		.botonBiblioteca:hover{
+			background-color: rgba(0,255,0,0.5);
+		}
+
+		.tituloTarjetaBiblioteca{
+			width: 100%;
+			text-align: center;
+			font-size: 22px;
+			margin-bottom: 10px;
+			margin-top: 20px;
+		}
+
+		.tituloBiblioteca{
+			width: 100%;
+			text-align: center;
+			font-size: 22px;
+			margin-bottom: 0px;
+			margin-top: 20px;
+			font-weight: 800;
+		}
+
+		.descripcionBiblioteca{
+			width: 100%;
+			text-align: center;
+			font-size: 18px;
+			margin-bottom: 0px;
+			margin-top: 0px;
+			font-weight: 300;
+		}
+
+		.contenedorBiblioteca{
+			width: 100%;
+	    display: flex;
+	    flex-direction: row;
+	    justify-content: space-evenly;
+		}
+
+		.botoneraBiblioteca{
+			display: flex;
+	    justify-content: center;
+	    flex-direction: column;
+	    align-content: flex-end;
+		}
+
+		
+
+		.colorBancaria { background-color: blue; }
+		.colorturismo { background-color: #36a716; }
+
+		.ventanaBiblioteca{
+			width: 100%;
+			background-color: red;
+		}
+
+		#bibliotecaGeneral{
+			width: 68%;
+	    left: 50%;
+	    position: relative;
+	    transform: translateX(-50%);
+    }
+		
+	</style>									
+	
+	<div class="tituloTarjetaBiblioteca"><i class="fa fa-book"></i> BIBLIOTECA</div>
+	<div class="contenedorBiblioteca" id="contenidoBiblioteca">
+
+		<div class="botoneraBiblioteca">
+			<div class="tituloTarjetaBiblioteca"><i class="fa fa-bank"></i> BANCARIA</div>
+			<div class="botonBiblioteca" id="bibliotecaBancaria1">1er Año</div>
+			<div class="botonBiblioteca" id="bibliotecaBancaria2">2do Año</div>
+			<div class="botonBiblioteca" id="bibliotecaBancaria3">3er Año</div>
+		</div>
+
+		<div class="botoneraBiblioteca">
+			<div class="tituloTarjetaBiblioteca"><i class="fa fa-plane"></i> TURISMO</div>
+				<div class="botonBiblioteca" id="bibliotecaTurismo1">1er Año</div>
+			<div class="botonBiblioteca" id="bibliotecaTurismo2">2do Año</div>
+			<div class="botonBiblioteca" id="bibliotecaTurismo3">3er Año</div>
+		</div>
+	
+	</div>
+
+	<div class="botonBiblioteca" id="bibliotecaGeneral">Materiales Varios</div>
+
+	
+	
+
+	<script>
+
+		$(".botonBiblioteca").click(function(){
+
+			let bibliotecaDe=$(this).attr("id");
+			//toggleTarjeta("tarjetaHorarios");	
+
+			//$("#contenidoHorarios").hide();
+
+			$url="mostrarBiblioteca.php?biblioteca="+bibliotecaDe;
+			$url=encodeURI($url);
+			console.log($url);
+			$("#verBiblioteca").load( $url, function() {
+  			
+  					//toggleTarjeta("tarjetaHorarios");
+			});
+
+		});
+		
+
+	</script>
+
+
+</div>	
+
+<div class="central-meta" id="verBiblioteca" style="display:none; margin-top: -30px;  border-radius: 0px; border-top: 0px;" >
+</div>
+<!-- FIN Biblioteca----------------------------------------->
+
+
+
+<!-- AREA DE MENSSAJES ------------------------------------------------------------------------------------------------------->
+									[bloque1;block=begin] 	
+									<div class="central-meta item">
+										<div class="borrarBTN" style="display:[bloque1.borrar];" onclick="borrarMensaje($(this).parent(),[bloque1.ID])">borrar</div>
+										<div class="user-post">
+											<div class="friend-info">
+												
+												
+												<figure><img src="[bloque1.avatar_Emisor]" style="[bloque1.redondear]"></figure>
+												<div class="friend-name">
+													<ins><a href="#" title="">[bloque1.emisor]</a></ins>
+													<span>Publicado: [bloque1.fecha]</span>
+												</div>
+												
+												
+												<div class="post-meta">
+													<img src="[bloque1.imagen]" alt="">
+													
+													<div class="description">
+														<p>[bloque1.texto]</p>
+													</div>
+												</div>
+											</div>
+											
+										</div>
+									</div>
+									[bloque1;block=end]
+
+<!-- FIN AREA DE MENSSAJES ------------------------------------------------------------------------------------------------------->
+								
+<!-- Mensaje Cableado ------------------------------------------>
+									
+									<div class="central-meta item">
+										
+										<div class="user-post">
+											<div class="friend-info">
+												
+												
+																		
+												
+												<div class="post-meta">
+													<img src="[bloque1.imagen]" alt="">
+													
+													<div class="description">
+														<h2 style="width:100%; text-align:center">Bienvenido/a al area de profesores del Campus</h2>
+													</div>
+												</div>
+											</div>
+											
+										</div>
+									</div>
+									
+
+<!-- fin Mensaje Cableado ------------------------------------------>
+								</div>
+							
+							</div><!-- centerl meta -->
+	
+							
+<!-- widget de perfil ------------------------------------------------------------------------------------------------------------>
+							<div class="col-lg-3">
+								<aside class="sidebar static right">
+									<div class="widget">
+										<h4 class="widget-title">Mi Perfil</h4>	
+										<div class="your-page">
+											
+                                            
+                                            <div id="fotoPerfil" style="background-image: url([onshow.perfil.foto])"></div> 
+
+											
+											
+											<input class="file-upload" type="file" accept="image/*" id="fotoP" style="display:none"/>
+											<div class="page-meta">
+												<a href="#" title="" class="underline">[onshow.perfil.nombre]&nbsp;[onshow.perfil.apellido]</a>
+												<span>[onshow.perfil.email]</span>
+												<span>[onshow.perfil.tipo]</span>
+												<span><strong>Habilitado:&nbsp;[onshow.perfil.habilitado]</strong></span>
+											</div>
+											<div class="page-likes">
+												<ul class="nav nav-tabs likes-btn">
+													<li class="nav-item"><a class="active" href="javascript:void(0);" onclick="togglePerfil()">editar</a></li>
+												</ul>
+												<!-- Tab panes -->
+												<div class="tab-content">
+												  <div class="tab-pane active fade show " id="link1" >
+													<span>[onshow.perfil.porcentaje]% completado</span>
+													 
+													  
+												  </div>
+												 
+												</div>
+											</div>
+										</div>
+									</div>
+<!-- fin widget de perfil ---------------------------------------------------------------------------------------------------------->
+									
+
+				
+								
+								</aside>
+							</div><!-- sidebar -->
+						</div>	
+					</div>
+				</div>
+			</div>
+		</div>	
+	</section>
+
+<!-- Pie de pagina ------------------------------------------------------------------------------------------------------------------->	
+	<div class="bottombar">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<span class="copyright">© Estudio Doa 2019 - 2020.</span>
+					<i><img src="" alt=""></i>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- FIN Pie de pagina --------------------------------------------------------------------------------------------------------------->		
+</div>
+
+
+<!---- eldialogo Modal ----------------------->
+	<div id="dummy" style="display:none;"></div>
+	<div class="panelModal">
+	      <div class="Modal">
+	        <div class="tituloModal">xxxxxxxxxxxxxxxxxxxxxxx</div>
+	        <div class="siModal" >SI</div>
+	        <div class="noModal" >NO</div>
+	      </div>
+	</div>
+<!---- Fin de el dialogo Modal ----------------------->	
+
+<!-- el overlay para pantalla completa -->
+<div id="overlay"></div>
+<!-- Fin del overlay para pantalla completa -->
+
+
+
+
+	<script type="text/javascript">
+
+
+		$userID=[onshow.perfil.ID];
+
+		
+        ////////////////////////////////////////////////////////////
+		function confirmar(mensaje, cb){
+				$(".tituloModal").html(mensaje);
+	  			$(".panelModal").show();
+
+	  			$(".siModal").on("click", function (userChoice) {
+	  				cb(true); 
+	  				$(".panelModal").hide();
+        		});
+
+        		$(".noModal").on("click", function (userChoice) {
+	  				cb(false); 
+	  				$(".panelModal").hide();
+        		});
+
+		}
+
+  
+		///////////////////////////////////////////////////////////
+		 function borrarMensaje(tarjeta, mensajeID){
+
+           confirmar("¿Borra en forma definitiva este mensaje?", borrar);
+		  
+		   
+            function borrar(r){
+           	   if (r==false) return; 	
+           	   borrarTarjeta(tarjeta);
+           	   $("#dummy").load("borrarMensaje.php?mensajeID="+mensajeID);
+	  		}
+		       
+
+		 }
+
+        ///////////////////////////////////////////////////////////
+        function borrarTarjeta(tarjeta){
+ 					var altura= tarjeta.css("height");
+				   var estado= tarjeta.css("display");
+				   tarjeta.animate({height: 0}, 500, function() {
+		    			tarjeta.toggle();
+		  				tarjeta.css("height",altura);
+		  				tarjeta.remove();	
+		  			});
+        }
+
+
+		///////////////////////////////////////////////////////////
+		function cargarMaterias(carreraID, carreraNombre, year){
+
+			
+			$url="listarMaterias.php?carrera="+carreraID+"&carreraNombre="+carreraNombre+"&year="+year;
+			$url=encodeURI($url);
+			console.log($url);
+
+			$("#listaMaterias").css("height","auto");
+			$("#listaMaterias").load( $url, function() {
+  				 toggleTarjeta("listaMaterias");	
+			});
+
+			
+  
+  			
+
+		}
+
+		///////////////////////////////////////////////////////////
+		function cargarListaExamenes(carreraID, carreraNombre, year, examenID){
+
+			
+			$url="listarMateriasExamenes.php?carrera="+carreraID+"&carreraNombre="+carreraNombre+"&year="+year+"&examenID="+examenID;
+			$url=encodeURI($url);
+			console.log($url);
+
+			$("#listaMaterias").css("height","auto");
+			$("#listaMaterias").load( $url, function() {
+  				 toggleTarjeta("listaMaterias");	
+  				 toggleTarjeta("examenesSi");
+			});
+
+			
+  
+  			
+
+		}
+
+
+		///////////////////////////////////////////////////////////
+		function cargarInscripciones(userID, h){
+
+			// si no esta habilitado
+            if(h=="no"){
+             habrirNoHabilitado();
+             return;
+            } 
+            
+
+
+			$url="listarInscripciones.php?userID="+userID;
+			$url=encodeURI($url);
+			console.log($url);
+			$("#inscripcionSi").load( $url, function() {
+  			
+  					toggleTarjeta("inscripcionSi");
+			});
+
+			
+  
+  			
+
+		}
+
+		///////////////////////////////////////////////////////////
+		function cargarReInscripciones(userID, h){
+
+			// si no esta habilitado
+            if(h=="no"){
+             habrirNoHabilitado();
+             return;
+            } 
+            
+
+
+			$url="listarReInscripciones.php?userID="+userID;
+			$url=encodeURI($url);
+			console.log($url);
+			$("#reinscripcionSi").load( $url, function() {
+  				toggleTarjeta("reinscripcionSi");
+
+			});
+
+			
+  
+  			
+
+		}
+
+		///////////////////////////////////////////////////////////
+		function cargarExamenes(userID, h){
+
+			// si no esta habilitado
+            if(h=="no"){
+             habrirNoHabilitado();
+             return;
+            } 
+            
+
+
+			$url="listarExamenes.php?userID="+userID;
+			$url=encodeURI($url);
+			console.log($url);
+			$("#examenesSi").load( $url, function() {
+  				toggleTarjeta("examenesSi");
+
+			});
+
+			
+  
+  			
+
+		}
+
+		///////////////////////////////////////////////////////////
+		function cargarBiblioteca(){
+
+
+
+			toggleTarjeta("tarjetaBiblioteca");
+			$("#verBiblioteca").toggle();
+			
+
+		}
+
+
+
+		///////////////////////////////////////////////////////////
+		 function toggleTarjeta(tarjeta){
+			   var altura= $("#"+tarjeta).css("height");
+			   var estado= $("#"+tarjeta).css("display");
+			   console.log(estado);
+
+			   if(estado=="none"){	
+		           $("#"+tarjeta).css("height",0);	
+		           $("#"+tarjeta).toggle();
+		           $("#"+tarjeta).animate({height: altura}, 1000);
+		           return;
+	           }
+
+
+			   if(estado=="inline-block" || estado=="block" ){	
+		           //$("#editarPerfil").toggle();
+		           $("#"+tarjeta).animate({height: 0}, 500, function() {
+	    				$("#"+tarjeta).toggle();
+	  					$("#"+tarjeta).css("height",altura);	
+	  				});
+		           
+		           return;
+	           }
+
+		 }
+
+		 ///////////////////////////////////////////////////////////
+		 function cerrarTarjeta(tarjeta){
+			   var altura= tarjeta.css("height");
+			   var estado= tarjeta.css("display");
+			   tarjeta.animate({height: 0}, 500, function() {
+	    			tarjeta.toggle();
+	  				tarjeta.css("height",altura);	
+	  			});
+		       
+
+		 }
+
+         
+
+		///////////////////////////////////////////////////////////
+		function togglePerfil(){
+
+			toggleTarjeta("editarPerfil");
+			
+		   
+		
+		}
+
+		///////////////////////////////////////////////////////////
+		function guardarPerfil(){
+
+			document.forms['completarPerfil'].submit();
+		}
+
+
+		///////////////////////////////////////////////////////////
+		function guardarMaterias(){
+
+			document.forms['inscripcionMaterias'].submit();
+		}
+
+
+		///////////////////////////////////////////////////////////
+		function guardarExamenes(){
+
+			document.forms['inscripcionExamenes'].submit();
+		}
+
+
+		///////////////////////////////////////////////////////////
+        function inscripcion(h){
+
+                  if(h=="no") habrirNoHabilitado();
+                  if(h=="si") habrirHabilitado();
+
+        }
+
+        ////////////////////////////////////////////////////////
+        function habrirHabilitado(){
+        	toggleTarjeta("inscripcionSi");
+			
+		  
+		
+		
+		}
+
+        ////////////////////////////////////////////////////////
+        function habrirNoHabilitado(){
+        	toggleTarjeta("inscripcionNo");
+				
+		
+		}
+
+
+        
+ 
+		///////////////////////////////////////////////////////////
+		$(".file-upload").on('change', function(){
+
+	        var fd = new FormData();
+	        var files = $('#fotoP')[0].files[0];
+	        fd.append('file',files);
+	            $.ajax({
+		            url: 'uploadavatar.php?userID='+$userID,
+		            type: 'post',
+		            data: fd,
+		            contentType: false,
+		            processData: false,
+		            success: function(response){
+
+		            	$("#fotoPerfil").css("background-image",response);
+		                if(response != 0){
+		                	console.log(response+"----");
+		                    $("#fotoPerfil").css("background-image", "url("+response+")");
+		                    $(".user-img").css("background-image", "url("+response+")");
+		                     
+		                    
+		                }else{
+		                    alert('no se pudo subir la imagen');
+		                }
+		            },
+		        });
+    	});
+    
+
+    	    
+    	$("#fotoPerfil").on('click', function(){ $(".file-upload").click(); });
+
+    	//////////////////////////////////////////////////////////////////////
+    	function salirDeaca(){
+    		 window.location.href="http://www.iset58rosario.com.ar"; 
+    	}
+
+
+    	//////////////////////////////////////////////////////////////
+    	// funcion que muestra la ventan de subir materiales
+    	/////////////////////////////////////////////////////////////
+    	function subirMateriales(){
+    		$("#overlay").load( "cargar-material.html", function() {
+  				 $("#overlay").show();
+				});
+    	}
+
+
+
+    	function suspenderSubirMaterial(){
+    		$("#overlay").hide();
+
+    	}
+
+	</script>
+
+</body>	
+</html>

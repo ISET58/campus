@@ -1,0 +1,177 @@
+<style type="text/css">
+	
+   .medidor{
+   	 width: 200px;
+   	 height: 150px;
+   	 background-color: blue;
+   	 margin-right: 20px;
+   	 position: relative;
+   	 border-radius: 20px;
+
+   }
+
+
+   .panelDashboard{
+   	 width:100%;
+   	 display:flex;
+   }
+
+    .tituloMedidor{
+	   	width: 100%;
+	    text-align: center;
+	    height: 60px;
+	    color: white;
+	    font-family: sans-serif;
+	    font-size: 20px;
+	   
+	    overflow: hidden;
+	    font-weight: 800;
+	    position: absolute;
+	    top: 0px;
+	    line-height: 22px;
+	    padding-top:5px;
+   }
+
+   .medida{
+	   	width: 100%;
+	    text-align: center;
+	    height: 100px;
+	    color: black;
+	    font-family: sans-serif;
+	    
+	    background-color: rgba(255,0,0,0);
+	    overflow: hidden;
+	    font-weight: 800;
+	    position: absolute;
+	    top: 60px;
+	    font-size: 80px;
+	    line-height: 70px;
+	    padding-top:5px;
+	    color:white;
+   }
+
+   .botonClave{
+	   	background: #14b10a;
+	    /* padding: 10px; */
+	    text-align: center;
+	    height: 35px;
+	    width: 150px;
+	    box-sizing: border-box;
+	    color: white;
+	    border-radius: 5px;
+	    line-height: 35px;
+	    position: absolute;
+	    right: 20px;
+	    cursor: pointer;
+
+   }
+
+   .botonClave:hover{
+   	 background: #0a6e04;	
+   }
+
+   .botonGuardar{
+	   	background: #d51124;
+	    /* padding: 10px; */
+	    text-align: center;
+	    height: 35px;
+	    width: 150px;
+	    box-sizing: border-box;
+	    color: white;
+	    border-radius: 5px;
+	    line-height: 35px;
+	    position: absolute;
+	    left: 20px;
+	    cursor: pointer;
+	    display: none;
+
+   }
+
+   .botonGuardar:hover{
+   	 background: #cd4754;	
+   }
+
+   #laClave{
+   	 font-size:80px; 
+   	 font-weight:800px; 
+   	 color:white; 
+   	 font-family: sans-serif;
+   }
+
+   #cajaClave{
+   	 padding: 20px; 
+   	 background-color: rgba(0,0,255,1); 
+   	 border-radius: 10px; 
+   	 margin-top: 20px; 
+   	 width: fit-content; 
+   	 position:relative;
+   	 min-width: 400px;
+   	 max-width:90% ;
+   }
+
+
+</style>
+
+
+
+<div class="panelDashboard">
+	<div class="medidor">
+		<div class="tituloMedidor">Alumnos<br>habilitados</div>
+		<div class="medida">[onshow.datos.habilitados]</div>
+	</div>
+
+	<div class="medidor">
+		<div class="tituloMedidor">Alumnos<br>no habilitados</div>
+		<div class="medida">[onshow.datos.deshabilitados]</div>
+	</div>
+
+	<div class="medidor">
+		<div class="tituloMedidor">Profesores<br>habilitados</div>
+		<div class="medida">[onshow.datos.profesores]</div>
+	</div>
+
+	<div class="medidor">
+		<div class="tituloMedidor">Profesores<br>no habilitados</div>
+		<div class="medida">[onshow.datos.profesdeshabilitados]</div>
+	</div>
+
+	
+</div>
+
+<div id="cajaClave" >
+	<div style="color: white;">Clave para registro</div>
+	<div id="laClave">[onshow.clave]</div>
+
+	<div class="botonClave" onclick="cambiarClave()">Cambiar Clave</div>	
+	<div class="botonGuardar" onclick="guardarClave()">Guardar Clave</div>	
+
+</div>
+
+
+<script>
+
+function cambiarClave(){
+	$(".botonClave").hide();
+	$(".botonGuardar").show();
+	$('#laClave').attr('contenteditable','true');
+
+	var div = document.getElementById('laClave');
+setTimeout(function() {
+    div.focus();
+}, 0);
+
+} 	
+
+
+function guardarClave(){
+	$(".botonClave").show();
+	$(".botonGuardar").hide();
+	$('#laClave').attr('contenteditable','false');
+	var clave = $('#laClave').html();
+
+	$( "#laClave" ).load( "data/guardarClave.php?clave="+clave);
+
+} 	
+
+
+</script>

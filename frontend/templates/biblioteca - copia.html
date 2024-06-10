@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+	<title>Campus Iset58</title>
+    <link rel="icon" href="images/fav.png" type="image/png" sizes="16x16"> 
+    
+    <link rel="stylesheet" href="css/main.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/color.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <style type="text/css">
+    	#contenedorBiblioteca{
+    		width: 80%;
+    		margin:  20px auto;
+    		
+    	}
+
+    	#contenedorMateriales{
+    		width: 100%;
+		    padding: 20px;
+		    display: flex;
+		    justify-content: space-evenly;
+		    flex-wrap: wrap;
+
+    		
+    	}
+
+    	.contenedorMaterial{
+    			width: 200px;
+    			background: rgba(0,0,0,0);
+    			cursor: pointer;
+    	}
+
+
+    	.contenedorMaterial:hover{
+    			transform: scale(1.1);
+    	}
+
+
+
+    	.tituloMaterial{
+    		width: 100%;
+    		text-align: center;
+    		font-family: sans-serif;
+    		font-weight: 800;
+    		font-size: 16px;
+    	}
+
+    	.descripcionMaterial{
+    		width: 100%;
+    		text-align: center;
+    		font-family: sans-serif;
+    		font-weight: 100;
+    		font-size: 14px;
+
+    	}
+
+    	.descripcionAuxiliar{
+    		width: 100%;
+    		text-align: center;
+    		font-family: sans-serif;
+    		font-weight: 100;
+    		font-size: 10px;
+
+    	}
+
+    	.fileImage{
+    		width: 80px;
+    		margin: 0 auto;
+    	}
+    
+
+
+    </style>
+
+</head>
+<body>
+<!--<div class="se-pre-con"></div>-->
+<div class="theme-layout">
+	
+<!-- Cabezal ------------------------------------------------------------>
+	<div class="responsive-header">
+		<div class="mh-head first Sticky">
+			<span class="mh-btns-left">
+				<a class="" href="#menu"><i class="fa fa-align-justify"></i></a>
+			</span>
+			<span class="mh-text">
+				<a href="newsfeed.html" title=""><img src="images/logo2.png" alt=""></a>
+			</span>
+			<span class="mh-btns-right">
+				<a class="fa fa-sliders" href="#shoppingbag"></a>
+			</span>
+		</div>
+		<div class="mh-head second">
+			<form class="mh-form">
+				<input placeholder="search" />
+				<a href="#/" class="fa fa-search"></a>
+			</form>
+		</div>
+		
+		
+	</div>
+
+	
+	<div class="topbar stick">
+		<div class="logo">
+			<a title="" href="newsfeed.html"><img src="images/logo.png" alt=""></a>
+		</div>
+		
+		<div class="top-area">
+			<div class="user-img" style="background-image:url([onshow.perfil.foto])">
+				<div class="user-setting">
+					<a href="javascript:void(0);" onclick="togglePerfil()" ><i class="ti-pencil-alt"></i>editar perfil</a>
+					<a href="javascript:void(0);" onclick="salirDeaca()"  =""><i class="ti-power-off"></i>Salir</a>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+<!-- FIN Cabezal ----------------------------------------------------------->
+
+<div id="contenedorBiblioteca">
+	<h3>Biblioteca</h3>
+		<div id="contenedorMateriales">
+
+
+
+		 [bloque1;block=begin]    
+     
+	     <a href="[bloque1.url;strconv=no]">
+	          <div class="contenedorMaterial"> 
+		           <div class="fileImage"><img src="images/archivo.png" width="100%"></div>
+		           <div class="tituloMaterial">[bloque1.titulo;strconv=no]</div>
+		           <div class="descripcionMaterial">[bloque1.descripcion;strconv=no]</div>
+		           <div class="descripcionAuxiliar">carrera:[bloque1.carrera;strconv=no]&nbsp;&nbsp; año:[bloque1.yearDeLaCarrera;strconv=no]</div>
+		           <div class="descripcionAuxiliar">subido por:&nbsp;[bloque1.nombreCreador;strconv=no]</div>
+		           <div class="descripcionAuxiliar">en:&nbsp;[bloque1.fecha;strconv=no]</div>
+	          </div>
+	     </a>
+
+     [bloque1;block=end]
+			
+
+
+    </div>
+	
+	
+
+</div>
+	
+
+<!-- Pie de pagina -------------------------------------------------------->	
+	<div class="bottombar">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<span class="copyright">© Estudio Doa 2019 - 2020.</span>
+					<i><img src="" alt=""></i>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- FIN Pie de pagina ----------------------------------------------------->		
+</div>
+
+
+
+
+	
+	<script type="text/javascript">
+
+
+	</script>
+
+</body>	
+</html>

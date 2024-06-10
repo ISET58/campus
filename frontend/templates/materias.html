@@ -1,0 +1,45 @@
+<div class="closeBTN" onclick="cerrarTarjeta($(this).parent())">X</div>
+<div class="editing-info" id="anotarseMaterias">
+<h5 class="f-title">Materias de [onshow.carreraNombre]</h5>
+
+<form method="post" name="inscripcionMaterias" action="inscribirMaterias.php">
+
+    <input type="hidden" id="custId" name="carreraId" value="[onshow.carreraID]">
+
+	[bloque1;block=begin]
+	<!------------------------------------------------->
+	 [bloque1.ano;strconv=no]
+	<div class="renglon" style="background-color: [bloque1.bg]">
+	   	<div class="materia">
+	        <div class="checkbox">
+			  <label>
+				<input type="checkbox"  class="materia" name="materiaID-[bloque1.ID]" [bloque1.status]><i class="check-box"></i>[bloque1.nombre]
+			  </label>
+			</div>
+		</div>
+	
+		
+	</div>
+	<!------------------------------------------------->
+	[bloque1;block=end]
+
+    <div class="submit-btns">
+		<button type="button" class="mtr-btn" onclick="toggleTarjeta('listaMaterias')"><span>Cancelar</span></button>
+		<button type="button" class="mtr-btn" onclick="guardarMaterias()"><span>Guardar</span></button>
+	</div>
+
+</form>
+</div>
+
+
+<script type="text/javascript">
+	
+	$('.materia').change(function() {
+		$(this).parent().css("background","cyan");
+        if($(this).checked) { $(this).parent().css("background","cyan"); }
+        //if(!$(this).checked) { $(this).css("background","white"); }
+        
+            
+    });
+
+</script>

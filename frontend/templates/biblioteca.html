@@ -1,0 +1,121 @@
+
+
+    <style type="text/css">
+    	#contenedorBiblioteca{
+    		width: 100%;
+    		margin:  20px auto;
+    		
+    	}
+
+    	#contenedorMateriales{
+    		width: 100%;
+		    padding: 20px;
+		    display: flex;
+		    justify-content: space-between;
+		    flex-direction: row;
+		    flex-wrap: wrap;
+		    align-content: flex-start;
+
+    		
+    	}
+
+    	.contenedorMaterial{
+    			width: 200px;
+    			background: rgba(0,0,0,0);
+    			cursor: pointer;
+    	}
+
+
+    	.contenedorMaterial:hover{
+    			transform: scale(1.1);
+    	}
+
+
+
+    	.tituloMaterial{
+    		width: 100%;
+    		text-align: center;
+    		font-family: sans-serif;
+    		font-weight: 800;
+    		font-size: 16px;
+    	}
+
+    	.descripcionMaterial{
+    		width: 100%;
+    		text-align: center;
+    		font-family: sans-serif;
+    		font-weight: 100;
+    		font-size: 14px;
+
+    	}
+
+    	.descripcionAuxiliar{
+    		width: 100%;
+    		text-align: center;
+    		font-family: sans-serif;
+    		font-weight: 100;
+    		font-size: 10px;
+
+    	}
+
+    	.fileImage{
+    		width: 80px;
+    		margin: 0 auto;
+    	}
+
+    	.tituloh3{
+		    font-size: 1.75rem;
+		    width: 100%;
+		    background: #088dcd;
+		    color: white;
+		    padding-left: 10px;
+		    border-radius: 10px;
+		}
+    
+
+
+    </style>
+
+
+<!--<div class="se-pre-con"></div>-->
+<div class="theme-layout">
+	
+
+<div id="contenedorBiblioteca">
+	<div class="tituloh3">Biblioteca</div>
+		<div id="contenedorMateriales">
+
+
+
+		 [bloque1;block=begin]    
+     
+	     <a href="[bloque1.url;strconv=no]">
+	          <div class="contenedorMaterial"> 
+		           <div class="fileImage"><img src="images/archivo.png" width="100%"></div>
+		           <div class="tituloMaterial">[bloque1.titulo;strconv=no]</div>
+		           <div class="descripcionMaterial">[bloque1.descripcion;strconv=no]</div>
+		           <div class="descripcionAuxiliar">carrera:[bloque1.carrera;strconv=no]&nbsp;&nbsp; año:[bloque1.yearDeLaCarrera;strconv=no]</div>
+		           <div class="descripcionAuxiliar">subido por:&nbsp;[bloque1.nombreCreador;strconv=no]</div>
+		           <div class="descripcionAuxiliar">en:&nbsp;[bloque1.fecha;strconv=no]</div>
+	          </div>
+	     </a>
+
+     [bloque1;block=end]
+			
+
+
+    </div>
+	
+	
+
+</div>
+	
+
+		
+</div>
+
+
+
+
+	
+	

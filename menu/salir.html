@@ -1,0 +1,30 @@
+    
+
+
+<div class="panelModal">
+	<div class="tituloVentana">Salir</div>
+ 	<div class="Modal">
+		<div class="tituloModal">¿Quiere salir del administrador?</div>
+		<div class="siModal" onclick="salir()">SI</div>
+		<div class="noModal" onclick="quedarse()">NO</div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+	
+	function salir(){
+		window.location.href ="index.php";
+	}
+
+
+	function quedarse(){
+		$("#areaTrabajo").load( "ventanas/dashboard.html" );
+		$(".botonMenu" ).removeClass("botonMenuselected");
+    	$(".angulo").hide();
+    	var primero=$(".botonMenu:first");
+    	primero.find(".angulo").show();
+    	primero.toggleClass("botonMenuselected");
+	}
+
+</script>

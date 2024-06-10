@@ -1,0 +1,76 @@
+<style type="text/css">
+
+
+	#contenedorSubirMaterial{
+		width: 600px;
+	    margin: 100px auto;
+	    background: #f3f5f3;
+	    padding: 20px;
+	    border-radius: 10px;
+	}
+	
+	#formSubirMaterial{
+		
+	}
+	
+
+</style>
+    	
+    
+<div id="contenedorSubirMaterial">
+	<h4 class="title">Subir material a biblioteca virtual</h4>
+	
+	<div id="formSubirMaterial">
+		<form method="post" action="cargar-material.php" name="subirMaterial" enctype="multipart/form-data">
+			
+			
+			<div class="form-group">	
+			  <input type="file"  name="file1" id="docu1"  required="required" accept="*.*">
+			</div>
+			
+															
+			<div class="form-group">	
+			  <input type="text" name="nombreMaterial" required="required" value=""/>
+			  <label class="control-label" for="input">Nombre del material</label><i class="mtrl-select"></i>
+			</div>
+			
+			<div class="form-group">	
+			  <input type="text" name="descripcionMaterial" required="required" value=""/>
+			  <label class="control-label" for="input">descripcion del material</label><i class="mtrl-select"></i>
+			</div>
+
+			<div class="form-group">
+						<label for="carrera">Seleccione una carrera:</label>	
+			  			<select name="carrera" id="carrera">
+						  <option value="bancaria">Bancaria</option>
+						  <option value="turismo">Turismo</option>
+						  <option value="general">General</option>
+						</select>
+			</div>
+
+			<div class="form-group">
+						<label for="years">Seleccione un año de cursado:</label>	
+			  			<select name="yearCursado" id="yearCursado">
+						  <option value="primero">Primero</option>
+						  <option value="segundo">Segundo</option>
+						  <option value="tercero">Tercero</option>
+						  <option value="general">General</option>
+						</select>
+			</div>
+
+
+
+
+
+			
+			<div class="submit-btns">
+				<button type="button" class="mtr-btn" style="background: red;" onclick="suspenderSubirMaterial();"><span>Cancelar</span></button>
+				<input type="submit" class="mtr-btn"  style="background: green; color:white;" value="    Enviar    ">
+			
+
+		</form>
+
+	</div>
+</div>
+
+

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+ 
+   	<meta property="og:title" content="Preinscripcion Tec. Bancaria 2021" />
+	<meta property="og:description" content="Iset58 Rosario" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="campus/preinscripcion2021/bancaria.php" />
+	<meta property="og:site_name" content="Iset58 Rosario" />
+	<meta property="og:image" content="campus/images/logo.png" />
+
+
+	<title>Campus Iset58</title>
+    <link rel="icon" href="images/fav.png" type="image/png" sizes="16x16"> 
+    
+    <link rel="stylesheet" href="css/main.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/color.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <style type="text/css">
+    	
+    	#editarPerfil{
+    		
+    		overflow: hidden;
+    	}
+
+        .btnInscripcion{
+        	background-color: #088DCD;
+		    padding: 10px;
+		    text-align: center;
+		    font-size: 14px;
+		    height: 20px;
+		    line-height: 20px;
+		    box-sizing: content-box;
+		    color: white;
+		    font-weight: 700;
+		    margin-bottom: 20px;
+		    cursor: pointer;
+        }
+
+        .renglon{
+        	width:100%;
+        	display:flex;
+        	border-bottom: 0.5px solid rgba(0,0,0,0.5);
+			padding-left: 10px;
+        }
+
+        .materia{
+        	width:100%;
+        	
+        }
+
+        .cursado{
+        	width:30%;
+        	min-height: 12px;
+        	padding-top: 12px;
+        }
+
+		/*--- toogle switch button ---*/
+
+		.setting-row input {
+		    display: none;
+		}
+
+		.setting-row {
+		    border-bottom: 0px solid transparent; 
+		    display: inline-block;
+		    margin-bottom: 7px;
+		    padding-bottom: 7px;
+		    text-align: center;
+		    width: 100%;
+		}
+
+		.setting-row input + label {
+		    background-color: #da1212;;
+		    background-image: none;
+		    cursor: pointer;
+		    display: inline-block;
+		    font-family: inherit;
+		    font-size: 1em;
+		    height: 20px;
+		    line-height: 1;
+		    padding: 0.16667rem;
+		    position: relative;
+		    text-align: center;
+		    transition: all 0.1s ease-in-out 0s;
+		    width: 85px;
+		}
+
+		.setting-row input + label::before {
+		    color: #b7b7b7;
+		    content: attr(data-off-label);
+		    display: block;
+		    font-family: inherit;
+		    font-size: 0.7rem;
+		    font-weight: 500;
+		    line-height: 14px;
+		    margin: 0.21667rem;
+		    min-width: 20px;
+		    overflow: hidden;
+		    position: absolute;
+		    right: 0.21667rem;
+		    text-align: center;
+		    text-transform: uppercase;
+		    top: 0;
+		    transition: all 0.1s ease-in-out 0s;
+		}
+
+		.setting-row input + label::after {
+		    background-color: #f7f7f7;
+		    border-radius: 0px;
+		    box-shadow: none;
+		    content: "";
+		    height: 14px;
+		    left: 0.267rem;
+		    top: 3px;
+		    position: absolute;
+		    transition: all 0.1s ease-in-out 0s;
+		    width: 14px;
+		}
+
+
+		/*input[switch]:checked + label {
+		    background-color: #33b7a0;
+		}*/
+
+		.setting-row input:checked + label::before {
+		    color: #fff;
+		    content: attr(data-on-label);
+		    left: 0.21667rem;
+		    right: auto;
+		}
+
+		.setting-row input:checked + label::after {
+		    background-color: #f7f7f7;
+		    box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.3);
+		    left: 66px;
+		}
+
+
+		/*input[switch="bool"] + label {
+		    background-color: #ed6b75;
+		}*/
+
+		.setting-row input + label::before {
+		    color: #fff;
+
+		}
+
+
+
+    /********************************/
+    /* Fin del dialogo modal        */
+    /********************************/
+
+   	#fotoPerfil{
+		width: 90px;
+	    height: 90px;
+	    background-size: cover;
+	    border-radius: 50%;
+	    margin: 10px auto;
+	    cursor: pointer;
+	    background-repeat: no-repeat;
+	}
+
+	.top-area .user-img{
+		width:40px;
+		height:40px;
+		background-size: cover;
+		background-repeat: no-repeat;
+		border-radius: 50%;
+		margin-top:10px;
+	}
+
+
+	.titulo {
+       color: #000;
+       position: relative;
+    }
+
+	.central-meta {
+   	   border-radius: 0; 
+       box-shadow: 10px 10px 10px rgba(0,0,0,0.4);
+	}
+
+	.mtr-btn{
+		border:0px;
+	}
+
+	.green-bg {
+    	float: left;
+    	width: 100%;
+    	background: #51da70;
+	}
+
+	.separador{
+		width:100%;
+		height: 5px;
+		border-bottom: 2px solid #088dcd;
+		margin-bottom: 10px;
+	}
+
+    </style>
+
+</head>
+<body>
+<!--<div class="se-pre-con"></div>-->
+<div class="theme-layout">
+	
+
+		
+	<section>
+		<div class="gap2 green-bg">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="row merged20" id="page-contents">
+							
+							<!-- Columna central -->
+							
+							<div class="col-lg-6">
+								
+								<div class="loadMore">
+
+
+
+<!-- EDITAR PERFIL ------------------------------------------------------------------------------------------------------->
+								    <div class="central-meta" id="editarPerfil">
+								    	
+										<div class="editing-info">
+											<h1 class="titulo">Iset N 58 </h1>
+											<h3 class="titulo">Tec. Sup. en Adm. Bancaria </h3>
+											<h4 class="title">Pre-Inscripcion correspondiente año 2021</h4>
+
+											<form method="post" action="preinscribir.php" name="completarPerfil" enctype="multipart/form-data">
+												<h5 class="f-title" style="margin-top:20px">Datos personales</h5><br>
+												
+												<div class="form-group half">	
+												  <input type="text" name="nombre" required="required" />
+												  <label class="control-label" for="input">Nombre</label><i class="mtrl-select"></i>
+												</div>
+												<div class="form-group half">	
+												  <input type="text" name="apellido" required="required" value=""/>
+												  <label class="control-label" for="input">apellido</label><i class="mtrl-select"></i>
+												</div>
+												
+												<div class="form-group">	
+												  <input type="text" name="email" required="required" value=""/>
+												  <label class="control-label" for="input">email</label><i class="mtrl-select"></i>
+												</div>
+												
+												<div class="form-group half">	
+												  <input type="text" name="telefono" required="required" value=""/>
+												  <label class="control-label" for="input">Teléfono fijo</label><i class="mtrl-select"></i>
+												</div>
+
+												<div class="form-group half">	
+												  <input type="text" name="celular" required="required" value=""/>
+												  <label class="control-label" for="input">Celular</label><i class="mtrl-select"></i>
+												</div>
+
+												<div class="form-group half">	
+												  <input type="text" name="dni" required="required" value=""/>
+												  <label class="control-label" for="input">DNI</label><i class="mtrl-select"></i>
+												</div>
+												
+												<div class="form-group half">	
+												  <input type="text" name="fecha_nacimiento" required="required" value=""/>
+												  <label class="control-label" for="input">Fecha Nacimiento</label><i class="mtrl-select"></i>
+												</div>	
+
+																							
+											    <div class="form-group half">	
+												  <input type="text"  name="lugar_nacimiento"  required="required" value=""/>
+												  <label class="control-label" for="input">Lugar Nacimiento</label><i class="mtrl-select"></i>
+												</div>
+
+												<div class="form-group half">	
+												  <input type="text" name="nacionalidad" required="required" value=""/>
+												  <label class="control-label" for="input">Nacionalidad</label><i class="mtrl-select"></i>
+												</div>
+
+												<div class="form-group half">	
+												  <input type="text" name="estado_civil" required="required" value=""/>
+												  <label class="control-label" for="input">Estado Civil</label><i class="mtrl-select"></i>
+												</div>
+
+												<div class="form-group">	
+												  <input type="text" name="domicilio_real" required="required" value=""/>
+												  <label class="control-label" for="input">Domicilio actual</label><i class="mtrl-select"></i>
+												</div>
+
+												<div class="form-group">	
+												  <input type="text" name="localidad" required="required" value=""/>
+												  <label class="control-label" for="input">Localidad</label><i class="mtrl-select"></i>
+												</div>
+												
+																								
+												<h5 class="f-title" style="margin-top:20px">Nivel de estudios</h5><br>
+												
+												<div class="form-group half">	
+												  <input type="text" name="nivel_estudios" required="required" value=""/>
+												  <label class="control-label" for="input">Secundario / terciario / universitario</label><i class="mtrl-select"></i>
+												</div>
+
+												
+												<div class="form-group half">	
+												  <input type="text" name="estado_estudios" required="required" value=""/>
+												  <label class="control-label" for="input">ninguno / completo / incompleto</label><i class="mtrl-select"></i>
+												</div>
+												
+												<div class="form-group">	
+												  <input type="text" name="titulo_estudios" required="required" value=""/>
+												  <label class="control-label" for="input">Titulo obtenido</label><i class="mtrl-select"></i>
+												</div>
+
+												<div class="form-group">	
+												  <input type="text" name="institucion" required="required" value=""/>
+												  <label class="control-label" for="input">Institucion</label><i class="mtrl-select"></i>
+												</div>
+
+												<h5 class="f-title" style="margin-top:20px">Situación laboral</h5><br>
+
+												<div class="form-group">	
+												  <input type="text" name="trabaja" required="required" value=""/>
+												  <label class="control-label" for="input">Indique si trabaja en la actualidad (SI / NO)</label><i class="mtrl-select"></i>
+												</div>
+
+												<div class="form-group">	
+												  <input type="text" name="lugar_trabajo" required="required" value=""/>
+												  <label class="control-label" for="input">Lugar de trabajo</label><i class="mtrl-select"></i>
+												</div>
+
+
+												<div class="form-group">	
+												  <input type="text" name="tareas_trabajo" required="required" value=""/>
+												  <label class="control-label" for="input">Tareas que desempeña</label><i class="mtrl-select"></i>
+												</div>
+
+												<div class="form-group">	
+												  <input type="text" name="dias_trabajo" required="required" value=""/>
+												  <label class="control-label" for="input">Dias y horarios</label><i class="mtrl-select"></i>
+												</div>
+
+												
+												<!----------------------------------------------------------->
+												<h5 class="f-title" style="margin-top:20px">Documento de identidad</h5>
+												<div class="form-group">	
+												  ADJUNTE UNA IMAGEN DEL FRENTE DE SU DOCUMENTO DE IDENTIDAD
+												  <input type="file"  name="file1" id="docu1"  required="required" accept=".jpg,.png .jpeg">
+												</div>
+
+												<div class="form-group">	
+												  ADJUNTE UNA IMAGEN DEL DORSO DE SU DOCUMENTO DE IDENTIDAD
+												  <input type="file"  name="file2" id="docu2" required="required" accept=".jpg,.png .jpeg">
+												</div>
+
+												<h5 class="f-title" style="margin-top:20px">Titulo secundario</h5>
+												
+												<div class="form-group">	
+												  ADJUNTE UNA IMAGEN DEL FRENTE DE SU TITULO DE SECUNDARIO
+												  <input type="file"  name="file3" id="titulo1"  required="required" accept=".jpg,.png .jpeg">
+												</div>
+
+												<div class="form-group">	
+												  ADJUNTE UNA IMAGEN DEL DORSO DE SU TITULO DE SECUNDARIO
+												  <input type="file"  name="file4" id="titulo2" required="required" accept=".jpg,.png .jpeg">
+												</div>
+
+      											<div>Las imágenes enviadas quedan sujetas a verificación de secretaria del Iset 58</div><br>
+
+												<div class="separador"></div>
+												1. Manifiesto mi acuerdo y consentimiento a cursar, rendir exámenes y desarrollar toda otra actividad inherente a la Tecnicatura, en la sede del ISET 58, Mendoza 3969 de la Ciudad de Rosario. 
+
+												<br><br>
+
+												2. Declaro que me encuentro en conocimiento de que, en caso de ser implementadas las Prácticas Profesionalizantes, éstas se desarrollarán en contraturno; en virtud de lo cual se me requerirá una disponibilidad horaria adicional al de cursado habitual.<br><br>
+												<div class="separador"></div>
+
+												<h5 class="f-title" style="margin-top:20px; margin-bottom: -7px;">Conformidad</h5>
+												<div>Escriba su nombre y apellido abajo para expresar su conformidad a modo de firma</div>
+
+												<div class="form-group">	
+												  <input type="text" name="conformidad" required="required" value=""/>
+												  <label class="control-label" for="input">Su Nombre y Apellido</label><i class="mtrl-select"></i>
+												</div>
+
+												<!----------------------------------------------------------->
+
+												<input type="hidden" name="carrera" value="bancaria">
+
+												<div class="submit-btns">
+													<button type="button" class="mtr-btn" style="background: red;" onclick="window.location.href='http://www.iset58rosario.com.ar'; "><span>Cancelar</span></button>
+													<input type="submit" class="mtr-btn"  style="background: green; color:white;" value="    Enviar    ">
+												</div>
+											
+											</form>
+										</div>
+									</div>	
+<!-- FIN EDITAR PERFIL ------------------------------------------------------------------------------------------------------->
+
+									
+								</div>
+							
+							</div><!-- centerl meta -->
+	
+							
+
+							
+						</div>	
+					</div>
+				</div>
+			</div>
+		</div>	
+	</section>
+
+	
+</div>
+
+
+
+
+</body>	
+</html>

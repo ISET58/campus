@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+	<title>Campus Iset58</title>
+    <link rel="icon" href="images/fav.png" type="image/png" sizes="16x16"> 
+    
+    <link rel="stylesheet" href="css/main.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/color.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <style type="text/css">
+    	#contenedorBiblioteca{
+    		width: 80%;
+    		margin:  20px auto;
+    		
+    	}
+
+    	#contenedorMateriales{
+    		width: 100%;
+		    padding: 20px;
+		    display: flex;
+		    justify-content: space-evenly;
+		    flex-wrap: wrap;
+
+    		
+    	}
+
+    	.contenedorMaterial{
+    			width: 300px;
+    			background: rgba(0,0,0,0);
+    			cursor: pointer;
+    	}
+
+
+    	
+
+
+    	.tituloMaterial{
+    		width: 100%;
+    		text-align: center;
+    		font-family: sans-serif;
+    		font-weight: 800;
+    		font-size: 16px;
+    	}
+
+    	.descripcionMaterial{
+    		width: 100%;
+    		text-align: center;
+    		font-family: sans-serif;
+    		font-weight: 100;
+    		font-size: 14px;
+
+    	}
+
+    	.descripcionAuxiliar{
+    		width: 100%;
+    		text-align: center;
+    		font-family: sans-serif;
+    		font-weight: 100;
+    		font-size: 10px;
+
+    	}
+
+    	.fileImage{
+    		width: 80px;
+    		margin: 0 auto;
+    	}
+
+	
+    	#botonSubirNota{
+    		width: 180px;
+    		height: 40px;
+    		background: green;
+    		text-align: center;
+    		line-height: 40px;
+    		color: white;
+    		font-family: sans-serif;
+    		font-weight: 800;
+    		
+
+    	}
+
+    	
+
+       	#overlay{
+			position: absolute;
+		    top: 0px;
+		    left: 0px;
+		    width: 100vw;
+		    height: 100vh;
+		    background-color: rgba(0,0,0,0.7);
+		    z-index: 99999;
+		    display:  none;
+		}
+
+		.botonBorrarNota{
+			width: 100px;
+			height: 25px;
+			line-height: 25px;
+			background: red;
+			color: white;
+			text-align: center;
+			margin:  5px auto;
+			border-radius: 10px;
+			cursor: pointer;
+		}
+
+		.botonBorrarNota:hover{
+			transform: scale(1.1);
+		}
+
+		.botonBorrarNota:active{
+			transform: scale(0.9);
+		}
+
+    
+
+
+    </style>
+
+</head>
+<body>
+<!--<div class="se-pre-con"></div>-->
+<div class="theme-layout">
+	
+<!-- Cabezal ------------------------------------------------------------>
+	<div class="responsive-header">
+		<div class="mh-head first Sticky">
+			<span class="mh-btns-left">
+				<a class="" href="#menu"><i class="fa fa-align-justify"></i></a>
+			</span>
+			<span class="mh-text">
+				<a href="newsfeed.html" title=""><img src="images/logo2.png" alt=""></a>
+			</span>
+			<span class="mh-btns-right">
+				<a class="fa fa-sliders" href="#shoppingbag"></a>
+			</span>
+		</div>
+		<div class="mh-head second">
+			<form class="mh-form">
+				<input placeholder="search" />
+				<a href="#/" class="fa fa-search"></a>
+			</form>
+		</div>
+		
+		
+	</div>
+
+	
+	<div class="topbar stick">
+		<div class="logo">
+			<a title="" href="newsfeed.html"><img src="images/logo.png" alt=""></a>
+		</div>
+		
+		<div class="top-area">
+			<div class="user-img" style="background-image:url([onshow.perfil.foto])">
+				<div class="user-setting">
+					<a href="javascript:void(0);" onclick="togglePerfil()" ><i class="ti-pencil-alt"></i>editar perfil</a>
+					<a href="javascript:void(0);" onclick="salirDeaca()"  =""><i class="ti-power-off"></i>Salir</a>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+<!-- FIN Cabezal ----------------------------------------------------------->
+
+<div id="contenedorBiblioteca">
+	<h3>Notas subidas por el profesor&nbsp;[onshow.nombreProfesor;strconv=no]</h3>
+	<div id="botonSubirNota" onclick="subirNota()">Subir notas</div>
+	<div id="aclaracion">La notas deben ser subidas en formato PDF o JPG</div>
+	
+	
+		<div id="contenedorMateriales">
+
+
+
+		 [bloque1;block=begin]    
+     
+	     
+	          <div class="contenedorMaterial"> 
+		                    
+					
+			           <embed
+						    src="[bloque1.url;strconv=no]#toolbar=0&navpanes=0&scrollbar=0"
+						    
+						    frameBorder="0"
+						    scrolling="auto"
+						    height="400px"
+						    width="300px"
+						></embed>
+					
+					<a href="[bloque1.url;strconv=no]">
+			           <div class="tituloMaterial">[bloque1.titulo;strconv=no]</div>
+			           <div class="descripcionMaterial">[bloque1.descripcion;strconv=no]</div>
+			           <div class="descripcionAuxiliar">carrera:[bloque1.carrera;strconv=no]&nbsp;&nbsp; año:[bloque1.yearDeLaCarrera;strconv=no]</div>
+			           <div class="descripcionAuxiliar">subido por:&nbsp;[bloque1.nombreCreador;strconv=no]</div>
+			           <div class="descripcionAuxiliar">en:&nbsp;[bloque1.fecha;strconv=no]</div>
+		           </a>
+		           <div class="botonBorrarNota" onclick="borrarNota([bloque1.id;strconv=no])">Borrar</div>
+	          </div>
+	     
+
+      [bloque1;block=end]
+			
+
+
+    </div>
+	
+	
+
+</div>
+	
+
+<!-- Pie de pagina -------------------------------------------------------->	
+	<div class="bottombar">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<span class="copyright">© Estudio Doa 2019 - 2020.</span>
+					<i><img src="" alt=""></i>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- FIN Pie de pagina ----------------------------------------------------->		
+</div>
+
+<!-- el overlay para pantalla completa -->
+<div id="overlay"></div>
+<!-- Fin del overlay para pantalla completa -->
+
+
+	<script src="js/main.min.js"></script>
+	<script type="text/javascript">
+
+		//////////////////////////////////////////////////////////////
+    	// funcion que muestra la ventan de subir materiales
+    	/////////////////////////////////////////////////////////////
+    	function subirNota(){
+    		$("#overlay").load( "cargar-nota.html", function() {
+  				 $("#overlay").show();
+				});
+    	}
+
+
+
+    	function suspenderSubirMaterial(){
+    		$("#overlay").hide();
+
+    	}
+
+    	function borrarNota(id){
+    		var bool=confirm("Seguro quiere eliminar esta nota");
+			  if(bool){
+			    window.location.href = "borrarNota.php?id="+id;
+			  }
+    	}
+
+
+	</script>
+
+</body>	
+</html>

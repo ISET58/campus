@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Helvetica, Arial, sans-serif;
+      }
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgb(108, 208, 246);
+        background: linear-gradient(
+          90deg,
+          rgba(108, 208, 246, 1) 0%,
+          rgba(74, 171, 217, 1) 36%,
+          rgba(29, 75, 180, 1) 71%
+        );
+      }
+      .card {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 300px;
+      }
+      .card img {
+        width: 250px;
+        height: 250px;
+      }
+      .card h2,
+      .card h3 {
+        margin: 10px 0;
+      }
+      .card h2,
+      h1 {
+        color: #2b14d7;
+      }
+      .card h3 {
+        color: #5a5a5a;
+      }
+      .card button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #5a5a5a;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      .card button:hover {
+        background-color: #444;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <img
+        src="https://img.freepik.com/vector-gratis/ilustracion-concepto-advertencia_114360-1551.jpg?t=st=1717460043~exp=1717463643~hmac=040572317e12b2ea4ac348520507a68688b72604ac7c66e1f60f5f30f54a5219&w=740"
+        alt="Error" />
+      <h1>Los datos ingresados no son correctos</h1>
+      <h2>El email o el password están equivocados</h2>
+      <h3>Vuelva para atrás e inténtelo de nuevo</h3>
+      <button onclick="window.location.href='index.html'">
+        Volver al Login
+      </button>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,585 @@
+<style type="text/css">
+
+	.lista{
+		width:100%;
+		position: relative;
+		
+	}
+
+	.headerTabla{
+		width:100%;
+		display: flex;
+		height: 40px;
+	}
+
+	.cuerpoTabla{
+		width:100%;
+		display: flex;
+		flex-direction: column ;
+		border: 0.5px solid rgba(0,0,0,0.4);
+		
+		
+	}
+
+	.celdaHeader{
+		
+		text-align: center;
+		font-size: 12px;
+		font-weight: 800;
+		border-bottom: 1px solid rgba(0,0,0,0.4);
+
+	}
+
+	.celda{
+		
+		text-align: center;
+		font-size: 12px;
+		padding:3px 0px 3px 0px;
+
+	}
+
+	.renglon{ 
+		width:100%; 
+		display: flex; 
+		cursor: pointer;
+		
+	}
+
+	.celda5{ width:5%; }
+	.celda10{ width:10%; }
+	.celda15{ width:15%; }
+	.celda20{ width:20%; }
+	.celda25{ width:25%; }
+	.celda30{ width:30%; }
+	.celda35{ width:35%; }
+	.celda40{ width:40%; }
+	.celda45{ width:45%; }
+	.celda50{ width:50%; }
+	.celda55{ width:55%; }
+	.celda60{ width:60%; }
+	.celda65{ width:65%; }
+	.celda70{ width:70%; }
+	.celda75{ width:75%; }
+	.celda80{ width:80%; }
+
+	.celdaEspecial{ width:5%; }
+	.celdaEspecial:hover{ background-color:red; color:white; }
+
+
+	.botonAgregar{
+		width:150px;
+		height: 25px;
+		text-align: center;
+		line-height: 23px;
+		background-color: rgba(0,0,0,1);
+		color: white;
+		cursor: pointer;
+		position: absolute;
+		top:0;
+		left:0;
+	}
+
+	.botonAgregar:hover{ background-color: rgba(0,0,155,1);}
+	.botonAgregar:active{ background-color: rgba(0,155,0,1); top:1px; left:1px;}
+
+	.cajaBuscar{
+		width:250px;
+		height: 25px;
+		text-align: left;
+		line-height: 23px;
+		border: 1px solid gray;
+		cursor: pointer;
+		padding-left:4px;
+		box-sizing: border-box;
+		position:absolute;
+		right:30px;
+		overflow: hidden;
+
+	}
+
+	.botonBuscar{
+		width:25px;
+		height: 25px;
+		text-align: left;
+		line-height: 23px;
+		cursor: pointer;
+		padding-left:4px;
+		box-sizing: border-box;
+		position:absolute;
+		right:0px;
+		overflow: hidden;
+
+	}
+
+
+	.botonBuscar:hover{ background-color: rgba(0,255,0,0.2); }
+
+	/* clase para que el conteeditable sea single line*/
+	[contenteditable="true"].single-line {
+	    white-space: nowrap;
+	    width:200px;
+	    overflow: hidden;
+	} 
+	
+	[contenteditable="true"].single-line br {
+	    display:none;
+
+	}
+	
+	[contenteditable="true"].single-line * {
+	    display:inline;
+	    white-space:nowrap;
+	}
+
+    /* el placeholder del conteneditable */
+	[contentEditable=true]:empty:not(:focus):before{
+        content:attr(data-ph)
+    }
+
+	.renglon:nth-child(odd) {
+      background-color: rgba(0,0,255,0);
+  	}
+  	
+  	.renglon:nth-child(even) {
+      background-color: rgba(0,0,255,0.10);
+  	}
+
+  	.renglon:hover{
+     font-weight: 800;
+    }
+
+
+    .modalEditar{
+    	position:absolute;
+    	top:0px;
+    	left:0px;
+    	bottom:0px;
+    	right:0px;
+    	background-color: rgba(0,0,0,0.5);
+    	padding:2em;
+    	display:none;
+
+    }
+
+	.ventanaEditar{
+
+	}
+
+	/*************************************/
+	
+    .formulario {
+    	
+	    width: 60%;
+	    padding: 0px;
+	    background-color: white;
+	    padding:10px;
+	    position:relative;
+	    box-sizing: border-box;
+	    margin: auto auto;
+	}
+
+
+    .registro_form{
+    	margin-top:40px;
+    }
+	
+	.registro_form input[type='text'], 
+	.registro_form select {
+	    padding: 3px 5px;
+	    background: transparent;
+	    resize: none;
+	    color: #5374b3;
+	    border-style: none;
+	    border-color: initial;
+	    border-image: initial;
+	    border: 0.5px solid rgba(0,0,0,0.5);
+	    margin-bottom:5px;
+	}
+
+	.registro_form input {
+    	width: 100%;
+    	box-sizing: border-box;
+    	
+	}
+
+	
+
+
+	.formulario .tituloForm{
+		width:100%;
+		text-align: center;
+		font-family: sans-serif;
+		font-weight: 500;
+		font-size: 18px;
+		padding: 0px;
+		box-sizing: border-box;
+		color:white;
+		background-color: black;
+		position: absolute;
+		top:0px;
+		left:0px;
+		height: 38px;
+		line-height: 38px;
+
+
+	}
+
+	.botoneraAgregar{
+		width:100%;
+		display: flex;
+		justify-content: center;
+		margin: 10px 0px 10px 0px;
+	}
+
+	.boton{
+		background-color: #e0e094;
+		width:100px;
+		height: 30px;
+		line-height: 30px;
+		text-align: center;
+		margin-left: 10px;
+		cursor: pointer;
+	}
+
+	.boton:hover{
+		transform: scale(1.05);
+	}
+
+	.boton:active{
+		transform: scale(0.95);
+	}
+
+	.rojo{ background-color: red; color:white; }
+	.verde{ background-color: green; color:white; }
+
+
+    .paginacion{
+    	width:100%;
+    	text-align: center;
+    	margin-top:10px;
+
+
+    }
+
+    .celdaBorde{
+    	border: 0.5px solid rgba(0,0,0,0.8);
+	    text-align: center;
+	    font-size: 12px;
+	    padding: 0px;
+	    box-sizing: border-box;
+	    background: white;
+	   
+	    line-height: 20px;
+	    margin-left: -1px;
+    }
+
+    .renglonForm{ 
+		width: 70%;
+	    display: flex;
+	    box-sizing: border-box;
+	    margin: 0 auto;
+	}
+
+	.nombreCampo{
+		width:20%;
+		text-align: right;
+		padding-right: 15px;
+	}
+
+	.celdaCampo{
+		width:80%;
+		
+	}
+
+    .paginacion{
+    	width: 100%;
+    	display:flex;
+    	justify-content: center;
+    }
+
+	.pagina{
+		cursor: pointer;
+		margin-left: 10px;
+		text-decoration: underline;
+	}
+
+	.pagina:hover{
+		font-weight: 800;
+		color: blue;
+	}
+
+	.activa{
+		text-decoration: none;
+	}
+	
+
+   textarea {
+   resize: none;
+}
+   
+
+</style>
+
+
+
+	<div class="lista">
+		<div class="headerTabla">
+			<div class="botonAgregar" onclick="modalAgregar[onshow.plantilla]()">Agregar</div>
+		</div>
+
+		<div class="cuerpoTabla">
+			
+			<div class="renglon">
+				<div class="celdaHeader celda5">ID</div>
+				<div class="celdaHeader celda70">Titulo</div>
+				<div class="celdaHeader celda10">Fecha</div>
+				
+				<div class="celdaHeader celda5">Publicada</div>
+				<div class="celdaHeader celda5"></div>
+				<div class="celdaHeader celda5"></div>
+				
+			</div>	
+
+			[bloque1;block=begin]  
+			<div class="renglon" id="renglon[bloque1.id]">
+				<div class="celda celda5">[bloque1.id]</div>
+				<div class="celda celda70">[bloque1.titulo]</div>
+				<div class="celda celda10">[bloque1.fecha]</div>
+				
+				<div class="celda celdaEspecial" onclick="cambiarEstado([bloque1.id],'[bloque1.publicada]')">[bloque1.publicada]</div>
+				<div class="celda celda5" onclick="editarNovedad([bloque1.id], '[bloque1.titulo]', '[bloque1.bajada]', '[bloque1.texto]','[bloque1.imagen]')">editar</div>
+				<div class="celda celda5" onclick="msgBorrar([bloque1.id],'[bloque1.titulo]')"><i class="fas fa-trash-alt"></i></div>
+			</div>
+			[bloque1;block=end]
+
+            
+
+		</div>
+
+    </div>
+
+    
+
+    <div class="modalEditar">
+
+       	<div class="formulario">
+       		<div class="tituloForm">Editar Novedad</div>
+			<form id="frm[onshow.plantilla]" class="registro_form" autocomplete="off">
+				
+                <!------------------------------->
+
+                <div class="renglonForm">
+                    <div class="nombreCampo" style="width:10%">
+                    	Titulo
+                    </div> 
+                    <div class="celdaCampo">
+                    	
+                    	<textarea id="titulo" cols="69" rows="4" style="padding:5px"></textarea>
+					</div>
+				</div>
+
+				<!------------------------------->
+				
+				<div class="renglonForm">
+                    <div class="nombreCampo" style="width:10%">
+                    	Bajada
+                    </div> 
+                    <div class="celdaCampo">
+						<textarea id="bajada" cols="69" rows="4" style="padding:5px"></textarea>
+					</div>
+				</div>
+
+				<!------------------------------->
+				
+				<div class="renglonForm">
+                    <div class="nombreCampo" style="width:10%">
+                    	texto
+                    </div> 
+                    <div class="celdaCampo">
+						
+						<textarea id="texto" cols="69" rows="20" style="padding:5px"></textarea>
+					</div>
+				</div>
+
+				
+
+
+				
+				<div class="botoneraAgregar">
+			    	<div class="boton verde" onclick="agregarActualizar[onshow.plantilla]('actualizar')" id="BactualizarP">Actualizar</div>
+			    	<div class="boton rojo" onclick="cancelar[onshow.plantilla]()">Cancelar</div>
+			    </div>
+			</form>
+		</div>
+	
+	</div>
+ 
+
+
+   
+
+    <script type="text/javascript">
+
+         var IDactualizar=null;
+         var offsetPagina=1;
+
+         //////////////////////////////////////////////
+	    // se ejecuta cuando se termina de cargar
+	    // es como un init de la subventana
+	    $(function() {
+	          botonesHabilitarNovedades();
+	          
+		});
+
+
+		////////////////////////////////////////////////////
+ 		function botonesHabilitarNovedades(){
+
+ 			var celdas=$(".celdaEspecial");
+ 			console.log(celdas);
+
+ 			celdas.each(function(){ 
+             	
+             	if($(this).text()=="si"){ 
+             		$(this).css("background","lime");
+             	 	$(this).css("margin","2px");
+             	 	$(this).css("color","black");
+             	}
+             	
+             	if($(this).text()=="no"){
+             		$(this).css("background","red");
+             		$(this).css("margin","2px");
+					$(this).css("color","white");
+					
+					
+             	} 
+
+           
+             	
+            	
+            });
+
+
+ 		}	
+
+
+         
+    	/////////////////////////////////////////////////////
+    	// OK
+    	function modalAgregar[onshow.plantilla](){
+    		$(".modalEditar").show();
+    		$(".botonAgregar").hide();
+    		$(".cajaBuscar").hide();
+    		$(".botonBuscar").hide();
+    		$(".celdaEspecial").hide();
+    		$(".paginacion").hide();
+    		$( ":input:text" ).val("");
+    		$( "textarea" ).val("");
+    		
+    		$("#BagregarP").show();
+    		$("#BactualizarP").hide();
+    		IDactualizar=null;
+
+
+    		
+    	}
+
+    	/////////////////////////////////////////////////////
+    	// OK
+    	function cancelar[onshow.plantilla](){
+    		$(".modalEditar").hide();
+    		$(".botonAgregar").show();
+    		$(".cajaBuscar").show();
+    		$(".botonBuscar").show();
+    		$(".celdaEspecial").show();
+    		$(".paginacion").show();
+    	}
+
+
+
+    	/////////////////////////////////////////////////////
+    	function editarNovedad(id, titulo, bajada, texto, imagen){
+            $("#titulo").val(titulo);
+            $("#bajada").val(bajada);
+            $("#texto").val(texto);
+    		  
+            $(".modalEditar").show();
+
+            
+    	}
+
+
+
+
+    	////////////////////////////////////////////////////
+	    // llama a la ventana modal si/no
+	    // para ver si queres borrar un profesor
+	    ////////////////////////////////////////////////////  
+	    function msgBorrar(id, titulo){
+	      var r=confirm("¿Quiere borrar la novedad "+titulo+"?");
+	       if (r == true) borrar(id);
+	      
+	    
+
+	    }
+
+
+    	/////////////////////////////////////////////////////
+        function borrar(id){
+        	var archivo="crud/borrarNovedad.php?id="+id;
+        	var activa=$(".active");
+   		    $(activa[0].hash).load(archivo);
+            $(".panelModal").css("display","none");
+	    
+        }
+
+
+        /////////////////////////////////////////////////////
+        function cambiarEstado(id, estado){
+            var accion="";   
+        	if (estado=="si") { accion="despublicar"}
+        	if (estado=="no") { accion="publicar"}
+        	var archivo="crud/cambiarEstadoNovedad.php?id="+id+"&accion="+accion;
+        	var activa=$(".active");
+   		    $(activa[0].hash).load(archivo);
+            $(".panelModal").css("display","none");
+	    
+        }
+
+
+	   
+
+	    
+	    /////////////////////////////////////////////////////
+    	function agregarActualizar[onshow.plantilla](modo){
+
+            if(verificar[onshow.plantilla](modo)==false) return;
+
+            if (modo=="agregar") id="";
+            if (modo=="actualizar") id=IDactualizar;
+
+
+		    var carrera=$("#frm[onshow.plantilla]").find("#carrera").val();
+		    var duracion=$("#frm[onshow.plantilla]").find("#duracion").val();
+		    var comentario=$("#frm[onshow.plantilla]").find("#comentario").val();
+		   
+
+		    var qs="?id="+id+"&carrera="+carrera+"&duracion="+duracion+"&comentario="+comentario;
+		    qs=encodeURI(qs);
+		 
+
+		    if(modo=="agregar") var archivo="crud/agregarCarrera.php"+qs;
+		    if(modo=="actualizar") var archivo="crud/actualizarCarrera.php"+qs;
+		    
+		    console.log(archivo);
+        	var activa=$(".active");
+   		    $(activa[0].hash).load(archivo);
+		    cancelar[onshow.plantilla]();
+			   
+		    
+    	}
+
+
+    	
+    </script>
+

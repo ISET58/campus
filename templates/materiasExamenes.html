@@ -1,0 +1,127 @@
+  
+<style type="text/css">
+
+  .listaAlumnos{
+    width: 100%;
+    font-family: sans-serif;
+    font-size: 12px;
+    border: 0.5px solid rgba(0,0,0,0.5);
+  }
+
+  .listaAlumnos .renglon{
+    display: flex;
+    width:100%;
+    justify-content: center;
+    text-align: center;
+    padding: 5px 0px 5px 0px;
+    cursor: pointer;
+  }
+
+  .listaAlumnos .renglon:hover{
+     font-weight: 600;
+     color:green;
+  }
+
+  .listaAlumnos .cabecera{
+    display: flex;
+    width:100%;
+    justify-content: center;
+    text-align: center;
+    font-weight: 800;
+    border-bottom: 0.5px solid rgba(0,0,0,0.5);
+    padding: 5px 0px 5px 0px;
+  }
+
+    
+ .listaAlumnos .renglon:nth-child(odd) {
+      background-color: rgba(0,0,255,0);
+  }
+  .listaAlumnos .renglon:nth-child(even) {
+      background-color: rgba(0,0,255,0.10);
+  }
+
+</style>    
+   
+
+
+
+
+
+<div class="formulario" id="frmMatEx" style="border: 1px solid gray; margin-bottom: 30px; box-shadow: 10px 10px 25px 3px rgba(0,0,0,0.58);">
+          <div class="tituloForm" id="fechasMaterias">[onshow.titulo]</div>
+          
+          <form action="crud/guardarMateriasExamenes.php" method="post" name="enviarMateriasExamenes" id="formMateriasExamenes">
+                <div id="contenidoMateriasExamenes">
+                    
+                      <div class="listaAlumnos">
+                          <div class="cabecera">
+                            <div style="width:10%;">AÑO</div>
+                            <div style="width:50%; text-align: left;">Nombre Materia</div>
+                            <div style="width:20%;">Fecha Examen</div>
+                            <div style="width:20%;">Hora Examen</div>
+                           
+                          </div>
+
+                          [bloque1;block=begin]  
+                          <div class="renglon">
+                            <div style="width:10%;">[bloque1.year;strconv=no]</div>
+                            <div style="width:50%; text-align: left;">[bloque1.nombreMateria;strconv=no]</div>
+                            <div style="width:20%;"><input type="date" name="fecha[bloque1.numero]" value="[bloque1.fecha;strconv=no]"></div>
+                            <div style="width:20%;"><input type="time" name="hora[bloque1.numero]" value="[bloque1.hora;strconv=no]"></div>
+
+                            <input type="hidden" name="idmateria[bloque1.numero]" value="[bloque1.materiaID;strconv=no]">
+                            <input type="hidden" name="idexamen[bloque1.numero]" value="[bloque1.examenID;strconv=no]">
+                           
+                          </div>
+                          [bloque1;block=end]
+
+                      </div>
+        
+
+                </div>
+                
+                <div class="botoneraAgregar" >
+                  <div class="boton rojo" onclick="cancelarMaterias()">Cancelar</div>
+                  <div class="boton verde" onclick="guardarMaterias()">Guardar</div>
+                </div>
+
+                
+          </form>
+
+</div>
+
+
+<script type="text/javascript">
+  
+      //////////////////////////////////////////////////// 
+      // Guardar las materias d elos examenes
+      // con fechas y horarios
+      ///////////////////////////////////////////////////
+      
+      function guardarMaterias(){
+        $("#frmMatEx").hide();
+        $('#formMateriasExamenes').submit();
+
+
+        
+        
+      }
+     
+
+      $('#formMateriasExamenes').submit(function(e){
+          e.preventDefault();
+          $.ajax({
+            url:'crud/guardarMateriasExamenes.php',
+            type:'post',
+            data:$('#formMateriasExamenes').serialize(),
+            success:function(){
+                $("#editarMaterias").hide();
+            }
+          });
+    });
+
+
+
+
+
+</script>

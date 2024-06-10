@@ -1,0 +1,312 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>ISET 58 - Perfil Alumno</title>
+
+   <style type="text/css">
+
+    html, body{
+      width:100%;
+      height:100%;
+    }
+
+    body{ 
+      background-color:  #f4f4f4; 
+      font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    }
+
+    *{
+      margin:0px;
+      padding:0px;
+    }
+
+    .menuSuperior{
+      width:100%;
+      height: 52px;
+      box-shadow:  rgba(0,0,0,0.07) 0px 2px 4px;
+      background-color: white;
+    }
+     
+    .contenedorPrincipal{
+        width:75%;
+        margin: 20px auto;
+        display: flex;
+
+    }
+
+    .columnaIz{
+      width:22%;
+      margin-right: 1%;
+      
+    }
+
+    .columnaCentral{
+      width:50%;
+      margin-right: 1%;
+      
+      
+    }
+
+    .columnaDe{
+      width:27%;
+      
+      
+    }
+
+    .card{
+      width:100%;
+      border-radius:0.5rem;
+      background-color: white;
+      padding: 10px;
+      box-sizing: border-box;
+
+      min-height: 100px;
+      margin-bottom: 20px;
+      padding-bottom:20px;
+
+    }
+
+    .imgPerfil{
+      background-repeat: no-repeat;
+      background-size: contain;
+      width:80px;
+      height: 80px;
+      margin: 10px auto;
+      border-radius: 40px;
+      background-color: pink;
+    }
+
+    .nombrePerfil{
+      width:100%;
+      font-size: 16px;
+      font-weight: 800;
+      text-align: center;
+
+    }
+
+     .textoEmail{
+      width:100%;
+      font-size: 12px;
+      font-weight: 4;
+      text-align: center;
+
+    }
+
+    .textoMediano{
+      width:100%;
+      font-size: 14px;
+      font-weight: 4;
+      text-align: center;
+
+    }
+
+    .textoGrande{
+      width:100%;
+      font-size: 18px;
+      font-weight: 400;
+      text-align: center;
+
+    }
+
+    .tituloCard{
+      width:100%;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: left;
+      padding: 10px 0px 20px 10px;
+      color: rgba(0,0,0,0.6);
+
+    }
+
+    .itemMenu{
+      width:100%;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: left;
+      padding: 10px 0px 0px 10px;
+      color: rgba(0,0,80,0.6);
+
+    }
+
+
+    .logoiset{
+      background-image: url("images/interface/logo.png");
+      width: 40px;
+      height: 40px;
+      background-size: contain;
+      position: absolute;
+      top:6px;
+      left:13%;
+
+
+    }
+
+    .mensajeCard{
+      font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+      width:100%;
+      border-radius:0.5rem;
+      background-color: white;
+      padding: 10px;
+      box-sizing: border-box;
+
+      min-height: 100px;
+      margin-bottom: 20px;
+      padding:20px 20px 20px 20px;
+
+    }
+
+    
+
+
+   </style>
+   
+  
+  </head>
+
+  <body>
+
+    <!--MENU SUPERIOR-->
+    <div class="menuSuperior">
+       <div class="logoiset"></div>
+    
+    </div>
+    <!--FIN MENU SUPERIOR-->
+
+
+    <div class="contenedorPrincipal">
+      <!--COLUMNA IZQUIERDA-->
+      <div class="columnaIz">
+        <div class="card">
+
+
+          <div class="imgPerfil" style="background-image: url(images/interface/perfil.png)"></div>
+          <div class="nombrePerfil">Marcelo&nbsp;Moglione</div>
+          <div class="textoEmail">moglione@gmail.com</div>
+          <hr style="height: 0.5px; margin: 1rem 0px; color: rgba(242, 242, 242, 0.1);">
+          
+          <!--  CARTEL PERFIL COMPLETO -->
+          <div style="display:none;">
+            <div class="textoMediano">Tu perfil está completo</div>
+          </div>
+          
+          <!--  CARTELPERFIL INCOMPLETO -->
+          <div style="display:block;">
+            
+            <div class="textoMediano">Perfil: 34% completado</div>
+           
+          </div>
+           
+        </div>
+
+        <div class="card">
+          <div class="tituloCard">Menu</div>
+
+          <div class="itemMenu">#Perfil</div>
+          <div class="itemMenu">#Inscripciones</div>
+          <div class="itemMenu">#Cursos</div>
+          <div class="itemMenu">#Comunicacion</div>
+
+        
+           
+        </div>
+
+
+      </div>  
+      <!--FIN COLUMNA IZQUIERDA-->
+
+      <!--COLUMNA CENTRAL-->
+      <div class="columnaCentral">
+
+<style type="text/css">
+  .textoMensaje{
+       width:100%;
+       text-align: center;
+    }
+
+    .imagenEmisor{
+      width:40px;
+      height: 40px;
+      background-size: cover;
+      background-repeat: no-repeat;
+
+    }
+
+    .renglonInfo{
+      width:100%;
+      display: flex;
+      margin-bottom:20px;
+    }
+
+    .textoEmitido{
+       font-size: 12px;
+       margin-left:10px;
+    }
+    .resaltado{
+      color:blue;
+      font-weight: 900;
+      font-size: 14px;
+    }
+</style>   
+
+<div class="mensajeCard" style="background:rgba(255,255,255,1); color:rgba(0,0,0,1);">
+	<div class="renglonInfo">
+     <div class="imagenEmisor" style="background-image:url(images/interface/perfil_iset.png)"></div>
+	   <div class="textoEmitido"><span class="resaltado">Enviado por: Iset58</span><br>a las 18:37:23 <br> del 06/03/20</div>
+  </div>
+  	<div class="textoMensaje">
+      Marcelo: te enviamos un email para confirmar tu direccion de e-mail
+  	</div>
+</div>
+
+
+<div class="mensajeCard" style="background:rgba(0,255,0,0.6); color:rgba(0,0,0,1);">
+	<div class="imagenEmisor" style="background-image:url(images/interface/perfil_iset.png)">
+	</div>
+	enviado por:
+Iset58
+	el:
+06/03/20 18:37:22
+	<div class="textoMensaje">
+Hola Marcelo Moglione te registraste en el Campus del Iset58
+	</div>
+</div>
+
+
+
+
+        
+
+      </div>  
+      <!--FIN COLUMNA CENTRAL-->
+
+
+      <!--COLUMNA DERECHA-->
+      <div class="columnaDe">
+        <div class="card"></div>
+
+      </div>  
+      <!--FIN COLUMNA DERECHA-->
+
+
+    </div>
+
+
+
+            
+    
+
+    <script src="../js/jquery-3.3.1.min.js"></script>  
+    <script src="js/scripts.js">
+      
+    </script>
+  </body>
+</html>

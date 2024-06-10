@@ -1,0 +1,63 @@
+<div class="closeBTN" onclick="cerrarTarjeta($(this).parent())">X</div>
+<div class="editing-info" id="anotarseMaterias">
+<h5 class="f-title">Inscribirse en los examenes de [onshow.carreraNombre]</h5>
+<div>ATENCION: este sistema aun no verifica la existencia de las correlatividades, por lo tanto aquellos alumnos que no cumplimenten el régimen de correlatividad de cada materia se considerara como no inscripto a la misma y no tendrá valor cualquier evaluación que pueda el docente otorgar.</div>
+
+<form method="post" name="inscripcionExamenes" action="inscribirExamenes.php">
+
+    <input type="hidden" id="custId" name="carreraId" value="[onshow.carreraID]">
+
+	[bloque1;block=begin]
+	<!------------------------------------------------->
+	 [bloque1.ano;strconv=no]
+	<div class="renglon" style="background-color: [bloque1.bg]">
+	   	<div class="materia">
+	        <div class="checkbox" style="margin-bottom: 0px;">
+			  <label>
+				<input type="checkbox"  class="materia" name="materiaID-[bloque1.ID]" [bloque1.status]><i class="check-box"></i><strong>[bloque1.nombre]</strong><br>
+				[bloque1.fecha]
+			  </label>
+			</div>
+		</div>
+	
+
+	    <div class="setting-row">
+	    	<div style="width:20%; text-align: left; padding-left: 24px;">
+				<input type="checkbox" id="sw[bloque1.ID]" name="cursado-[bloque1.ID]" [bloque1.statusCursado] /> 
+				<label for="sw[bloque1.ID]" data-on-label="REGULAR" data-off-label="LIBRE"></label>
+			</div>
+
+			<div style="width:80%; text-align: left; padding-left: 24px; font-size: 12px; ">
+				Fecha regularización:
+				<input type="date" style="display: inline;" name="fecha-[bloque1.ID]" value="[bloque1.fechaRegular]">
+			</div>
+		</div>
+
+
+
+		
+	</div>
+	<!------------------------------------------------->
+	[bloque1;block=end]
+
+    <div class="submit-btns">
+		<button type="button" class="mtr-btn" onclick="toggleTarjeta('listaMaterias')"><span>Cancelar</span></button>
+		<button type="button" class="mtr-btn" onclick="guardarExamenes()"><span>Guardar</span></button>
+	</div>
+
+</form>
+</div>
+
+
+<script type="text/javascript">
+	
+	$('.materia').change(function() {
+		var estado= $(this).find("input[type=checkbox]").is(":checked");
+		$(this).parent().css("background","transparent");
+        if(estado) { $(this).parent().css("background","cyan"); }
+        //if(!$(this).checked) { $(this).parent().css("background","white"); }
+        
+       
+    });
+
+</script>

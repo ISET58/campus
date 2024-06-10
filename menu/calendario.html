@@ -1,0 +1,195 @@
+<style type="text/css">
+
+	.contenedorTabla{
+		width:100%;
+		position: relative;
+		
+	}
+
+	.headerTabla{
+		width:100%;
+		display: flex;
+		height: 40px;
+	}
+
+	.cuerpoTabla{
+		width:100%;
+		display: flex;
+		flex-direction: column ;
+		border-right: solid 0.5px rgba(0,0,0,0.5);
+		border-bottom: solid 0.5px rgba(0,0,0,0.5);
+		
+	}
+
+	.celdaHeader{
+		border-left: solid 0.5px rgba(0,0,0,0.5);
+		border-top: solid 0.5px rgba(0,0,0,0.5);
+		text-align: center;
+		font-size: 12px;
+		background-color: rgba(0,0,0,0.05);
+		font-weight: 800;
+	}
+
+	.celda{
+		border-left: dotted 0.5px rgba(0,0,0,0.5);
+		border-top: dotted 0.5px rgba(0,0,0,0.5);
+		text-align: center;
+		font-size: 12px;
+		padding:3px 0px 3px 0px;
+	}
+
+	.renglon{ width:100%; display: flex; }
+
+	.celda5{ width:5%; }
+	.celda10{ width:10%; }
+	.celda15{ width:15%; }
+	.celda20{ width:20%; }
+	.celda25{ width:25%; }
+
+
+	.botonAgregar{
+		width:150px;
+		height: 25px;
+		text-align: center;
+		line-height: 23px;
+		background-color: rgba(0,0,0,1);
+		color: white;
+		cursor: pointer;
+		position: absolute;
+		top:0;
+		left:0;
+	}
+
+	.botonAgregar:hover{ background-color: rgba(0,0,155,1);}
+	.botonAgregar:active{ background-color: rgba(0,155,0,1); top:1px; left:1px;}
+
+
+	
+</style>
+
+
+<div class="panelVentana">
+	<div class="tituloVentana">calendario</div>
+
+	<div class="menu">
+		
+		<ul class="menu__tabs">
+			<li><a class="active" href="#item-1"><i class="fa fa-plane"></i>Turismo</a></li>
+			<li><a href="#item-2"><i class="fa fa-money-bill-wave"></i>Bancaria</a></li>
+			
+			
+		</ul>
+		<section class="menu__wrapper">
+			<article id="item-1" class="menu__item item-active">
+				<div class="contenedorTabla">
+					<div class="headerTabla">
+						<div class="botonAgregar">Agregar</div>
+						
+					</div>
+
+					<div class="cuerpoTabla">
+						
+						<div class="renglon">
+							<div class="celdaHeader celda5">Nº</div>
+							<div class="celdaHeader celda5">ID</div>
+							<div class="celdaHeader celda20">Titulo</div>
+							<div class="celdaHeader celda5">Orden</div>
+							<div class="celdaHeader celda25">Archivo</div>
+							<div class="celdaHeader celda20">Categoria</div>
+							<div class="celdaHeader celda5">Editar</div>
+							<div class="celdaHeader celda5">Borrar</div>
+							<div class="celdaHeader celda10">publicado</div>
+						</div>	
+
+						<div class="renglon">
+							<div class="celda celda5">###</div>
+							<div class="celda celda5">###</div>
+							<div class="celda celda20">###</div>
+							<div class="celda celda5">###</div>
+							<div class="celda celda25">###</div>
+							<div class="celda celda20">###</div>
+							<div class="celda celda5">###</div>
+							<div class="celda celda5">###</div>
+							<div class="celda celda10">###</div>
+						</div>	
+
+						
+
+
+					</div>
+
+
+                </div>
+				
+			</article>
+
+			<!---------------------------------------------------->
+			
+			<article id="item-2" class="menu__item">
+
+				<div class="contenedorTabla">
+					<div class="headerTabla">
+						<div class="botonAgregar">Agregar</div>
+						
+					</div>
+
+					<div class="cuerpoTabla">
+						
+						<div class="renglon">
+							<div class="celdaHeader celda5">Nº</div>
+							<div class="celdaHeader celda5">ID</div>
+							<div class="celdaHeader celda20">Titulo</div>
+							<div class="celdaHeader celda5">Orden</div>
+							<div class="celdaHeader celda25">Archivo</div>
+							<div class="celdaHeader celda20">Categoria</div>
+							<div class="celdaHeader celda5">Editar</div>
+							<div class="celdaHeader celda5">Borrar</div>
+							<div class="celdaHeader celda10">publicado</div>
+						</div>	
+
+						<div class="renglon">
+							<div class="celda celda5">000</div>
+							<div class="celda celda5">000</div>
+							<div class="celda celda20">000</div>
+							<div class="celda celda5">000</div>
+							<div class="celda celda25">000</div>
+							<div class="celda celda20">000</div>
+							<div class="celda celda5">000</div>
+							<div class="celda celda5">000</div>
+							<div class="celda celda10">000</div>
+						</div>	
+
+						
+
+
+					</div>
+
+
+                </div>
+
+				
+			</article>
+
+			
+	
+			
+
+		</section>
+		
+	</div>
+</div>
+
+<script type="text/javascript">
+	 //////////////////////////////////////////////////////
+      // atiende los tabs de las ventanas 
+      //////////////////////////////////////////////////////
+      var $menu_tabs = $('.menu__tabs li a'); 
+      $menu_tabs.on('click', function(e) {
+          e.preventDefault();
+          $menu_tabs.removeClass('active');
+          $(this).addClass('active');
+
+          $('.menu__item').fadeOut(300);
+          $(this.hash).delay(300).fadeIn();
+      });
+</script>
