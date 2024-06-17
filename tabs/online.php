@@ -2,8 +2,9 @@
 
 
 include "../config.php";
+$database = 'iset';
 
-$db = new sqlite3('../data/campus.db');
+$db = new mysqli($host, $username, $password, $database);
 $hora=time()-$duracionSesion;
 
 $results = $db->query("SELECT * FROM sesiones WHERE epoch >=". $hora);

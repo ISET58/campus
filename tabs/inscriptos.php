@@ -10,8 +10,9 @@
 
 include "../config.php";
 include "../includes/databaseTools.php";
+$database = 'iset';
 
-$db = new sqlite3('../data/campus.db');
+$db = new mysqli($host, $username, $password, $database);
 $hora=time()-$duracionSesion;
 
 $results = $db->query("SELECT * FROM inscriptosExamenes WHERE habilitado='si'");

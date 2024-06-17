@@ -1,0 +1,10 @@
+id,epoch,fecha,url,titulo,descripcion,IDcreador,nombreCreador,visible,carrera,yearDeLaCarrera
+7,1646181177,2022-03-01 21:32:57,/campus/horarios/621ebb392a3dd_Prueba de un PDF de horario.pdf,Horario de prueba Bancaria ,Tercer año bancaria Computo y Datos,821,Marcelo Moglione,si,bancaria,tercero
+11,1711061941,2024-03-21 19:59:01,/campus/horarios/65fcbbb5a43ed__Iset 58 Horarios 2024 Turismo 18.03.2024.pdf,Técnico Superior en Turismo,Cursado presencial,958,joanna sañudo garcia,si,turismo,general
+12,1711061984,2024-03-21 19:59:44,/campus/horarios/65fcbbe0d4530_Iset 58 Horarios 2024 Bancaria mix Virtual.pdf,Técnico Superior en Bancaria ,Cursado presencial,958,joanna sañudo garcia,si,bancaria,general
+13,1711406318,2024-03-25 19:38:38,/campus/horarios/6601fcee663ae_Iset 58 Horarios 2024 Bancaria mix Virtual.pdf,HORARIOS ,1ER AÑO,958,joanna sañudo garcia,si,bancaria,primero
+14,1711406397,2024-03-25 19:39:57,/campus/horarios/6601fd3d90a58_Iset 58 Horarios 2024 Bancaria mix Virtual.pdf,horarios 2024,bancaria,1041,joanna  sanudo,si,bancaria,segundo
+16,1711406765,2024-03-25 19:46:05,/campus/horarios/6601feadc7f91_Iset 58 Horarios 2024 Bancaria mix Virtual.pdf,Horarios,2024,958,joanna sañudo garcia,si,bancaria,tercero
+17,1711407450,2024-03-25 19:57:30,/campus/horarios/6602015ac019d__Iset 58 Horarios 2024 Turismo 18.03.2024.pdf,Horarios,2024,958,joanna sañudo garcia,si,turismo,primero
+18,1711407496,2024-03-25 19:58:16,/campus/horarios/660201882969d__Iset 58 Horarios 2024 Turismo 18.03.2024.pdf,Horarios,2024,958,joanna sañudo garcia,si,turismo,segundo
+19,1711407520,2024-03-25 19:58:40,/campus/horarios/660201a033591__Iset 58 Horarios 2024 Turismo 18.03.2024.pdf,Horarios,2024,958,joanna sañudo garcia,si,turismo,tercero

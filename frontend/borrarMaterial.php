@@ -1,28 +1,28 @@
 <?php
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
 
-$id=$_GET['id'];
+include_once 'acceso.php';
 
+// Verificar si se ha proporcionado un ID válido
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
 
-// se completan los datos del archivo en la bdd
-$database="../data/biblioteca.db";
+    // Consulta de eliminación
+    $sqlquery = "DELETE FROM materiales WHERE id=" . $id;
 
-/////////////////////////////////////////////////////////////////////////
-// primero que nada se abre la base de datos para obtener un manejador
-// global del objeto de base de datos
-/////////////////////////////////////////////////////////////////////////
+    // Ejecutar la consulta
+    $results = $db->query($sqlquery);
 
+    if (!$results) {
+        die("Error al intentar eliminar el material: " . $db->error);
+    }
 
-
-$sqlquery="DELETE FROM materiales WHERE id=".$id;
-
-
-
-
-$results = $db->query($sqlquery);
-
-$lastID=$db->lastInsertRowID();
-
-
-header('Location: subirMateriales.php');
-
+    // Redireccionar después de eliminar el material
+    header('Location: subirMateriales.php');
+    exit;
+} else {
+    echo "ID no proporcionado.";
+}
 ?>

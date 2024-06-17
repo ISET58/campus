@@ -5,8 +5,14 @@
 // primero que nada se abre la base de datos para obtener un manejador
 // global del objeto de base de datos
 /////////////////////////////////////////////////////////////////////////
-require_once('../conexion.php');
+global $db;
 
+$host = 'localhost';
+$database = 'iset';
+$username = 'root';
+$password = '';
+
+$db = new mysqli($host, $username, $password, $database);
 if ($db->connect_error) {
     die("Connection failed: " . $db->connect_error);
 }
@@ -56,7 +62,7 @@ function listar($tabla, $campos, $plantilla, $condicion = null, $cantidad = null
 
     // se realiza una consulta sql para ver cuantas filas son
     // devueltas y ver como se realiza la paginacion
-    $querytotal = $db->query("SELECT COUNT(*) as count" . " FROM " . $tabla . $StringCondicion)->fetchArray();
+    $querytotal = $db->query("SELECT COUNT(*) as count" . " FROM " . $tabla . $StringCondicion)->Fetch_assoc();
     $cantidadFilas = $querytotal['count'];
 
     // se establecen a cantidad de paginas para la paginacion
@@ -351,7 +357,7 @@ function insertar($tabla, $campos, $valores)
     $sqlquery = "INSERT INTO " . $tabla . " " . $StringCampos . " VALUES " . $StringValores . " ";
     $results = $db->query($sqlquery);
 
-    return $db->lastInsertRowID();
+    return $db->insert_id();
 
     //$sqlquery="INSERT INTO circulacion (asignados, devueltos,vendidos) VALUES ('$asignados', '$devueltos', '$vendidos') " ;
 
@@ -885,20 +891,20 @@ function listarDatos()
 
     // Alumnos habilitados
     $columnas = $db->query("SELECT COUNT(*) as count FROM usuarios WHERE tipo='alumno' AND estado='activo' AND habilitado='si' ");
-    $cantidadCol = $columnas->fetchArray();
+    $cantidadCol = $columnas->Fetch_assoc();
     $numRows = $cantidadCol['count'];
     $salida["habilitados"] = $numRows;
 
     // Alumnos no habilitados
     $columnas = $db->query("SELECT COUNT(*) as count FROM usuarios WHERE tipo='alumno' AND estado='activo' AND habilitado='no' ");
-    $cantidadCol = $columnas->fetchArray();
+    $cantidadCol = $columnas->Fetch_assoc();
     $numRows = $cantidadCol['count'];
     $salida["deshabilitados"] = $numRows;
 
 
     // profesores habilitados
     $columnas = $db->query("SELECT COUNT(*) as count FROM usuarios WHERE tipo='profesor' AND estado='activo' AND habilitado='si' ");
-    $cantidadCol = $columnas->fetchArray();
+    $cantidadCol = $columnas->Fetch_assoc();
     $numRows = $cantidadCol['count'];
     $salida["profesores"] = $numRows;
 
@@ -906,7 +912,7 @@ function listarDatos()
 
     // profesores no habilitados
     $columnas = $db->query("SELECT COUNT(*) as count FROM usuarios WHERE tipo='profesor' AND estado='activo' AND habilitado='no' ");
-    $cantidadCol = $columnas->fetchArray();
+    $cantidadCol = $columnas->Fetch_assoc();
     $numRows = $cantidadCol['count'];
     $salida["profesdeshabilitados"] = $numRows;
 
@@ -1275,7 +1281,7 @@ function borrarMensaje($mensajeID)
 
     
     $sqlquery = "DELETE FROM mensajes WHERE ID='" . $mensajeID . "'";
-
+    $db = new mysqli($host, $username, $password, $database);
     $results = $db->query($sqlquery);
 
     echo $mensajeID;

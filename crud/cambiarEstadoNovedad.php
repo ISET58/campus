@@ -9,7 +9,12 @@ if($accion=="publicar") $estado="si";
 
 
 // se abre la base de datos de novedades
-$database="../data/novedades.db";
+$database = 'iset';
+// se abre la base de datos de novedades
+$db = new mysqli($host, $username, $password, $database);
+if ($db->connect_error) {
+    die("Connection failed: " . $db->connect_error);
+}
 
 
 

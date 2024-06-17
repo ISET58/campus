@@ -18,7 +18,8 @@ $condicion="estado='activo'";
 $plantilla="materias";
 
 
-listar($tabla, $campos, $condicion,$plantilla, $cantidad, $offset);
+listar($tabla, $campos,$plantilla,$condicion, $cantidad, $offset);
+
 
 
 

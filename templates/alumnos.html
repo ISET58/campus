@@ -438,7 +438,7 @@
         function buscar[onshow.plantilla](){
         	var busqueda=$("#buscar[onshow.plantilla]").text();
         	busqueda=encodeURI(busqueda);
-        	var archivo="crud/buscar.php?busqueda="+busqueda+"&tipo=alumnos";
+        	var archivo="crud/buscar.php?busqueda="+busqueda+"&tipo=alumno";
         	var activa=$(".active");
    		    $(activa[0].hash).load(archivo);
 
@@ -524,7 +524,7 @@
 
     	/////////////////////////////////////////////////////
         function borrar[onshow.plantilla](id){
-        	var archivo="crud/borrarUsuario.php?id="+id+"&offset="+offsetPagina+"&tipo=alumnos";
+        	var archivo="crud/borrarUsuario.php?id="+id+"&offset="+offsetPagina+"&tipo=alumno";
         	var activa=$(".active");
    		    $(activa[0].hash).load(archivo);
             $(".panelModal").css("display","none");
@@ -534,7 +534,7 @@
 
         /////////////////////////////////////////////////////
         function deshabilitar[onshow.plantilla](id){
-        	var archivo="crud/deshabilitarUsuario.php?id="+id+"&offset="+offsetPagina+"&tipo=alumnos";;
+        	var archivo="crud/deshabilitarUsuario.php?id="+id+"&offset="+offsetPagina+"&tipo=alumno";;
         	var activa=$(".active");
    		    $(activa[0].hash).load(archivo);
             $(".panelModal").css("display","none");
