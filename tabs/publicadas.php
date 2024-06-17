@@ -1,8 +1,12 @@
 <?php 
 
 // se abre la base de datos de novedades
-$database="../data/novedades.db";
+$database = 'iset';
 
+$db = new mysqli($host, $username, $password, $database);
+if ($db->connect_error) {
+    die("Connection failed: " . $db->connect_error);
+}
 
 // se arma la consulta sql
 $sqlquery= "SELECT * FROM novedades WHERE activa='si' ORDER BY epoch DESC";

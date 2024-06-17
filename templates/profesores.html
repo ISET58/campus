@@ -434,7 +434,7 @@
          var offsetPagina=[onshow.offsetPagina];
 
          ///////////////////////////////////////////////////// 
-        function buscar[onshow.plantilla](){
+        function buscaronshowplantilla(){
         	var busqueda=$("#buscar[onshow.plantilla]").text();
         	busqueda=encodeURI(busqueda);
         	var archivo="crud/buscar.php?busqueda="+busqueda+"&tipo=profesores";
@@ -506,7 +506,7 @@
 
     	/////////////////////////////////////////////////////
     	// OK
-    	function modalAgregar[onshow.plantilla](){
+    	function modalAgregaronshowplantilla(){
     		$(".modalEditar").show();
     		$(".botonAgregar").hide();
     		$(".cajaBuscar").hide();
@@ -525,7 +525,7 @@
 
     	/////////////////////////////////////////////////////
     	// OK
-    	function cancelar[onshow.plantilla](){
+    	function cancelaronshowplantilla(){
     		$(".modalEditar").hide();
     		$(".botonAgregar").show();
     		$(".cajaBuscar").show();
@@ -537,7 +537,7 @@
 
 
     	/////////////////////////////////////////////////////
-    	function editar[onshow.plantilla](id){
+    	function editaronshowplantilla(id){
 
     		var campoEditar = new Array("apellido", "nombre", "mail", "dni");
 
@@ -563,7 +563,7 @@
 	    // llama a la ventana modal si/no
 	    // para ver si queres borrar un profesor
 	    ////////////////////////////////////////////////////  
-	    function msgBorrar[onshow.plantilla](id){
+	    function msgBorraronshowplantilla(id){
 	      $(".tituloModal").text("¿Quiere borrar al profesor con la id ="+id+"?");
 	      $(".siModal").attr("onclick","borrar[onshow.plantilla]("+id+")");
 	      $(".noModal").attr("onclick","quedarse()");
@@ -574,7 +574,7 @@
 
 
     	/////////////////////////////////////////////////////
-        function borrar[onshow.plantilla](id){
+        function borraronshowplantilla(id){
         	var archivo="crud/borrarUsuario.php?id="+id+"&offset="+offsetPagina+"&tipo=profesores";
         	var activa=$(".active");
    		    $(activa[0].hash).load(archivo);
@@ -584,7 +584,7 @@
 
 
         /////////////////////////////////////////////////////
-        function deshabilitar[onshow.plantilla](id){
+        function deshabilitaronshowplantilla(id){
         	var archivo="crud/deshabilitarUsuario.php?id="+id+"&offset="+offsetPagina+"&tipo=profesores";
         	var activa=$(".active");
    		    $(activa[0].hash).load(archivo);
@@ -599,7 +599,7 @@
 	    // llama a la ventana modal si/no
 	    // para ver si queres desabilitar un alumn
 	    ////////////////////////////////////////////////////  
-	    function msgDesabilitar[onshow.plantilla](id){
+	    function msgDesabilitaronshowplantilla(id){
 	      $(".tituloModal").text("¿Quiere deshabilitar al profesor con la id ="+id+"?");
 	      $(".siModal").attr("onclick","deshabilitar[onshow.plantilla]("+id+")");
 	      $(".noModal").attr("onclick","quedarse()");
@@ -609,7 +609,7 @@
 	    }
 
 	    /////////////////////////////////////////////////////
-    	function agregarActualizar[onshow.plantilla](modo){
+    	function agregarActualizaronshowplantilla(modo){
 
             if(verificar[onshow.plantilla](modo)==false) return;
 
@@ -645,7 +645,7 @@
     	// no se introdujo un numero y en el de email
     	// si no se introdujo una direccion de email valida
     	///////////////////////////////////////////////////////
-    	function verificar[onshow.plantilla](modo){
+    	function verificaronshowplantilla(modo){
 
 
     		var estado=true;
@@ -696,6 +696,6 @@
 
            	return estado;
     	}
-
+	
     </script>
 

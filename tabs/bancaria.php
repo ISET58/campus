@@ -9,11 +9,12 @@
 
 include "../config.php";
 include "../includes/databaseTools.php";
+$database = 'iset';
 
-$db = new sqlite3('../preinscripcion2021/preinscripciones.db');
+$db = new mysqli($host, $username, $password, $database);
 $hora=time()-$duracionSesion;
 
-$results = $db->query("SELECT * FROM inscriptos WHERE carrera='bancaria'");
+$results = $db->query("SELECT * FROM inscriptos WHERE carreraID='3'");
 
 
 echo "<h3> Pre inscriptos a Adm. Bancaria 2021: </h3>";

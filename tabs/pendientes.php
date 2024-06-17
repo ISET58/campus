@@ -17,7 +17,8 @@ $condicion="tipo ='alumno' and estado='activo' and habilitado='no'";
 $plantilla="pendientes";
 
 
-listar($tabla, $campos, $condicion,$plantilla, $cantidad, $offset);
+listar($tabla, $campos,$plantilla,$condicion, $cantidad, $offset);
+
 
 
 

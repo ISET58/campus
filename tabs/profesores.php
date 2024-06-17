@@ -17,7 +17,8 @@ $condicion="tipo ='profesor' and estado='activo'";
 $plantilla="profesores";
 
 
-listar($tabla, $campos, $condicion,$plantilla, $cantidad, $offset);
+listar($tabla, $campos,$plantilla,$condicion, $cantidad, $offset);
+
 
 
 
@@ -26,5 +27,3 @@ listar($tabla, $campos, $condicion,$plantilla, $cantidad, $offset);
 
 
 ?>
-
-

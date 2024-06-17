@@ -15,9 +15,12 @@ $tabla="usuarios";
 $campos=array("ID", "apellido", "nombre", "email", "dni","habilitado");
 $condicion="tipo ='alumno' and estado='activo' and habilitado='si'";
 $plantilla="alumnos";
+$db = new mysqli($host, $username, $password, $database);
+if ($db->connect_error) {
+    die("Connection failed: " . $db->connect_error);
+}
 
-
-listar($tabla, $campos, $condicion,$plantilla, $cantidad, $offset);
+listar($tabla, $campos, $plantilla, $condicion, $cantidad, $offset);
 
 
 
