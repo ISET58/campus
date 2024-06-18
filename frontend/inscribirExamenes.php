@@ -82,10 +82,8 @@ foreach ($materiasInscriptas as $key => $value) {
 
 }
 
-
-
-
 $para = $perfil["email"];
+//$para = '40780498@terciariourquiza.edu.ar';
 
 $titulo = 'Confirmación inscripcion materias';
 
