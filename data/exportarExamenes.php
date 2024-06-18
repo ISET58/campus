@@ -5,7 +5,7 @@
 include "../config.php";
 include "../includes/databaseTools.php";
 
-$db = new sqlite3('../data/campus.db');
+new mysqli($host, $username, $password, $database);
 $hora=time()-$duracionSesion;
 
 $results = $db->query("SELECT * FROM inscriptosExamenes WHERE habilitado='si'");
@@ -28,7 +28,7 @@ $f=2;
 
 /////////////////////////////////////////////////////////////////////////////
 
-while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
+while ($row = $results->fetch_assoc()) {
 
    $userID=$row["userID"];
    $perfil=getUserProfile($userID);

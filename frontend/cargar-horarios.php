@@ -38,13 +38,19 @@ $fecha=date("Y-m-d H:i:s");
 $epoch=time();
 
 // se completan los datos del archivo en la bdd
-$database="../data/horarios.db";
+$database = 'iset';
 
 /////////////////////////////////////////////////////////////////////////
 // primero que nada se abre la base de datos para obtener un manejador
 // global del objeto de base de datos
 /////////////////////////////////////////////////////////////////////////
-$db = new SQLite3($database) or die('no se puede abrir la base de datos'. $database);
+// Crear la conexión
+$db = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar la conexión
+if ($db->connect_error) {
+    die("Error de conexión: " . $db->connect_error);
+}
 
 
 $sqlquery="INSERT INTO horarios (
@@ -77,7 +83,7 @@ $sqlquery="INSERT INTO horarios (
 
 $results = $db->query($sqlquery);
 
-$lastID=$db->lastInsertRowID();
+$lastID = $db->insert_id;
 
 
 // se mueve el archivo a la biblioteca

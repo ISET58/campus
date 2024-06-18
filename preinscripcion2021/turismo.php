@@ -21,15 +21,18 @@ $tope=3000;
 // primero que nada se abre la base de datos para obtener un manejador
 // global del objeto de base de datos
 /////////////////////////////////////////////////////////////////////////
-$database="./preinscripciones.db";
-$db = new SQLite3($database) or die('no se puede abrir la base de datos'. $database);
+$database = 'iset';
+$db = new mysqli($host, $username, $password, $database);
+if ($db->connect_error) {
+    die("Connection failed: " . $db->connect_error);
+}
 
 ///////////////////////////////////////////////////////////////////////
 // Se verifica que no se halla llegado al tope
 // de inscriptos por carrera
 ///////////////////////////////////////////////////////////////////////
 $columnas = $db->query("SELECT COUNT(*) as count FROM inscriptos WHERE carrera='turismo';");
-$cantidadCol = $columnas->fetchArray();
+$cantidadCol = $columnas->fetch_assoc();
 $cantidad = $cantidadCol['count'];
 
 /*

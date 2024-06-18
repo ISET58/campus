@@ -31,8 +31,14 @@ $perfil=getUserProfile($userID);
 // primero que nada se abre la base de datos para obtener un manejador
 // global del objeto de base de datos
 /////////////////////////////////////////////////////////////////////////
-$database="../data/biblioteca.db";
-$db = new SQLite3($database) or die('no se puede abrir la base de datos'. $database);
+$database = 'iset';
+$db = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar la conexión
+if ($db->connect_error) {
+    die("Error de conexión: " . $db->connect_error);
+}
+
 
 
  $sqlquery= "SELECT * FROM materiales WHERE carrera='".$carrera."' AND yearDeLaCarrera='".$year."'";
@@ -46,7 +52,7 @@ $db = new SQLite3($database) or die('no se puede abrir la base de datos'. $datab
 
     // se transforma el resultado de la consulta en una array
     $datos= array();
-    while($row = $results->fetchArray(SQLITE3_ASSOC)){
+    while($row = $results->fetch_assoc()){
        $datos[]=$row;
     }
 

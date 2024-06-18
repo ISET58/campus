@@ -26,7 +26,7 @@ $condicion="estado='activo' and tipo='reinscripcion'";
 $plantilla="reinscripciones";
 
 
-listar($tabla, $campos, $condicion,$plantilla);
+listar($tabla, $campos,$plantilla,$condicion);
 
 
 

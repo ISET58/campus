@@ -4755,11 +4755,11 @@ class Database
 	{
 		$result = $this->query($query);
 		if($this->type=="PDO")
-			return $this->db->lastInsertId();
+			return $this->db->insert_id;
 		else if($this->type=="SQLite3")
-			return $this->db->lastInsertRowID();
+			return $this->db->insert_id;
 		else if($this->type=="SQLiteDatabase")
-			return $this->db->lastInsertRowid();
+			return $this->db->insert_id;
 	}
 
 	//returns an array for SELECT

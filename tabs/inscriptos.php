@@ -10,8 +10,9 @@
 
 include "../config.php";
 include "../includes/databaseTools.php";
+$database = 'iset';
 
-$db = new sqlite3('../data/campus.db');
+$db = new mysqli($host, $username, $password, $database);
 $hora=time()-$duracionSesion;
 
 $results = $db->query("SELECT * FROM inscriptosExamenes WHERE habilitado='si'");
@@ -59,7 +60,7 @@ echo '<div class="fila">';
       echo '<div class="cajah">SE ANOTO EN</div>';
    echo '</div>';
 
-while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
+while ($row = $results->fetch_assoc()) {
 
    $userID=$row["userID"];
    $perfil=getUserProfile($userID);

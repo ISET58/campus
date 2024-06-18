@@ -1,0 +1,11 @@
+ID,year,titulo,carrera,carreraID,tipo,habilitado,estado
+1,1,Primer año Turismo 2022,TURISMO,4,ingresante,no,activo
+2,1,Primer año Bancaria 2022,ADMINISTRACION BANCARIA,3,ingresante,no,activo
+6,2021,Turismo reinscripción 2do y 3er Año 2024,TURISMO,4,reinscripcion,no,inactivo
+7,2021,Bancaria Reinscripción 2do y 3er año 2024,ADMINISTRACION BANCARIA,3,reinscripcion,no,inactivo
+9,2021,Reinscripción 1er año Turismo 2024,TURISMO,4,reinscripcion,no,inactivo
+10,2021,Reinscripción 1er año Bancaria 2024,ADMINISTRACION BANCARIA,3,reinscripcion,no,inactivo
+11,2021,Turismo - Reinscripción a primer año 2021,TURISMO,4,reinscripcion,no,inactivo
+12, 2024,"REINSCRIPCIÓN 2°, 3° Y 1° RECURSANTES",ADMINISTRACION BANCARIA,3,ingresante,si,inactivo
+13,,REINSCRIPTOS 2024,ADMINISTRACION BANCARIA,3,reinscripcion,no,activo
+14,,REINSCRIPCIÓN 2024,TURISMO,4,reinscripcion,no,activo

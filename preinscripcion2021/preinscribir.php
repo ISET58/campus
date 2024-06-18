@@ -6,8 +6,12 @@
 // primero que nada se abre la base de datos para obtener un manejador
 // global del objeto de base de datos
 /////////////////////////////////////////////////////////////////////////
-$database="./preinscripciones.db";
-$db = new SQLite3($database) or die('no se puede abrir la base de datos'. $database);
+$database = 'iset';
+
+$db = new mysqli($host, $username, $password, $database);
+if ($db->connect_error) {
+    die("Connection failed: " . $db->connect_error);
+}
 
 ///////////////////////////////////////////////////////////////////////
 // Se verifica que no se halla inscripto una persona con el mismo dni
@@ -16,7 +20,7 @@ $db = new SQLite3($database) or die('no se puede abrir la base de datos'. $datab
 $carrera=$_POST["carrera"];
 $dni=str_replace(".", "", $_POST["dni"]);
 $columnas = $db->query("SELECT COUNT(*) as count FROM inscriptos WHERE carrera='".$carrera."' and dni='".$dni."';");
-$cantidadCol = $columnas->fetchArray();
+$cantidadCol = $columnas->fetch_assoc();
 $cantidad = $cantidadCol['count'];
 
 if($cantidad>0){
@@ -37,7 +41,7 @@ if($cantidad>0){
 
 $tope=30;
 $columnas = $db->query("SELECT COUNT(*) as count FROM inscriptos WHERE carrera='".$carrera."';");
-$cantidadCol = $columnas->fetchArray();
+$cantidadCol = $columnas->fetch_assoc();
 $cantidad = $cantidadCol['count'];
 
 
@@ -75,7 +79,7 @@ $StringCampos ="(". implode(", ",  $campos).")";
 $sqlquery="INSERT INTO inscriptos ".$StringCampos." VALUES ".$StringValores." ";
 $results = $db->query($sqlquery);
 
-$alumnoID=$db->lastInsertRowID();
+$alumnoID = $db->insert_id;
 
 if($results==false)$errorInscribir=true;
 

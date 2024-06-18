@@ -5,7 +5,7 @@
 include "../config.php";
 include "../includes/databaseTools.php";
 
-$db = new sqlite3('../preinscripcion2021/preinscripciones.db');
+new mysqli($host, $username, $password, $database);
 $hora=time()-$duracionSesion;
 
 $results = $db->query("SELECT * FROM inscriptos WHERE carrera='turismo';");
@@ -50,7 +50,7 @@ $f=2;
 
 /////////////////////////////////////////////////////////////////////////////
 
-while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
+while ($row = $results->fetch_assoc()) {
 
   
 

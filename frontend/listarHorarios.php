@@ -19,13 +19,19 @@ if ($horario=="horarioTurismo2"){ $carrera="turismo"; $year="segundo";}
 if ($horario=="horarioTurismo3"){ $carrera="turismo"; $year="tercero";}
 
 // se completan los datos del archivo en la bdd
-$database="../data/horarios.db";
+$database = 'iset';
 
 /////////////////////////////////////////////////////////////////////////
 // primero que nada se abre la base de datos para obtener un manejador
 // global del objeto de base de datos
 /////////////////////////////////////////////////////////////////////////
-$db = new SQLite3($database) or die('no se puede abrir la base de datos'. $database);
+// Crear la conexión
+$db = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar la conexión
+if ($db->connect_error) {
+    die("Error de conexión: " . $db->connect_error);
+}
 
  $sqlquery= "SELECT * FROM horarios WHERE carrera='".$carrera."' AND yearDeLaCarrera='".$year."'";
 
@@ -34,7 +40,7 @@ $db = new SQLite3($database) or die('no se puede abrir la base de datos'. $datab
 
     // se transforma el resultado de la consulta en una array
     $datos= array();
-    while($row = $results->fetchArray(SQLITE3_ASSOC)){
+    while($row = $results->fetch_assoc()){
        $datos[]=$row;
     }
 

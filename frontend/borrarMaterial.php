@@ -10,7 +10,13 @@ $database="../data/biblioteca.db";
 // primero que nada se abre la base de datos para obtener un manejador
 // global del objeto de base de datos
 /////////////////////////////////////////////////////////////////////////
-$db = new SQLite3($database) or die('no se puede abrir la base de datos'. $database);
+// Crear la conexión
+$db = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar la conexión
+if ($db->connect_error) {
+    die("Error de conexión: " . $db->connect_error);
+}
 
 
 $sqlquery="DELETE FROM materiales WHERE id=".$id;
@@ -20,7 +26,7 @@ $sqlquery="DELETE FROM materiales WHERE id=".$id;
 
 $results = $db->query($sqlquery);
 
-$lastID=$db->lastInsertRowID();
+$lastID = $db->insert_id;
 
 
 header('Location: subirMateriales.php');

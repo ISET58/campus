@@ -14,7 +14,7 @@ if(isset($_GET["tipo"]))$tipo=$_GET["tipo"];
 $tabla="usuarios";
 $campos=array("ID", "apellido", "nombre", "email", "dni","habilitado");
 
-if($tipo=="alumnos"){
+if($tipo=="alumno"){
 	$condicion=" AND habilitado='si' AND tipo='alumno' AND estado='activo'";
 	$plantilla="alumnos";
 }
@@ -31,7 +31,7 @@ if($tipo=="pendientes"){
 
 
 
-buscar($tabla, $campos, $busqueda, $plantilla, $condicion);
+buscar($tabla, $campos,$plantilla, $busqueda, $condicion);
 
 
 

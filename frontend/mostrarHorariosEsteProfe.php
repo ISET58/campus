@@ -16,13 +16,19 @@ $perfil=getUserProfile($userID);
 $nombreProfesor=$perfil["nombre"]." ".$perfil["apellido"];
 
 // se completan los datos del archivo en la bdd
-$database="../data/horarios.db";
+$database = 'iset';
 
 /////////////////////////////////////////////////////////////////////////
 // primero que nada se abre la base de datos para obtener un manejador
 // global del objeto de base de datos
 /////////////////////////////////////////////////////////////////////////
-$db = new SQLite3($database) or die('no se puede abrir la base de datos'. $database);
+$db = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar la conexión
+if ($db->connect_error) {
+    die("Error de conexión: " . $db->connect_error);
+}
+
 
  $sqlquery= "SELECT * FROM horarios WHERE IDcreador='".$userID."'";
 
@@ -31,7 +37,7 @@ $db = new SQLite3($database) or die('no se puede abrir la base de datos'. $datab
 
     // se transforma el resultado de la consulta en una array
     $datos= array();
-    while($row = $results->fetchArray(SQLITE3_ASSOC)){
+    while($row = $results->fetch_assoc()){
        $datos[]=$row;
     }
 

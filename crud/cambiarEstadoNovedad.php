@@ -7,11 +7,12 @@ if($accion=="despublicar") $estado="no";
 if($accion=="publicar") $estado="si";
 
 
-
+$database = 'iset';
 // se abre la base de datos de novedades
-$database="../data/novedades.db";
-$db = new SQLite3($database) or die('no se puede abrir la base de datos'. $database);
-
+$db = new mysqli($host, $username, $password, $database);
+if ($db->connect_error) {
+    die("Connection failed: " . $db->connect_error);
+}
 
 
 // se arma la consulta sql para actualizar el estado de publicacion
@@ -31,7 +32,7 @@ $results = $db->query($sqlquery);
 
 // se transforma el resultado de la consulta en una array
 $datos= array();
-while($row = $results->fetchArray(SQLITE3_ASSOC)){
+while($row = $results->fetch_assoc()){
        $datos[]=$row;
  }
 

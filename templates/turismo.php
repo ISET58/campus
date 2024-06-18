@@ -9,8 +9,12 @@
 
 include "../config.php";
 include "../includes/databaseTools.php";
+$database = 'iset';
 
-$db = new sqlite3('../preinscripcion2021/preinscripciones.db');
+$db = new mysqli($host, $username, $password, $database);
+if ($db->connect_error) {
+    die("Connection failed: " . $db->connect_error);
+}
 $hora=time()-$duracionSesion;
 
 $results = $db->query("SELECT * FROM inscriptos WHERE carrera='turismo'");
@@ -45,7 +49,7 @@ echo '<div class="fila">';
       echo '<div class="cajah">TITULO</div>';
    echo '</div>';
 
-while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
+while ($row = $results->fetch_assoc()) {
 
      
    echo '<div class="fila">';
