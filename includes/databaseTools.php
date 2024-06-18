@@ -131,101 +131,102 @@ function listar($tabla, $campos, $plantilla, $condicion = null, $cantidad = null
 /////////////////////////////////////////////////////////////////////////////////**
 function listarMensajes($tabla, $campos, $plantilla, $condicion = null, $cantidad = null, $offset = null)
 {
-
+    // Datos de conexión a la base de datos
     $host = 'localhost';
     $database = 'iset';
     $username = 'root';
     $password = '';
 
+    // Crear una conexión a la base de datos
+    $db = new mysqli($host, $username, $password, $database);
 
-    
+    // Verificar si hay errores en la conexión
     if ($db->connect_error) {
         die("Connection failed: " . $db->connect_error);
     }
 
-    // se arma la string de campos para el sql
+    // Se arma la string de campos para el SQL
     $StringCampos = implode(", ", $campos);
 
-    // se arma la string de condicion
+    // Se arma la string de condición
     $StringCondicion = "";
-    if ($condicion != null)
+    if ($condicion != null) {
         $StringCondicion = " WHERE " . $condicion;
+    }
 
-
-    // se establecen los limites de la consulta por si es
-    // necesaria una paginacion
+    // Se establecen los límites de la consulta por si es necesaria una paginación
     $limites = "";
-    if ($cantidad != null)
+    if ($cantidad != null) {
         $limites = " LIMIT 0, " . $cantidad;
-    if ($offset != null)
+    }
+    if ($offset != null) {
         $limites = " LIMIT " . $offset . ", " . $cantidad . " ";
+    }
 
-
-    // se realiza una consulta sql para ver cuantas filas son
-    // devueltas y ver como se realiza la paginacion
-    $querytotal = $db->query("SELECT COUNT(*) as count" . " FROM " . $tabla . $StringCondicion)->fetch_assoc();
+    // Se realiza una consulta SQL para ver cuántas filas son devueltas y ver cómo se realiza la paginación
+    $querytotal = $db->query("SELECT COUNT(*) as count FROM " . $tabla . $StringCondicion)->fetch_assoc();
     $cantidadFilas = $querytotal['count'];
 
-    // se establecen a cantidad de paginas para la paginacion
+    // Se establecen la cantidad de páginas para la paginación
     $paginas = 0;
-    if ($cantidad != null && $cantidad > 0)
-        $paginas = $cantidadFilas / $cantidad;
+    if ($cantidad != null && $cantidad > 0) {
+        $paginas = ceil($cantidadFilas / $cantidad);
+    }
 
-    //////////////////////////////////
-    //SE ARMAR EL PAGINADOR
+    // SE ARMA EL PAGINADOR
     $slots = array();
     if ($paginas > 1) {
         $salto = 0;
-        if ($cantidad != null && $cantidad > 0)
+        $paginaActiva = 0;
+        if ($cantidad != null && $cantidad > 0) {
             $paginaActiva = floor($offset / $cantidad);
-        for ($i = 0; $i <= $paginas; $i++) {
+        }
+        for ($i = 0; $i < $paginas; $i++) {
             $slots[$i]["pagina"] = $i + 1;
             $slots[$i]["cantidad"] = $salto;
             $clase = "";
-            if ($i == $paginaActiva)
+            if ($i == $paginaActiva) {
                 $clase = "activa";
+            }
             $slots[$i]["clase"] = $clase;
             $salto += $cantidad;
         }
-
     }
 
-
-    //
-    /////////////////////////////////////
-
-    // se arma la consulta sql
+    // Se arma la consulta SQL
     $sqlquery = "SELECT " . $StringCampos . " FROM " . $tabla . $StringCondicion . $limites;
 
-    // se realiza la consulta sql
+    // Se realiza la consulta SQL
     $results = $db->query($sqlquery);
 
-    // se transforma el resultado de la consulta en una array
+    // Se transforma el resultado de la consulta en una array
     $datos = array();
     while ($row = $results->fetch_assoc()) {
         $datos[] = $row;
     }
 
-
-    if ($offset == null)
+    if ($offset == null) {
         $offset = 0;
+    }
 
-    // se carga la plantilla, se reaiza la fusion
-    // con los datos y se muestra
+    // Se carga la plantilla, se realiza la fusión con los datos y se muestra
     $template = "../templates/" . $plantilla . ".html";
-    include_once ('../includes/tbs_class.php');
+    include_once('../includes/tbs_class.php');
     $TBS = new clsTinyButStrong;
     $TBS->LoadTemplate($template);
 
-    // tbs accede solo a variables globales o que
-    // se hayan declarado en VarRef por eso hay que hacer esto
+    // TBS accede solo a variables globales o que se hayan declarado en VarRef por eso hay que hacer esto
     $TBS->VarRef['paginas'] = $paginas;
     $TBS->VarRef['plantilla'] = $plantilla;
     $TBS->VarRef['offsetPagina'] = $offset;
     $TBS->MergeBlock('bloque1', $datos);
     $TBS->MergeBlock('bloque2', $slots);
     $TBS->Show();
+
+    // Cerrar la conexión
+    $db->close();
 }
+
 
 
 
@@ -338,30 +339,32 @@ function buscar($tabla, $campos, $plantilla, $busqueda = null, $condicion = "")
 ///////////////////////////////////////////////
 function insertar($tabla, $campos, $valores)
 {
-
     global $db;
 
-    // primero se verifica que alla la misma cantidad
+    // primero se verifica que haya la misma cantidad
     // de valores que de campos
     if (count($campos) != count($valores)) {
-        echo "Esta intentando hacer un insert el la BDD<br>";
+        echo "Está intentando hacer un insert en la BDD<br>";
         echo "pero la cantidad de valores y campos no coinciden<br>";
         echo "Campus DOA debug";
         exit;
     }
 
-    // se arma la string de campos y valores para el sql
+    // se arma la string de campos y valores para el SQL
     $StringValores = "('" . implode("', '", $valores) . "')";
     $StringCampos = "(" . implode(", ", $campos) . ")";
 
     $sqlquery = "INSERT INTO " . $tabla . " " . $StringCampos . " VALUES " . $StringValores . " ";
     $results = $db->query($sqlquery);
 
-    return $db->insert_id();
-
-    //$sqlquery="INSERT INTO circulacion (asignados, devueltos,vendidos) VALUES ('$asignados', '$devueltos', '$vendidos') " ;
-
+    if ($results === TRUE) {
+        return $db->insert_id;  // Aquí se corrige para acceder a la propiedad insert_id
+    } else {
+        echo "Error: " . $sqlquery . "<br>" . $db->error;
+        return false;
+    }
 }
+
 
 
 ///////////////////////////////////////////////
@@ -538,11 +541,23 @@ function examenesPorCarrera($carreraID, $userID, $year)
     $cursado = array();
 
 
-    while ($row = $results->fetch_assoc()) {
+    /*while ($row = $results->fetch_assoc()) {
         $examenes[] = $row["materiaID"];
         $cursado[] = $row["cursado"];
         $FechaRegular[] = $row["FechaRegular"];
 
+    }*/
+
+    while ($row = $results->fetch_assoc()) {
+        $examenes[] = $row["materiaID"];
+        $cursado[] = $row["cursado"];
+        
+        // Verificar si existe la clave "FechaRegular" en $row antes de agregarla a $FechaRegular
+        if (isset($row["FechaRegular"])) {
+            $FechaRegular[] = $row["FechaRegular"];
+        } else {
+            $FechaRegular[] = null; // O asignar un valor por defecto
+        }
     }
 
     ///////////////////////////////////
