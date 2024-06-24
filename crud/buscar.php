@@ -20,13 +20,13 @@ if($tipo=="alumno"){
 }
 
 if($tipo=="profesores"){
-	$condicion=" AND tipo='profesor' AND estado='activo'";
-	$plantilla="profesores";
+    $condicion=" AND tipo='profesor' AND estado='activo'";
+    $plantilla="profesores";
 }
 
 if($tipo=="pendientes"){
-	$condicion=" AND habilitado='no' AND tipo='alumno' AND estado='activo'";
-	$plantilla="pendientes";
+    $condicion=" AND habilitado='no' AND tipo='alumno' AND estado='activo'";
+    $plantilla="pendientes";
 }
 
 

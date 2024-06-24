@@ -37,6 +37,7 @@ if ($db->connect_error) {
     // se transforma el resultado de la consulta en una array
     $datos= array();
     while($row = $results->fetch_assoc()){
+    while($row = $results->fetch_assoc()){
        $datos[]=$row;
     }
 

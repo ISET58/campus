@@ -79,10 +79,10 @@ while ($row = $results->fetch_assoc()) {
        $salidaXLS["U".$f]=$row["conformidad"];
        $salidaXLS["V".$f]="bancaria";
        $salidaXLS["W".$f]=date("d/m/Y H:i",$row["epochCreado"]);
-       $salidaXLS["X".$f]='http://iset58rosario.com.ar/campus/preinscripcion2021/'.$row["doc1"];
-	   $salidaXLS["Y".$f]='http://iset58rosario.com.ar/campus/preinscripcion2021/'.$row["doc2"];
-       $salidaXLS["Z".$f]='http://iset58rosario.com.ar/campus/preinscripcion2021/'.$row["titulo1"];
-       $salidaXLS["AA".$f]='http://iset58rosario.com.ar/campus/preinscripcion2021/'.$row["titulo2"];
+       $salidaXLS["X".$f]='campus/preinscripcion2021/'.$row["doc1"];
+	   $salidaXLS["Y".$f]='campus/preinscripcion2021/'.$row["doc2"];
+       $salidaXLS["Z".$f]='campus/preinscripcion2021/'.$row["titulo1"];
+       $salidaXLS["AA".$f]='campus/preinscripcion2021/'.$row["titulo2"];
 
 
 

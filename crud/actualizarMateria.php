@@ -30,8 +30,7 @@ $plantilla="materias";
 
 
 
-
-listar($tabla, $campos,$plantilla,$condicion);
+listar($tabla, $campos, $condicion,$plantilla);
 
 
 

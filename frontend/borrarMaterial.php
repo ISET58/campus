@@ -27,6 +27,9 @@ $sqlquery="DELETE FROM materiales WHERE id=".$id;
 $results = $db->query($sqlquery);
 
 $lastID = $db->insert_id;
+    if (!$results) {
+        die("Error al intentar eliminar el material: " . $db->error);
+    }
 
 
 header('Location: subirMateriales.php');

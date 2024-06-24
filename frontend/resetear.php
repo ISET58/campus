@@ -26,7 +26,7 @@ if($usuario==false){
 //print_r($usuario);
 
 $uid=$usuario["ID"]."_".time();
-$url="http://iset58rosario.com.ar/campus/frontend/resetpw.php?id=".$uid;
+$url="campus/frontend/resetpw.php?id=".$uid;
 
 
 /////////////////////////////////////////////////////////////////////////
@@ -50,7 +50,7 @@ $mensaje = '<html><head>'.
 	'Si por alguna razón el link no anda, copía y pegá en el navegador el que te dejamos acá abajo<br><br>'.
 	 $url.
 	'<br><br><hr>'.
-	'Que tengas un buen día. <a href="http://iset58rosario.com.ar/campus">iset58rosario.com.ar/campus</a>'.
+	'Que tengas un buen día. <a href="campus">iset58rosario.com.ar/campus</a>'.
 	'<hr>'.
 	'</body></html>';
 

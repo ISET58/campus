@@ -161,7 +161,7 @@ if($carrera=="bancaria" && $errorInscribir==false){
 		'<h3>Usted se encuentra preinscripto en lista de espera '.
 		'para la carrera '. $carrera.'</h3>'.
 		'<hr>'.
-		'Que tengas un buen día. <a href="http://iset58rosario.com.ar/campus">iset58rosario.com.ar/campus</a>'.
+		'Que tengas un buen día. <a href="campus">iset58rosario.com.ar/campus</a>'.
 		'</body></html>';
 
 	$cabeceras = 'MIME-Version: 1.0' . "\r\n";

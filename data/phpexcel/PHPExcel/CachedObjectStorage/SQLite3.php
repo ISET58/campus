@@ -132,7 +132,7 @@ class PHPExcel_CachedObjectStorage_SQLite3 extends PHPExcel_CachedObjectStorage_
         if ($cellResult === false) {
             throw new PHPExcel_Exception($this->DBHandle->lastErrorMsg());
         }
-        $cellData = $cellResult->fetchArray(SQLITE3_ASSOC);
+        $cellData = $cellResult->fetch_assoc();
         if ($cellData === false) {
             //    Return null if requested entry doesn't exist in cache
             return null;
@@ -167,7 +167,7 @@ class PHPExcel_CachedObjectStorage_SQLite3 extends PHPExcel_CachedObjectStorage_
         if ($cellResult === false) {
             throw new PHPExcel_Exception($this->DBHandle->lastErrorMsg());
         }
-        $cellData = $cellResult->fetchArray(SQLITE3_ASSOC);
+        $cellData = $cellResult->fetch_assoc();
 
         return ($cellData === false) ? false : true;
     }
@@ -242,7 +242,7 @@ class PHPExcel_CachedObjectStorage_SQLite3 extends PHPExcel_CachedObjectStorage_
         }
 
         $cellKeys = array();
-        while ($row = $cellIdsResult->fetchArray(SQLITE3_ASSOC)) {
+        while ($row = $cellIdsResult->fetch_assoc()) {
             $cellKeys[] = $row['id'];
         }
 

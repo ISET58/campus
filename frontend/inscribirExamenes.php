@@ -82,10 +82,8 @@ foreach ($materiasInscriptas as $key => $value) {
 
 }
 
-
-
-
 $para = $perfil["email"];
+//$para = '40780498@terciariourquiza.edu.ar';
 
 $titulo = 'Confirmación inscripcion materias';
 
@@ -102,7 +100,7 @@ $mensaje = '<html><head>'.
 	'ATENCION: este sistema aun no verifica la existencia de las correlatividades, por lo tanto '. 
 	'aquellos alumnos que no cumplimenten el régimen de correlatividad de cada materia se '. 
 	'considerara como no inscripto a la misma y no tendrá valor cualquier evaluación que pueda el docente otorgar.'.
-	'Que tengas un buen día. <a href="http://iset58rosario.com.ar/campus">iset58rosario.com.ar/campus</a>'.
+	'Que tengas un buen día. <a href="campus">iset58rosario.com.ar/campus</a>'.
 	'</body></html>';
 
 

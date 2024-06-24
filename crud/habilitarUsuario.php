@@ -36,10 +36,10 @@ $mensaje = '<html><head>'.
 	'<body><h1>Hola '.$perfil["nombre"].' '.$perfil["apellido"].'</h1>'.
 	'Este email es para avisarte que ya estas habilitado para inscribirte '.
 	' en las materias que desees cursar (recuerda que deberás tener aprobadas, o al menos regularizadas,  las correlativas anteriores).<br>'.
-	'Entrá a: <a href="http://iset58rosario.com.ar/campus">iset58rosario.com.ar/campus</a>'.
+	'Entrá a: <a href="campus">iset58rosario.com.ar/campus</a>'.
 	' con tu email y el password que elegiste y en |Reinscripciones|, elegi las materias.<br><br><br>'.
 	'<hr>'.
-	'<br>Que tengas un buen día. <a href="http://iset58rosario.com.ar/campus">iset58rosario.com.ar/campus</a>'.
+	'<br>Que tengas un buen día. <a href="campus">iset58rosario.com.ar/campus</a>'.
 	'</body></html>';
 
 

@@ -430,11 +430,11 @@
 
             case "Novedades":
                //$("#areaTrabajo").load( "menu/novedades.php" );
-               //$("#areaTrabajo").load( "http://iset58rosario.com.ar/wp-admin/edit.php/?autologin_code=j33uzdD9zVTh3PieO3JLUJO3015q2Mhp" );
-               window.location.href = "http://iset58rosario.com.ar/wp-admin/edit.php/?autologin_code=j33uzdD9zVTh3PieO3JLUJO3015q2Mhp";
+               //$("#areaTrabajo").load( "wp-admin/edit.php/?autologin_code=j33uzdD9zVTh3PieO3JLUJO3015q2Mhp" );
+               window.location.href = "wp-admin/edit.php/?autologin_code=j33uzdD9zVTh3PieO3JLUJO3015q2Mhp";
 
 
-               //window.location.href = "http://iset58rosario.com.ar/wp-admin/edit.php/?autologin_code=j33uzdD9zVTh3PieO3JLUJO3015q2Mhp";
+               //window.location.href = "wp-admin/edit.php/?autologin_code=j33uzdD9zVTh3PieO3JLUJO3015q2Mhp";
                
               break;    
 
