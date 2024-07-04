@@ -211,7 +211,7 @@ function listarMensajes($tabla, $campos, $plantilla, $condicion = null, $cantida
 
     // Se carga la plantilla, se realiza la fusión con los datos y se muestra
     $template = "../templates/" . $plantilla . ".html";
-    include_once('../includes/tbs_class.php');
+    include_once ('../includes/tbs_class.php');
     $TBS = new clsTinyButStrong;
     $TBS->LoadTemplate($template);
 
@@ -551,7 +551,7 @@ function examenesPorCarrera($carreraID, $userID, $year)
     while ($row = $results->fetch_assoc()) {
         $examenes[] = $row["materiaID"];
         $cursado[] = $row["cursado"];
-        
+
         // Verificar si existe la clave "FechaRegular" en $row antes de agregarla a $FechaRegular
         if (isset($row["FechaRegular"])) {
             $FechaRegular[] = $row["FechaRegular"];
@@ -635,7 +635,7 @@ function verificarsesion($sesionID)
     global $duracionSesion;
 
     $sqlquery = "SELECT * FROM sesiones WHERE guid='" . $sesionID . "'";
-    $results = $db->query($sqlquery);   
+    $results = $db->query($sqlquery);
     $row = $results->fetch_assoc();
 
     if ($row > 0) {
@@ -667,6 +667,17 @@ function borrarPorID($tabla, $id)
     global $db;
 
     $sqlquery = "DELETE FROM " . $tabla . " WHERE ID ='" . $id . "'";
+    $results = $db->query($sqlquery);
+    return true;
+}
+
+
+function borrarTodos($tabla, $condicion)
+{
+
+    global $db;
+
+    $sqlquery = "DELETE FROM " . $tabla . " WHERE " . $condicion;
     $results = $db->query($sqlquery);
     return true;
 }
@@ -1294,7 +1305,7 @@ function borrarMensaje($mensajeID)
     $password = '';
 
 
-    
+
     $sqlquery = "DELETE FROM mensajes WHERE ID='" . $mensajeID . "'";
     $db = new mysqli($host, $username, $password, $database);
     $results = $db->query($sqlquery);
