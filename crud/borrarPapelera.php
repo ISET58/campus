@@ -1,6 +1,7 @@
 <?php
 
 include_once "../config.php";
+include "../includes/databaseTools.php";
 
 $cantidad = $paginacion;
 $offset = null;
@@ -10,23 +11,14 @@ if (isset($_GET["cantidad"]))
 if (isset($_GET["offset"]))
     $offset = $_GET["offset"];
 
-$id = $_GET["id"];
+$campos = array("ID", "apellido", "nombre", "email", "dni", "habilitado", "tipo");
+$plantilla = "papelera";
 
+borrarTodos('usuarios', "estado='inactivo'");
 
-include "../includes/databaseTools.php";
-
-
-deshabilitarCarrera($id);
-
-$tabla = "carreras";
-$campos = array("ID", "nombre", "duracion", "estado", "habilitado", "comentarios");
-$condicion = "estado='activo'";
-$plantilla = "carreras";
-
-
+$condicion = "estado='inactivo'";
+$tabla = "usuarios";
 listar($tabla, $campos, $plantilla, $condicion, $cantidad, $offset);
-
-
 
 
 ?>

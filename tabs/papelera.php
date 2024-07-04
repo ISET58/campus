@@ -1,31 +1,24 @@
 <?php
 
 include_once "../config.php";
-
-$cantidad=$paginacion;
-$offset=null;
-
-if(isset($_GET["cantidad"]))$cantidad=$_GET["cantidad"];
-if(isset($_GET["offset"]))$offset=$_GET["offset"];
-
 include "../includes/databaseTools.php";
 
 
-$tabla="usuarios";
-$campos=array("ID", "apellido", "nombre", "email", "dni","habilitado","tipo");
-$condicion="estado='inactivo'";
-$plantilla="papelera";
+$cantidad = $paginacion;
+$offset = null;
 
+if (isset($_GET["cantidad"]))
+    $cantidad = $_GET["cantidad"];
+if (isset($_GET["offset"]))
+    $offset = $_GET["offset"];
 
-listar($tabla, $campos,$plantilla,$condicion, $cantidad, $offset);
+$tabla = "usuarios";
+$campos = array("ID", "apellido", "nombre", "email", "dni", "habilitado", "tipo");
+$condicion = "estado='inactivo'";
+$plantilla = "papelera";
 
-
-
-
-
+listar($tabla, $campos, $plantilla, $condicion, $cantidad, $offset);
 
 
 
 ?>
-
-
