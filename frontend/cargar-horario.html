@@ -18,60 +18,51 @@
     	
     
 <div id="contenedorSubirMaterial">
-	<h4 class="title">Subir Horario</h4>
-	<div id="aclaracion">El horario deben ser subido en formato PDF o JPG</div>
-	
-	<div id="formSubirMaterial">
-		<form method="post" action="cargar-horarios.php" name="subirMaterial" enctype="multipart/form-data">
-			
-			
-			<div class="form-group">	
-			  <input type="file"  name="file1" id="docu1"  required="required" accept=".jpg, .jpeg, .pdf">
-			</div>
-			
-															
-			<div class="form-group">	
-			  <input type="text" name="nombreMaterial" required="required" value=""/>
-			  <label class="control-label" for="input">Titulo</label><i class="mtrl-select"></i>
-			</div>
-			
-			<div class="form-group">	
-			  <input type="text" name="descripcionMaterial" required="required" value=""/>
-			  <label class="control-label" for="input">descripcion</label><i class="mtrl-select"></i>
-			</div>
+    <h4 class="title">Subir Horario</h4>
+    <div id="aclaracion">El horario deben ser subido en formato PDF o JPG</div>
+    
+    <div id="formSubirMaterial">
+        <form method="post" action="cargar-horarios.php" name="subirMaterial" enctype="multipart/form-data">
+            
+            <div class="form-group">    
+                <input type="file"  name="file1" id="docu1"  required="required" accept=".jpg, .jpeg, .pdf">
+            </div>
+            
+            <div class="form-group">    
+                <input type="text" name="nombreMaterial" required="required" value=""/>
+                <label class="control-label" for="input">Titulo</label><i class="mtrl-select"></i>
+            </div>
+            
+            <div class="form-group">    
+                <input type="text" name="descripcionMaterial" required="required" value=""/>
+                <label class="control-label" for="input">descripcion</label><i class="mtrl-select"></i>
+            </div>
 
-			<div class="form-group">
-						<label for="carrera">Seleccione una carrera:</label>	
-			  			<select name="carrera" id="carrera">
-						  <option value="bancaria">Bancaria</option>
-						  <option value="turismo">Turismo</option>
-						  <option value="general">General</option>
-						</select>
-			</div>
+            <div class="form-group">
+                <label for="carrera">Seleccione una carrera:</label>    
+                <select name="carrera" id="carrera">
+                    <option value="bancaria">Bancaria</option>
+                    <option value="turismo">Turismo</option>
+                    <option value="general">General</option>
+                </select>
+            </div>
 
-			<div class="form-group">
-						<label for="years">Seleccione un año de cursado:</label>	
-			  			<select name="yearCursado" id="yearCursado">
-						  <option value="primero">Primero</option>
-						  <option value="segundo">Segundo</option>
-						  <option value="tercero">Tercero</option>
-						  <option value="general">General</option>
-						</select>
-			</div>
+            <div class="form-group">
+                <label for="yearCursado">Seleccione un año de cursado:</label>    
+                <select name="yearCursado" id="yearCursado">
+                    <option value="Primero">Primero</option>
+                    <option value="Segundo">Segundo</option>
+                    <option value="Tercero">Tercero</option>
+                </select>
+            </div>
 
+            <div class="submit-btns">
+                <button type="button" class="mtr-btn" style="background: red;" onclick="suspenderSubirMaterial();"><span>Cancelar</span></button>
+                <input type="submit" class="mtr-btn"  style="background: green; color:white;" value="    Enviar    ">
+            </div>
 
-
-
-
-			
-			<div class="submit-btns">
-				<button type="button" class="mtr-btn" style="background: red;" onclick="suspenderSubirMaterial();"><span>Cancelar</span></button>
-				<input type="submit" class="mtr-btn"  style="background: green; color:white;" value="    Enviar    ">
-			
-
-		</form>
-
-	</div>
+        </form>
+    </div>
 </div>
 
 

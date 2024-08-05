@@ -27,7 +27,7 @@ $database="../data/horarios.db";
 /////////////////////////////////////////////////////////////////////////
 
 
- $sqlquery= "SELECT * FROM horarios WHERE carrera='".$carrera."' AND yearDeLaCarrera='".$year."'";
+ $sqlquery= "SELECT * FROM horarios WHERE carrera='".$carrera."' AND yearDeLaCarrera='".$year."' ORDER BY id DESC LIMIT 1;";
 
     // se realiza la consulta sql    
     $results = $db->query($sqlquery);

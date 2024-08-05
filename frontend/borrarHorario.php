@@ -1,28 +1,36 @@
 <?php
+include_once "../conexion.php";
+$id = $_GET['id'];
 
-$id=$_GET['id'];
-
-
-// se completan los datos del archivo en la bdd
-$database="../data/horarios.db";
-
-/////////////////////////////////////////////////////////////////////////
-// primero que nada se abre la base de datos para obtener un manejador
-// global del objeto de base de datos
-/////////////////////////////////////////////////////////////////////////
+// Verificar que el ID es válido
+if (!is_numeric($id) || $id <= 0) {
+    die("ID inválido.");
+}
 
 
+try {
+    // Preparar la consulta SQL para evitar inyecciones SQL
+    $stmt = $db->prepare("DELETE FROM horarios WHERE id = ?");
+    $stmt->bind_param("i", $id);
 
-$sqlquery="DELETE FROM horarios WHERE id=".$id;
+    // Ejecutar la consulta
+    if ($stmt->execute()) {
+        if ($stmt->affected_rows > 0) {
+            // Redirigir después de borrar el registro
+            header('Location: mostrarHorariosEsteProfe.php');
+        } else {
+            echo "No se encontró el horario con el ID especificado.";
+        }
+    } else {
+        echo "Error al borrar el horario: " . $stmt->error;
+    }
 
+    // Cerrar la declaración y la conexión
+    $stmt->close();
+    $db->close();
 
-
-
-$results = $db->query($sqlquery);
-
-$lastID=$db->lastInsertRowID();
-
-
-header('Location: mostrarHorariosEsteProfe.php');
+} catch (Exception $e) {
+    echo "Error: " . $e->getMessage();
+}
 
 ?>
