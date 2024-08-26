@@ -6,108 +6,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Iset 58 - Campus</title>
-
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <style type="text/css">
-
-      html, body{
-        width:100%;
+      html,
+      body {
+        width: 100%;
         height: 100%;
         background-color: #5298ff;
       }
 
-      *{
-        margin:0px;
-        padding:0px;
+      * {
+        margin: 0px;
+        padding: 0px;
       }
 
-      .general{
-        width:100%;
-        
+      .general {
+        width: 100%;
       }
 
-      .cabezalLogin{
-        width:100%;
-        height: 82px;
-        background-color: #5298ff;
+      .cabezalLogin {
+        width: 100%;
+        height: 100px;
+        background-color: rgb(44, 63, 113);
         position: relative;
-        display:flex;
+        display: flex;
       }
 
-      .logoCabezal{
-          background-image: url(../images/logoblanco.png);
-          width: 50px;
-          height: 50px;
-          background-size: contain;
-          margin-left: 100px;
-          margin-top: 16px;
-          box-sizing: border-box;
-          display: inline-block;
+      .logoCabezal {
+        background-image: url(../images/logoblanco.png);
+        width: 50px;
+        height: 50px;
+        background-size: contain;
+        margin-left: 100px;
+        margin-top: 16px;
+        box-sizing: border-box;
+        display: inline-block;
       }
 
-
-       .splash{
-          background-image: url(../images/gente2.jpg?v7);
-          width: 50vw;
-          height: 50vw;
-          background-size: contain;
-          box-sizing: border-box;
-          display: inline-block;
-          background-repeat: no-repeat;
+      .splash {
+        background-image: url(../images/gente2.jpg?v7);
+        width: 50vw;
+        height: 50vw;
+        background-size: contain;
+        box-sizing: border-box;
+        display: inline-block;
+        background-repeat: no-repeat;
       }
 
-      .contenedorLogin{
-        width:480px;
-        height:65px;
-        position:absolute;
-        top:8px;
+      .contenedorLogin {
+        width: 480px;
+        height: 65px;
+        position: absolute;
+        top: 8px;
         left: 53vw;
-        display:flex;
+        display: flex;
         /*border: 1px dashed gray;*/
       }
-    
-      .celdaEmail{
-          width: 170px;
-          height: 100%;
-          padding-top: 8px;
-          margin-right: 25px;
+
+      .celdaEmail {
+        width: 200px;
+        height: 100%;
+        padding-top: 8px;
+        color: white;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 12px;
+        line-height: 12px;
+        line-height: 18px;
       }
 
-      .celdaPass{
-          width: 200px;
-          height: 100%;
-          padding-top: 8px;
-          color:white;
-          font-family: Helvetica, Arial, sans-serif;
-          font-size: 12px;
-          line-height: 12px;
-          line-height: 18px;
+      .celdaPass {
+        width: 200px;
+        height: 100%;
+        padding-top: 8px;
+        color: white;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 12px;
+        line-height: 12px;
+        line-height: 18px;
       }
 
-      label{
-        color:white;
+      label {
+        color: white;
         font-family: Helvetica, Arial, sans-serif;
         font-size: 12px;
       }
 
-      .contenedorLogin input[type=text], 
-      .contenedorLogin input[type=password] {
-          display: inline-block;
-          color: black;
-          padding: 5px;
-          box-sizing: border-box;
-          background-color: rgba(255,255,255,1);
-          border: none;
-          border-radius: 2px;
-          transition:background-color 0.5s ease;
+      .contenedorLogin input[type="text"],
+      .contenedorLogin input[type="password"] {
+        display: inline-block;
+        color: black;
+        padding: 5px;
+        box-sizing: border-box;
+        background-color: rgba(255, 255, 255, 1);
+        border: none;
+        border-radius: 2px;
+        transition: background-color 0.5s ease;
       }
 
-      .celdaPass a{
+      .celdaPass a {
         text-decoration: none;
         color: white;
-        margin-top:3px;
+        margin-top: 3px;
       }
 
-      .botonLogin{
+      .botonLogin {
         width: 100px;
         height: 26px;
         text-align: center;
@@ -115,78 +119,74 @@
         color: white;
         font-family: Helvetica, Arial, sans-serif;
         font-size: 12px;
-        margin-top: 25px;
+        margin-top: 35px;
         line-height: 26px;
-        cursor:pointer;
+        cursor: pointer;
         border-radius: 3px;
       }
 
-      .botonLogin:hover{
+      .botonLogin:hover {
         background-color: #3565ac;
         transform: scale(1.05);
       }
 
-      .botonLogin:active{
+      .botonLogin:active {
         background-color: #4df765;
         transform: scale(0.95);
-        color:black;
+        color: black;
       }
 
-      .registrate{
-        position:absolute;
-        top:15vw;
-        left:53vw;
-        font-family: Helvetica, Arial, sans-serif;
+      .registrate {
+        top: 15vw;
+        left: 53vw;
         font-size: 40px;
         font-weight: 700;
-        color: black;
-
+        color: rgb(255, 255, 255);
       }
 
-      .bajada{
-        position:absolute;
-        top:18vw;
-        left:53vw;
-        font-family: Helvetica, Arial, sans-serif;
+      .bajada {
+        top: 18vw;
+        left: 53vw;
         font-size: 20px;
         font-weight: 600px;
-        color: black;
-
+        color: rgb(255, 255, 255);
       }
 
-      .cuadroRegistro{
-        position:absolute;
-        top:20vw;
-        left:53vw;
-        width:450px;
-        height: 400px;
-        
+      .cuadroRegistro {
+        position: absolute;
+        top: 15vw;
+        left: 53vw;
+        width: 450px;
+        height: 450px;
+        background-color: rgb(52, 52, 52);
+        padding: 20px;
+        border-radius: 20px;
       }
 
-      .renglonRegistro{
-        width:100%;
+      .renglonRegistro {
+        width: 100%;
         height: 50px;
         margin-bottom: 15px;
         position: relative;
-        display:flex;
+        display: flex;
         justify-content: space-between;
       }
-      
-      .cuadroRegistro input[type=text],
-      .cuadroRegistro input[type=password]{
-          display: inline-block;
-          color: black;
-          padding: 10px;
-          box-sizing: border-box;
-          background-color: rgba(255,255,255,1);
-          border: 0.5px solid rgba(0,0,0,0.2);
-          border-radius: 6px;
-          transition:background-color 0.5s ease;
-          font-family: Helvetica, Arial, sans-serif;
-          font-size: 20px;
+
+      .cuadroRegistro input[type="text"],
+      .cuadroRegistro input[type="password"] {
+        display: inline-block;
+        color: black;
+        padding: 10px;
+        box-sizing: border-box;
+        background-color: rgba(255, 255, 255, 1);
+        border: 0.5px solid rgba(0, 0, 0, 0.2);
+        border-radius: 6px;
+        transition: background-color 0.5s ease;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 20px;
       }
 
-      .botonRegistro{
+      .botonRegistro {
         width: 200px;
         height: 50px;
         text-align: center;
@@ -195,38 +195,37 @@
         font-family: Helvetica, Arial, sans-serif;
         font-size: 22px;
         line-height: 50px;
-        cursor:pointer;
-        border-radius:5px;
+        cursor: pointer;
+        border-radius: 5px;
       }
 
-      .botonRegistro:hover{
-         background-color: #1c509e;
+      .botonRegistro:hover {
+        background-color: #1c509e;
       }
 
-
-      .botonRegistro:active{
-         background-color: #009000;
+      .botonRegistro:active {
+        background-color: #009000;
       }
 
-      .mensaje{
-        width:500px;
+      .mensaje {
+        width: 500px;
         height: 150px;
         position: absolute;
-        top:50%;
-        left:50%;
-        transform: translate(-50%,-50%);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
 
         background-color: white;
-        box-shadow: 4px 4px 24px 0px rgba(0,0,0,0.61);
+        box-shadow: 4px 4px 24px 0px rgba(0, 0, 0, 0.61);
         border-radius: 10px;
         overflow: hidden;
         display: none;
       }
 
-      .textoMensaje{
-        width:100%;
+      .textoMensaje {
+        width: 100%;
         position: absolute;
-        top:0px;
+        top: 0px;
         left: 0px;
         text-align: center;
         font-family: Helvetica, Arial, sans-serif;
@@ -234,7 +233,7 @@
         padding: 40px 10px 20px 10px;
       }
 
-      .botonMensaje{
+      .botonMensaje {
         width: 70px;
         height: 30px;
         text-align: center;
@@ -243,267 +242,277 @@
         font-family: Helvetica, Arial, sans-serif;
         font-size: 16px;
         line-height: 30px;
-        cursor:pointer;
-        border-radius:5px;
+        cursor: pointer;
+        border-radius: 5px;
         position: absolute;
-        bottom:20px;
-        left:50%;
+        bottom: 20px;
+        left: 50%;
         transform: translateX(-50%);
       }
 
-      .botonMensaje:hover{
-         background-color: #1c509e;
+      .botonMensaje:hover {
+        background-color: #1c509e;
       }
 
-
-      .botonMensaje:active{
-         background-color: #009000;
+      .botonMensaje:active {
+        background-color: #009000;
       }
 
-      .modal{
+      .modal {
         position: fixed;
         top: 0px;
         left: 0px;
         width: 98.7vw;
         height: 100vh;
         box-sizing: border-box;
-        background-color: rgba(0,0,0,0.5);
-        display:none;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
       }
 
-      .labelEntrar{
-        color:white;
+      .labelEntrar {
+        color: white;
         font-family: Helvetica, Arial, sans-serif;
         font-size: 16px;
-        padding-top:37px;
-        width:52vw;
+        padding-top: 37px;
+        width: 52vw;
         text-align: right;
-        position:absolute;
+        position: absolute;
       }
 
-
-      .textoError{
-        
+      .textoError {
         font-family: Helvetica, Arial, sans-serif;
         font-size: 16px;
         font-weight: 400;
         color: white;
         text-align: center;
         text-decoration: none;
+        left: 65vw;
+        top: 43vw;
+        height: 78px;
         position: absolute;
-        left:65%;
         transform: translateX(-50%);
         bottom: 18%;
-        background-color: red;
-        padding:10px;
+        background-color: rgb(44, 63, 113);
+        padding: 10px;
         border-radius: 10px;
-        
-
       }
-
-      
     </style>
-    
   </head>
 
   <body>
-
-    
     <div class="general">
       <div class="cabezalLogin">
         <div class="logoCabezal"></div>
-        <div class="labelEntrar">si ya estas registrado podes entrar por acá</div>
-        
+        <div class="labelEntrar">
+          Si ya estas registrado podes entrar por acá
+        </div>
+
         <div class="contenedorLogin">
-          
           <div class="celdaEmail">
             <label for="correo">Correo electrónico</label>
-            <input type="text" id="correo" >  
+            <input type="text" id="correo" />
           </div>
-          
+
           <div class="celdaPass">
             <label for="pass">Contraseña</label>
-            <input type="password" id="pass" >
-            <div style="margin-top: 3px;"><a href="olvidaste.html">¿Te olvidaste de los datos?</a></div> 
+            <input type="password" id="pass" />
+            <div style="margin-top: 3px">
+              <a href="olvidaste.html">¿Te olvidaste de los datos?</a>
+            </div>
           </div>
 
-          <div class="botonLogin" onclick="logearse()">entrar</div>
-
-
-        </div>  
-
-      </div>  
-
-      <div class="splash"></div>
-      <div class="registrate">Registrate</div>
-      <div class="bajada">Para ingresar al campus del Iset58.</div>
-      
-      <div class="cuadroRegistro">
-        <div class="renglonRegistro">
-          <input type="text" id="nombre"  placeholder="Nombre" style="width:48%;">
-          <input type="text" id="apellidos"  placeholder="Apellidos" style="width:48%">  
+          <div class="botonLogin" onclick="logearse()">Ingresar</div>
         </div>
-        <div class="renglonRegistro">
-          <input type="text" id="email"  placeholder="Correo electrónico" style="width:100%;">
-        </div>
-        <div class="renglonRegistro">
-          <input type="password" id="passs"  placeholder="Una contraseña nueva" style="width:100%;">
-        </div>
-        <div class="renglonRegistro">
-          <input type="text" id="claveSecretaria"  placeholder="Clave que te entrego la secretaria del ISET58" style="width:100%;">
-        </div>
-        <div class="renglonRegistro"  style="justify-content: flex-end;">
-          <div class="botonRegistro" onclick="registrarse()">Registrarte</div>
-        </div>
-        
       </div>
 
-    </div>  
-    
-    <a class="textoError">Si tenes algún problema escribi un mail a <strong>iset58campus@gmail.com</strong> indicando claramente que sucede y si podes una foto o captura de pantalla </a>
-    
+      <div class="splash"></div>
+      <div class="cuadroRegistro">
+        <div class="registrate">Registrate</div>
+        <div class="bajada">Para ingresar al campus del Iset58.</div>
+
+        <div class="">
+          <div class="renglonRegistro">
+            <input
+              type="text"
+              id="nombre"
+              placeholder="Nombre"
+              style="width: 48%" />
+            <input
+              type="text"
+              id="apellidos"
+              placeholder="Apellidos"
+              style="width: 48%" />
+          </div>
+          <div class="renglonRegistro">
+            <input
+              type="text"
+              id="email"
+              placeholder="Correo electrónico"
+              style="width: 100%" />
+          </div>
+          <div class="renglonRegistro">
+            <input
+              type="password"
+              id="passs"
+              placeholder="Una contraseña nueva"
+              style="width: 100%" />
+          </div>
+          <div class="renglonRegistro">
+            <input
+              type="text"
+              id="claveSecretaria"
+              placeholder="Clave que te entrego la secretaria del ISET58"
+              style="width: 100%" />
+          </div>
+          <div class="renglonRegistro" style="justify-content: flex-end">
+            <div class="botonRegistro" onclick="registrarse()">Registrarte</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a class="textoError"
+      >Si tenes algún problema escribi un mail a
+      <strong>iset58campus@gmail.com</strong> indicando claramente que sucede y
+      si podes una foto o captura de pantalla
+    </a>
+
     <div class="modal">
       <div class="mensaje">
-        <div class="textoMensaje">
-          Tenes que ingresar un email valido.
-        </div>  
+        <div class="textoMensaje">Tenes que ingresar un email valido.</div>
 
-        <div class="botonMensaje"  onclick="cerrarMensaje()">OK</div>
-      </div> 
-    </div>     
+        <div class="botonMensaje" onclick="cerrarMensaje()">OK</div>
+      </div>
+    </div>
 
-
-    <div id="dummy" style="display:none;"></div>
-
+    <div id="dummy" style="display: none"></div>
 
     <!-------- scripts ------------>
-    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
+      //////////////////////////////////////////////////////////////////
+      function registrarse() {
+        var nombre = $("#nombre").val();
+        var apellidos = $("#apellidos").val();
+        var email = $("#email").val();
+        var password = $("#passs").val();
+        var clave = $("#claveSecretaria").val();
 
-   	  ////////////////////////////////////////////////////////////////// 	
-      function registrarse(){
-         var nombre=$("#nombre").val();
-         var apellidos=$("#apellidos").val();
-         var email=$("#email").val();
-         var password=$("#passs").val();
-         var clave=$("#claveSecretaria").val();
-         
+        console.log("--" + password + "--");
 
-         console.log("--"+password+"--")
+        if (nombre == "") {
+          $(".textoMensaje").html("Tenes que ingresar un nombre.");
+          $(".mensaje").show();
+          $(".modal").show();
+          return;
+        }
 
-         if(nombre==""){
-           $(".textoMensaje").html("Tenes que ingresar un nombre.");
-           $(".mensaje").show();
-           $(".modal").show();
-           return;
-         }
+        if (apellidos == "") {
+          $(".textoMensaje").html("Tenes que ingresar un apellido.");
+          $(".mensaje").show();
+          $(".modal").show();
+          return;
+        }
 
-         if(apellidos==""){
-           $(".textoMensaje").html("Tenes que ingresar un apellido.");
-           $(".mensaje").show();
-           $(".modal").show();
-           return;
-         }
+        if (email == "") {
+          $(".textoMensaje").html("Tenes que ingresar un email valido.");
+          $(".mensaje").show();
+          $(".modal").show();
+          return;
+        }
 
-         if(email==""){
-           $(".textoMensaje").html("Tenes que ingresar un email valido.");
-           $(".mensaje").show();
-           $(".modal").show();
-           return;
-         }
+        var regex =
+          /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,6})+$/;
+        if (!regex.test(email)) {
+          $(".textoMensaje").html(
+            "Parece que la direccion de email que pusiste<br>no está bien escrita.",
+          );
+          $(".mensaje").show();
+          $(".modal").show();
+          return;
+        }
 
-         var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,6})+$/;
-         if(!regex.test(email)){
-           $(".textoMensaje").html("Parece que la direccion de email que pusiste<br>no está bien escrita.");
-           $(".mensaje").show();
-           $(".modal").show();
-           return;
+        if (password == "") {
+          $(".textoMensaje").html(
+            "Tenes que ingresar un password.<br>(y tenes que recordarlo)",
+          );
+          $(".mensaje").show();
+          $(".modal").show();
+          return;
+        }
 
-         }
+        if (clave == "") {
+          $(".textoMensaje").html(
+            "Tenes que ingresar la clave que te entrego la secretaria del Iset58.",
+          );
+          $(".mensaje").show();
+          $(".modal").show();
+          return;
+        }
 
-         if(password==""){
-           $(".textoMensaje").html("Tenes que ingresar un password.<br>(y tenes que recordarlo)");
-           $(".mensaje").show();
-            $(".modal").show();
-           return;
-         }
+        var html = '<form action="registrarse.php"';
+        html += ' name="enviar" method="post">';
+        html += ' <input type="text" name="nombre" value="' + nombre + '" />';
+        html +=
+          ' <input type="text" name="apellidos" value="' + apellidos + '" />';
+        html += ' <input type="text" name="mail" value="' + email + '" />';
+        html += ' <input type="text" name="passs" value="' + password + '" />';
+        html += ' <input type="text" name="clave" value="' + clave + '" />';
+        html += " </form>";
 
-          if(clave==""){
-           $(".textoMensaje").html("Tenes que ingresar la clave que te entrego la secretaria del Iset58.");
-           $(".mensaje").show();
-            $(".modal").show();
-           return;
-         }
+        $("#dummy").html(html);
 
-
-
-        
-               
-
-        var html='<form action="registrarse.php"';
-        html+=' name="enviar" method="post">';
-        html+=' <input type="text" name="nombre" value="' + nombre + '" />';
-        html+=' <input type="text" name="apellidos" value="' + apellidos + '" />';
-        html+=' <input type="text" name="mail" value="' + email + '" />';
-        html+=' <input type="text" name="passs" value="' + password + '" />';
-        html+=' <input type="text" name="clave" value="' + clave + '" />';
-        html+=' </form>';
-
-        $('#dummy').html(html);
-
-        document.forms['enviar'].submit();
-
+        document.forms["enviar"].submit();
       }
 
       //////////////////////////////////////////////////////////////////
-      function cerrarMensaje(){
+      function cerrarMensaje() {
         $(".mensaje").hide();
         $(".modal").hide();
       }
 
       //////////////////////////////////////////////////////////////////
-      function logearse(){
+      function logearse() {
+        var correo = $("#correo").val();
+        var password = $("#pass").val();
 
-        var correo=$("#correo").val();
-        var password=$("#pass").val();
+        if (correo == "") {
+          $(".textoMensaje").html("Tenes que ingresar un email valido.");
+          $(".mensaje").show();
+          $(".modal").show();
+          return;
+        }
 
-         if(correo==""){
-           $(".textoMensaje").html("Tenes que ingresar un email valido.");
-           $(".mensaje").show();
-           $(".modal").show();
-           return;
-         }
+        var regex =
+          /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,6})+$/;
+        if (!regex.test(correo)) {
+          $(".textoMensaje").html(
+            "Parece que la direccion de email que pusiste<br>no está bien escrita.",
+          );
+          $(".mensaje").show();
+          $(".modal").show();
+          return;
+        }
 
-         var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,6})+$/;
-         if(!regex.test(correo)){
-           $(".textoMensaje").html("Parece que la direccion de email que pusiste<br>no está bien escrita.");
-           $(".mensaje").show();
-           $(".modal").show();
-           return;
+        if (password == "") {
+          $(".textoMensaje").html("Tenes que ingresar una contraseña.");
+          $(".mensaje").show();
+          $(".modal").show();
+          return;
+        }
 
-         }
+        var html = '<form action="login.php"';
+        html += ' name="logearse" method="post">';
+        html += ' <input type="text" name="mail" value="' + correo + '" />';
+        html += ' <input type="text" name="pass" value="' + password + '" />';
+        html += " </form>";
 
+        $("#dummy").html(html);
 
-          if(password==""){
-           $(".textoMensaje").html("Tenes que ingresar una contraseña.");
-           $(".mensaje").show();
-           $(".modal").show();
-           return;
-         }
-
-          	var html='<form action="login.php"';
-	        html+=' name="logearse" method="post">';
-	        html+=' <input type="text" name="mail" value="' + correo + '" />';
-	        html+=' <input type="text" name="pass" value="' + password + '" />';
-	        html+=' </form>';
-
-
-
-	        $('#dummy').html(html);
-
-	        document.forms['logearse'].submit();
-
+        document.forms["logearse"].submit();
       }
-      
     </script>
   </body>
+</html>
