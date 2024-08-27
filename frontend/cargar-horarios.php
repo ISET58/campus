@@ -1,89 +1,80 @@
 <?php
 
-
-
-
 include_once 'acceso.php'; 
+include_once '../conexion.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (!isset($_SESSION["sessionID"])) {
+    die("No se ha iniciado sesión.");
+}
 
+// Obtener el id de usuario de la cookie de sesión
+$partes = explode("_", $_SESSION["sessionID"]);
+$userID = $partes[0];
 
+// Datos del creador del archivo
+$userProfile = getUserProfile($userID);
+$IDcreador = $userProfile["ID"];
+$nombreCreador = $userProfile["nombre"] . " " . $userProfile["apellido"];
 
-////////////////////////////////////////////////////////
-// se obtiene el id de usuario de la cookie de session
-///////////////////////////////////////////////////////
-$partes=explode("_", $_SESSION["sessionID"]);
-$userID=$partes[0];
-
-
-// dtaos del creador del archivo
-$userProfile=getUserProfile($userID);
-$IDcreador=$userProfile["ID"];
-$nombreCreador=$userProfile["nombre"]." ".$userProfile["apellido"];
-
-
-// nombre y path del archivo
-$directorioDestino="../horarios/";
-$nombre=uniqid()."_".$_FILES['file1']['name'];
+// Nombre y path del archivo
+$directorioDestino = "../horarios/";
+$nombre = uniqid() . "_" . basename($_FILES['file1']['name']);
 $archivoDestino = $directorioDestino . $nombre;
+$path = "/campus/horarios/" . $nombre;
 
-$path="/campus/horarios/".$nombre;
+$titulo = $_POST["nombreMaterial"];
+$descripcion = $_POST["descripcionMaterial"];
+$carrera = $_POST["carrera"];
+$yearCarrera = $_POST["yearCursado"]; // No convertir a entero, ya que es una cadena de texto
+$fecha = date("Y-m-d H:i:s");
+$epoch = time();
 
-$titulo=$_POST["nombreMaterial"];
-$descripcion=$_POST["descripcionMaterial"];
-
-
-
-$carrera=$_POST["carrera"];;
-$yearCarrera=$_POST["yearCursado"];;
-$fecha=date("Y-m-d H:i:s");
-$epoch=time();
-
-// se completan los datos del archivo en la bdd
-$database="../data/horarios.db";
-
-/////////////////////////////////////////////////////////////////////////
-// primero que nada se abre la base de datos para obtener un manejador
-// global del objeto de base de datos
-/////////////////////////////////////////////////////////////////////////
+// Verificar los valores
+var_dump($titulo, $descripcion, $carrera, $yearCarrera);
 
 
 
-$sqlquery="INSERT INTO horarios (
-	epoch, 
-	fecha,
-	url,
-	titulo,
-	descripcion,
-	IDcreador,
-	nombreCreador,
-	visible,
-	carrera,
-	yearDeLaCarrera
-	) VALUES (
-	'$epoch', 
-	'$fecha', 
-	'$path',
-	'$titulo',
-	'$descripcion',
-	'$IDcreador',
-	'$nombreCreador',
-	'si',
-	'$carrera',
-	'$yearCarrera'
-	
-	)" ;
+try {
+    // Preparar la consulta SQL para evitar inyecciones SQL
+    $stmt = $db->prepare("INSERT INTO horarios (
+        epoch, 
+        fecha,
+        url,
+        titulo,
+        descripcion,
+        IDcreador,
+        nombreCreador,
+        visible,
+        carrera,
+        yearDeLaCarrera
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, 'si', ?, ?)");
 
+    // Vincular parámetros a la consulta
+    $stmt->bind_param("issssssss", $epoch, $fecha, $path, $titulo, $descripcion, $IDcreador, $nombreCreador, $carrera, $yearCarrera);
 
-//echo "<h3>".$sqlquery."</h3>";
+    // Ejecutar la consulta
+    if ($stmt->execute()) {
+        $lastID = $stmt->insert_id;
 
-$results = $db->query($sqlquery);
+        // Mover el archivo a la biblioteca
+        if (move_uploaded_file($_FILES["file1"]["tmp_name"], $archivoDestino)) {
+            // Redirigir después de insertar el registro
+            header('Location: mostrarHorariosEsteProfe.php');
+        } else {
+            echo "Error al mover el archivo.";
+        }
+    } else {
+        echo "Error al insertar el horario: " . $stmt->error;
+    }
 
-$lastID=$db->lastInsertRowID();
+    // Cerrar la declaración y la conexión
+    $stmt->close();
+    $db->close();
 
-
-// se mueve el archivo a la biblioteca
-move_uploaded_file($_FILES["file1"]["tmp_name"], $archivoDestino);
-
-
-header('Location: mostrarHorariosEsteProfe.php');
+} catch (Exception $e) {
+    echo "Error: " . $e->getMessage();
+}
 
 ?>
