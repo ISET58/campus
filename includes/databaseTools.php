@@ -112,7 +112,7 @@ function listar($tabla, $campos, $plantilla, $condicion = null, $cantidad = null
     // se carga la plantilla, se reaiza la fusion
     // con los datos y se muestra
     $template = "../templates/" . $plantilla . ".html";
-    include_once ('../includes/tbs_class.php');
+    include_once('../includes/tbs_class.php');
     $TBS = new clsTinyButStrong;
     $TBS->LoadTemplate($template);
 
@@ -211,7 +211,7 @@ function listarMensajes($tabla, $campos, $plantilla, $condicion = null, $cantida
 
     // Se carga la plantilla, se realiza la fusión con los datos y se muestra
     $template = "../templates/" . $plantilla . ".html";
-    include_once ('../includes/tbs_class.php');
+    include_once('../includes/tbs_class.php');
     $TBS = new clsTinyButStrong;
     $TBS->LoadTemplate($template);
 
@@ -318,7 +318,7 @@ function buscar($tabla, $campos, $plantilla, $busqueda = null, $condicion = "")
     // se carga la plantilla, se reaiza la fusion
     // con los datos y se muestra
     $template = "../templates/" . $plantilla . ".html";
-    include_once ('../includes/tbs_class.php');
+    include_once('../includes/tbs_class.php');
     $TBS = new clsTinyButStrong;
     $TBS->LoadTemplate($template);
 
@@ -435,7 +435,7 @@ function login($email, $password)
     global $db;
     $password = 'test';//hardcodeado
     $sqlquery = "SELECT * FROM usuarios WHERE email='" . $email . "' AND password='" . $password . "' AND estado='activo'";
-    echo $sqlquery;
+
     $results = $db->query($sqlquery);
     $row = $results->fetch_assoc();
 
