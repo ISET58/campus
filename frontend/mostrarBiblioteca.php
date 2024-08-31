@@ -32,7 +32,7 @@ $perfil=getUserProfile($userID);
 // global del objeto de base de datos
 /////////////////////////////////////////////////////////////////////////
 $database = 'iset';
-$db = new mysqli($servername, $username, $password, $dbname);
+$db = new mysqli($host, $username, $password, $database);
 
 // Verificar la conexión
 if ($db->connect_error) {
@@ -52,7 +52,6 @@ if ($db->connect_error) {
 
     // se transforma el resultado de la consulta en una array
     $datos= array();
-    while($row = $results->fetch_assoc()){
     while($row = $results->fetch_assoc()){
        $datos[]=$row;
     }

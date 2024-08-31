@@ -1,6 +1,8 @@
 <?php
-
-include "config.php";
+$host = 'localhost';
+$database = 'iset';
+$username = 'root';
+$password = '';
 
 $db = new mysqli($host, $username, $password, $database);
 $hora=time()-$duracionSesion;

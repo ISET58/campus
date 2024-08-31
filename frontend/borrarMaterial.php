@@ -4,7 +4,6 @@ $id=$_GET['id'];
 
 
 // se completan los datos del archivo en la bdd
-$database="../data/biblioteca.db";
 
 /////////////////////////////////////////////////////////////////////////
 // primero que nada se abre la base de datos para obtener un manejador

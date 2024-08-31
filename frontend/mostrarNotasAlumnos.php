@@ -23,7 +23,7 @@ $database = 'iset';
 // primero que nada se abre la base de datos para obtener un manejador
 // global del objeto de base de datos
 /////////////////////////////////////////////////////////////////////////
-$db = new mysqli($servername, $username, $password, $dbname);
+$db = new mysqli($host, $username, $password, $database);
 
 // Verificar la conexión
 if ($db->connect_error) {
@@ -38,7 +38,7 @@ if ($db->connect_error) {
 
     // se transforma el resultado de la consulta en una array
     $datos= array();
-    while($row = $results->fetch_assoc()){
+
     while($row = $results->fetch_assoc()){
        $datos[]=$row;
     }

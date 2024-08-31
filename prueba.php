@@ -1,6 +1,6 @@
 <?php
 
-$para = 'moglione@gmail.com';
+$para = 'javierippoliti42@gmail.com';
 
 $titulo = 'Enviando email desde PHP';
 

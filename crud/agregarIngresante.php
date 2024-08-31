@@ -40,7 +40,7 @@ $plantilla="ingresantes";
 
 
 
-listar($tabla, $campos, $condicion,$plantilla, $cantidad, $offset);
+listar($tabla, $campos,$plantilla, $condicion, $cantidad, $offset);
 
 
 

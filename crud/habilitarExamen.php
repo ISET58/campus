@@ -22,7 +22,7 @@ $condicion="estado='activo'";
 $plantilla="examenes";
 
 
-listar($tabla, $campos, $condicion,$plantilla, $cantidad, $offset);
+listar($tabla, $campos,$plantilla, $condicion, $cantidad, $offset);
 
 
 

@@ -21,14 +21,17 @@ $tabla="usuarios";
 $campos=array("ID", "apellido", "nombre", "email", "dni","habilitado");
 
 
-if($tipo=="alumnos") $condicion="tipo ='alumno' and estado='activo' and habilitado='si'";
+if($tipo=="alumno") {
+ $condicion="tipo ='alumno' and estado='activo' and habilitado='si'";
+ $plantilla = "alumnos";
+}
 if($tipo=="pendientes") $condicion="tipo ='alumno' and estado='activo' and habilitado='no'";
 if($tipo=="profesores") $condicion="tipo ='profesor' and estado='activo'";
 
-$plantilla=$tipo;
 
 
-listar($tabla, $campos, $condicion,$plantilla, $cantidad, $offset);
+
+listar($tabla, $campos, $plantilla , $condicion , $cantidad, $offset);
 
 
 

@@ -53,8 +53,7 @@ if($tipo=="profesor"){
 } 
 
 
-listar($tabla, $campos,$plantilla,$condicion, $cantidad, $offset);
-
+listar($tabla, $campos,$plantilla, $condicion, $cantidad, $offset);
 
 ?>
 

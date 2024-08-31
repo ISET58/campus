@@ -5,14 +5,14 @@
 // primero que nada se abre la base de datos para obtener un manejador
 // global del objeto de base de datos
 /////////////////////////////////////////////////////////////////////////
-global $db;
 
 $host = 'localhost';
 $database = 'iset';
 $username = 'root';
 $password = '';
 
-$db = new mysqli($host, $username, $password, $database);
+global $db;
+$db= new mysqli($host, $username, $password, $database);
 if ($db->connect_error) {
     die("Connection failed: " . $db->connect_error);
 }
@@ -133,10 +133,6 @@ function listarMensajes($tabla, $campos, $plantilla, $condicion = null, $cantida
 {
 
     global $db;
-
-    // Crear una conexión a la base de datos
-    $db = new mysqli($host, $username, $password, $database);
-
     // Verificar si hay errores en la conexión
     if ($db->connect_error) {
         die("Connection failed: " . $db->connect_error);
@@ -354,7 +350,7 @@ function insertar($tabla, $campos, $valores)
     $sqlquery = "INSERT INTO " . $tabla . " " . $StringCampos . " VALUES " . $StringValores . " ";
     $results = $db->query($sqlquery);
 
-    if ($results === TRUE) {
+    if ($results == TRUE) {
         return $db->insert_id;  // Aquí se corrige para acceder a la propiedad insert_id
     } else {
         echo "Error: " . $sqlquery . "<br>" . $db->error;
@@ -432,7 +428,6 @@ function login($email, $password)
     global $db;
     $password = 'test';//hardcodeado
     $sqlquery = "SELECT * FROM usuarios WHERE email='" . $email . "' AND password='" . $password . "' AND estado='activo'";
-    echo $sqlquery;
     $results = $db->query($sqlquery);
     $row = $results->fetch_assoc();
 
@@ -668,6 +663,15 @@ function borrarPorID($tabla, $id)
     $results = $db->query($sqlquery);
     return true;
 }
+function borrarTodos()
+{
+    global $db;
+
+    $sqlquery = "DELETE FROM usuarios WHERE estado = 'inactivo'";
+    $results = $db->query($sqlquery);
+        return true;
+
+}
 
 
 
@@ -899,18 +903,18 @@ function usuarioPorUID($uid)
 function listarDatos()
 {
     global $db;
-
+    
     $salida = array();
 
     // Alumnos habilitados
     $columnas = $db->query("SELECT COUNT(*) as count FROM usuarios WHERE tipo='alumno' AND estado='activo' AND habilitado='si' ");
-    $cantidadCol = $columnas->fetchArray();
+    $cantidadCol = $columnas->fetch_assoc();
     $numRows = $cantidadCol['count'];
     $salida["habilitados"] = $numRows;
 
     // Alumnos no habilitados
     $columnas = $db->query("SELECT COUNT(*) as count FROM usuarios WHERE tipo='alumno' AND estado='activo' AND habilitado='no' ");
-    $cantidadCol = $columnas->fetchArray();
+    $cantidadCol = $columnas->fetch_assoc();
     $numRows = $cantidadCol['count'];
     $salida["deshabilitados"] = $numRows;
 

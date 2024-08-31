@@ -23,7 +23,7 @@ $condicion="estado='inactivo'";
 $plantilla="papelera";
 
 
-listar($tabla, $campos, $condicion,$plantilla, $cantidad, $offset);
+listar($tabla, $campos,$plantilla,$condicion, $cantidad, $offset);
 
 
 ?>

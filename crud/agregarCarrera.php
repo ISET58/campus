@@ -37,8 +37,7 @@ $campos=array("ID", "nombre", "duracion", "estado", "habilitado","comentarios");
 $condicion="estado='activo'";
 $plantilla="carreras";
 
-
-listar($tabla, $campos, $condicion,$plantilla, $cantidad, $offset);
+listar($tabla, $campos,$plantilla, $condicion, $cantidad, $offset);
 
 
 
